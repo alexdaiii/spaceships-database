@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "spaceships-database"
+version = "0.1.0"
+description = "Sample database for MySQL, PostgreSQL, SQLite"
+authors = ["Alex Chang <ac4294@columbia.edu>"]
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/alexdaiii/spaceships-database"
+repository = "https://github.com/alexdaiii/spaceships-database"
+
+[tool.poetry.dependencies]
+python = "^3.12,<3.13"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
