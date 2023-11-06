@@ -5,17 +5,17 @@ version: "3.9"
 
 services:
 
-#  TODO: in testing, test on: postgres v12-v16; mysql v8.0 (LTS), mariadb v10.11 (LTS), sqlite v3.x (whatever is the latest)
+  #  TODO: in testing, test on: postgres v12-v16; mysql v8.0 (LTS), mariadb v10.11 (LTS), sqlite v3.x (whatever is the latest)
   postgres_db:
     image: bitnami/postgresql:16
     environment:
       - POSTGRESQL_USERNAME=${POSTGRES_USER:-postgres}
       - POSTGRESQL_PASSWORD=${POSTGRES_PASSWORD:-postgres}
       - POSTGRESQL_DATABASE=${POSTGRES_DB:-postgres}
-#    volumes:
-#        - db_data:/var/lib/postgresql/data
+    #    volumes:
+    #        - db_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - { POSTGRESQL_PORT:-5432 }":5432"
 
   mysql_db:
     image: bitnami/mysql:8.0
@@ -24,7 +24,7 @@ services:
       - MYSQL_ROOT_USER=${MYSQL_ROOT_USER:-root}
       - MYSQL_DATABASE=${MYSQL_DATABASE:-mysql}
     ports:
-      - "3306:3306"
+      - { MYSQL_PORT:-3306 }":3306"
 
 
   mariadb_db:
@@ -34,10 +34,4 @@ services:
       - MARIADB_ROOT_USER=${MARIADB_ROOT_USER:-root}
       - MARIADB_DATABASE=${MARIADB_DATABASE:-mariadb}
     ports:
-      - "3307:3306"
-
-  sqlite_db:
-    build:
-      context: .
-      dockerfile: sqlite.Dockerfile
-    image: alexdaiii/sqilte-spaceships-test
+      - { MARIADB_PORT:-3307 }":3306"
