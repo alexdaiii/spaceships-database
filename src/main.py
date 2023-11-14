@@ -13,7 +13,7 @@ def get_dsn(settings: Settings, database: TargetDatabase):
     elif database == TargetDatabase.POSTGRESQL:
         return settings.postgresql_dsn
     else:
-        raise ValueError("Unknown database type")
+        raise ValueError("Unimplemented database type")
 
 
 def main():

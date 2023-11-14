@@ -1,12 +1,3 @@
-"""
-CREATE TABLE fleet (
-    fleet_id INTEGER PRIMARY KEY,
-    fleet_name VARCHAR NOT NULL,
-    empire_id INTEGER NOT NULL,
-
-    FOREIGN KEY (empire_id) REFERENCES empire (empire_id)
-);
-"""
 from typing import TYPE_CHECKING
 
 from src.database.base import Base
@@ -15,6 +6,8 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 if TYPE_CHECKING:
     from src.models.empire import Empire
+    from src.models.ship import Spaceship
+    from src.models.star_system import PatrolledSystem
 
 
 class Fleet(Base):
@@ -28,15 +21,11 @@ class Fleet(Base):
         "Empire",
         back_populates="fleets",
     )
-
-    def __repr__(self):
-        return (
-            f"<Fleet("
-            f"fleet_id={self.fleet_id}, "
-            f"fleet_name={self.fleet_name}, "
-            f"empire_id={self.empire_id}"
-            f")>"
-        )
-
-    def __str__(self):
-        return self.fleet_name
+    spaceships: Mapped[list["Spaceship"]] = relationship(
+        "Spaceship",
+        back_populates="fleet",
+    )
+    patrolled_systems: Mapped[list["PatrolledSystem"]] = relationship(
+        "PatrolledSystem",
+        back_populates="fleet",
+    )

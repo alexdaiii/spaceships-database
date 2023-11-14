@@ -34,8 +34,9 @@ def _make_session(
             _issue_callback(session, setup_callback)
 
             yield session
-        except:
+        except Exception as e:
             print("An error occurred, rolling back")
+            print(e)
             session.rollback()
             raise
         finally:
