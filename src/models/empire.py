@@ -1,6 +1,16 @@
 from src.database.base import Base
 from sqlalchemy import ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+
+from typing import TYPE_CHECKING
+
+# TODO: make it so it can have autocomplete for creating these objects
+# if TYPE_CHECKING:
+#     from dataclasses import dataclass
+# else:
+#
+#     def dataclass(cls):
+#         return cls
 
 
 class EmpireAuthority(Base):
@@ -8,6 +18,8 @@ class EmpireAuthority(Base):
 
     empire_authority_id: Mapped[int] = mapped_column(primary_key=True)
     empire_authority_name: Mapped[str]
+
+    empires: Mapped[list["Empire"]] = relationship(back_populates="authority")
 
 
 class EmpireEthic(Base):
@@ -26,6 +38,8 @@ class Empire(Base):
         ForeignKey("empire_authority.empire_authority_id")
     )
     empire_score: Mapped[int | None]
+
+    authority: Mapped[EmpireAuthority] = relationship(back_populates="empires")
 
 
 class EmpireToEthic(Base):

@@ -32,6 +32,9 @@ def main():
     for database in settings.target_databases:
         engine = create_engine(get_dsn(settings, database), echo=True)
 
+        print(f"DROPPING ALL TABLES IN {database.value} DATABASE")
+        Base.metadata.drop_all(engine)
+
         print(f"Adding models to {database.value} database")
 
         Base.metadata.create_all(engine)
