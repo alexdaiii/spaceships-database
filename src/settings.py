@@ -80,7 +80,7 @@ class Settings(BaseSettings):
         )
 
     # Sqlite
-    sqlite_database: str = "sqlite.db"
+    sqlite_database: str = "../data/sqlite.db"
 
     target_databases: list[TargetDatabase] = []
 

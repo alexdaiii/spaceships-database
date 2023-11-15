@@ -1,12 +1,6 @@
 from src.database.base import Base
 from sqlalchemy import ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from src.models.fleet import Fleet
-    from src.models.star_system import StarSystem
+from sqlalchemy.orm import Mapped, mapped_column
 
 
 class EmpireAuthority(Base):
@@ -15,32 +9,12 @@ class EmpireAuthority(Base):
     empire_authority_id: Mapped[int] = mapped_column(primary_key=True)
     empire_authority_name: Mapped[str]
 
-    empires: Mapped[list["Empire"]] = relationship(
-        "Empire",
-        back_populates="empire_authority",
-    )
-
-    def __repr__(self):
-        return (
-            f"<EmpireAuthority("
-            f"empire_authority_id={self.empire_authority_id}, "
-            f"empire_authority_name={self.empire_authority_name}"
-            f")>"
-        )
-
-    def __str__(self):
-        return self.empire_authority_name
-
 
 class EmpireEthic(Base):
     __tablename__ = "empire_ethic"
 
     empire_ethic_id: Mapped[int] = mapped_column(primary_key=True)
     empire_ethic_name: Mapped[str] = mapped_column()
-
-    empires: Mapped[list["EmpireToEthic"]] = relationship(
-        back_populates="empire_ethics",
-    )
 
 
 class Empire(Base):
@@ -51,19 +25,7 @@ class Empire(Base):
     empire_authority_id: Mapped[int] = mapped_column(
         ForeignKey("empire_authority.empire_authority_id")
     )
-
-    empire_authority: Mapped[EmpireAuthority] = relationship(
-        back_populates="empires"
-    )
-    empire_ethics: Mapped[list["EmpireToEthic"]] = relationship(
-        back_populates="empires",
-    )
-    fleets: Mapped[list["Fleet"]] = relationship(
-        back_populates="empire",
-    )
-    star_systems: Mapped[list["StarSystem"]] = relationship(
-        back_populates="empire",
-    )
+    empire_score: Mapped[int | None]
 
 
 class EmpireToEthic(Base):
@@ -77,9 +39,10 @@ class EmpireToEthic(Base):
     )
     empire_ethic_attraction: Mapped[int] = mapped_column(default=0)
 
-    empires: Mapped[list[Empire]] = relationship(
-        back_populates="empire_ethics",
-    )
-    empire_ethics: Mapped[list[EmpireEthic]] = relationship(
-        back_populates="empires",
-    )
+
+__all__ = [
+    "EmpireAuthority",
+    "EmpireEthic",
+    "Empire",
+    "EmpireToEthic",
+]

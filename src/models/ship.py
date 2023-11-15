@@ -1,65 +1,38 @@
 from src.database.base import Base
 from sqlalchemy import ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from src.models.fleet import Fleet
+from sqlalchemy.orm import Mapped, mapped_column
 
 
-class SpaceshipClassification(Base):
-    __tablename__ = "spaceship_classification"
+class ShipClass(Base):
+    __tablename__ = "ship_class"
 
-    spaceship_classification_id: Mapped[int] = mapped_column(primary_key=True)
-    spaceship_classification_name: Mapped[str] = mapped_column()
-
-    spaceships: Mapped[list["Spaceship"]] = relationship(
-        "Spaceship",
-        back_populates="spaceship_classification",
-    )
+    ship_class_id: Mapped[int] = mapped_column(primary_key=True)
+    ship_class_name: Mapped[str]
+    ship_class_bonus: Mapped[float | None]
 
 
 class Spaceship(Base):
     __tablename__ = "spaceship"
 
     spaceship_id: Mapped[int] = mapped_column(primary_key=True)
-    spaceship_name: Mapped[str] = mapped_column()
+    spaceship_name: Mapped[str]
     spaceship_fleet_id: Mapped[int] = mapped_column(
         ForeignKey("fleet.fleet_id")
     )
-    spaceship_classification_id: Mapped[int] = mapped_column(
-        ForeignKey("spaceship_classification.spaceship_classification_id")
+    spaceship_class_id: Mapped[int] = mapped_column(
+        ForeignKey("ship_class.ship_class_id")
     )
-    spaceship_experience: Mapped[int] = mapped_column()
-
-    fleet: Mapped["Fleet"] = relationship(
-        "Fleet",
-        back_populates="spaceships",
-    )
-    spaceship_classification: Mapped["SpaceshipClassification"] = relationship(
-        "SpaceshipClassification",
-        back_populates="spaceships",
-    )
-    spaceship_modules: Mapped[list["SpaceshipToModule"]] = relationship(
-        "SpaceshipToModule",
-        back_populates="spaceship",
-    )
+    spaceship_experience: Mapped[int | None]
 
 
 class SpaceshipModule(Base):
     __tablename__ = "spaceship_module"
 
     spaceship_module_id: Mapped[int] = mapped_column(primary_key=True)
-    spaceship_module_name: Mapped[str] = mapped_column()
-    spaceship_module_weight: Mapped[int] = mapped_column()
-    spaceship_module_power: Mapped[int] = mapped_column()
-    spaceship_module_trade_protection: Mapped[int] = mapped_column()
-
-    spaceship_to_module: Mapped[list["SpaceshipToModule"]] = relationship(
-        "SpaceshipToModule",
-        back_populates="spaceship_module",
-    )
+    spaceship_module_name: Mapped[str]
+    spaceship_module_weight: Mapped[int]
+    spaceship_module_power: Mapped[int | None]
+    spaceship_module_trade_protection: Mapped[int | None]
 
 
 class SpaceshipToModule(Base):
@@ -74,30 +47,20 @@ class SpaceshipToModule(Base):
         primary_key=True,
     )
 
-    spaceship: Mapped["Spaceship"] = relationship(
-        "Spaceship",
-        back_populates="spaceship_modules",
-    )
-    spaceship_module: Mapped["SpaceshipModule"] = relationship(
-        "SpaceshipModule",
-        back_populates="spaceship_to_module",
-    )
-
 
 class SpaceshipRank(Base):
     __tablename__ = "spaceship_rank"
 
     spaceship_rank_id: Mapped[int] = mapped_column(primary_key=True)
-    spaceship_rank_name: Mapped[str] = mapped_column()
-    spaceship_min_experience: Mapped[int] = mapped_column()
-    spaceship_max_experience: Mapped[int] = mapped_column()
+    spaceship_rank_name: Mapped[str]
+    spaceship_min_experience: Mapped[int]
+    spaceship_max_experience: Mapped[int]
 
 
-class SpaceshipWeightClass(Base):
-    __tablename__ = "spaceship_weight_class"
-
-    spaceship_weight_class_id: Mapped[int] = mapped_column(primary_key=True)
-    spaceship_weight_class_name: Mapped[str] = mapped_column()
-    spaceship_min_weight: Mapped[int] = mapped_column()
-    spaceship_max_weight: Mapped[int] = mapped_column()
-    spaceship_command_cost: Mapped[int] = mapped_column()
+__all__ = [
+    "ShipClass",
+    "Spaceship",
+    "SpaceshipModule",
+    "SpaceshipToModule",
+    "SpaceshipRank",
+]

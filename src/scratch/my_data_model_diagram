@@ -1,0 +1,258 @@
+// Interactive Data Models
+digraph {
+	graph [bgcolor="#EEEEEE" rankdir=TB splines=spline]
+	node [fontname=Roboto fontsize=12 shape=none]
+	edge [fontname=Roboto fontsize=10]
+	EmpireAuthority [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">EmpireAuthority</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">empire_authority_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">empire_authority_name</TD>
+                         <TD BGCOLOR="#BBDEFB">VARCHAR ()</TD>
+                         </TR></TABLE>> URL="http://EmpireAuthority_details.html"]
+	EmpireEthic [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">EmpireEthic</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">empire_ethic_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">empire_ethic_name</TD>
+                         <TD BGCOLOR="#BBDEFB">VARCHAR ()</TD>
+                         </TR></TABLE>> URL="http://EmpireEthic_details.html"]
+	Empire [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">Empire</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">empire_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">empire_name</TD>
+                         <TD BGCOLOR="#BBDEFB">VARCHAR ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">empire_authority_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">empire_score</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR></TABLE>> URL="http://Empire_details.html"]
+	EmpireToEthic [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">EmpireToEthic</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">empire_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">empire_ethic_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">empire_ethic_attraction</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR></TABLE>> URL="http://EmpireToEthic_details.html"]
+	Fleet [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">Fleet</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">fleet_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">fleet_name</TD>
+                         <TD BGCOLOR="#BBDEFB">VARCHAR ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">fleet_empire_owner</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">fleet_cloak_strength</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">fleet_is_docked</TD>
+                         <TD BGCOLOR="#BBDEFB">BOOLEAN ()</TD>
+                         </TR></TABLE>> URL="http://Fleet_details.html"]
+	ShipClass [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">ShipClass</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">ship_class_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">ship_class_name</TD>
+                         <TD BGCOLOR="#BBDEFB">VARCHAR ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">ship_class_bonus</TD>
+                         <TD BGCOLOR="#BBDEFB">FLOAT ()</TD>
+                         </TR></TABLE>> URL="http://ShipClass_details.html"]
+	Spaceship [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">Spaceship</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_name</TD>
+                         <TD BGCOLOR="#BBDEFB">VARCHAR ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_fleet_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_class_id</TD>
+                         <TD BGCOLOR="#BBDEFB">NULL ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_experience</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR></TABLE>> URL="http://Spaceship_details.html"]
+	SpaceshipModule [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">SpaceshipModule</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_module_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_module_name</TD>
+                         <TD BGCOLOR="#BBDEFB">VARCHAR ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_module_weight</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_module_power</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_module_trade_protection</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR></TABLE>> URL="http://SpaceshipModule_details.html"]
+	SpaceshipToModule [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">SpaceshipToModule</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_module_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR></TABLE>> URL="http://SpaceshipToModule_details.html"]
+	SpaceshipRank [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">SpaceshipRank</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_rank_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_rank_name</TD>
+                         <TD BGCOLOR="#BBDEFB">VARCHAR ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_min_experience</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_max_experience</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR></TABLE>> URL="http://SpaceshipRank_details.html"]
+	StarSystem [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">StarSystem</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">star_system_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">star_system_name</TD>
+                         <TD BGCOLOR="#BBDEFB">VARCHAR ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">system_trade_value</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">system_energy_value</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">system_minerals_value</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">system_research_value</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">system_is_choke_point</TD>
+                         <TD BGCOLOR="#BBDEFB">BOOLEAN ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">empire_owner</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR></TABLE>> URL="http://StarSystem_details.html"]
+	Biome [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">Biome</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">biome_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">biome_name</TD>
+                         <TD BGCOLOR="#BBDEFB">VARCHAR ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">average_temperature</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">average_humidity</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">biome_is_habitable</TD>
+                         <TD BGCOLOR="#BBDEFB">BOOLEAN ()</TD>
+                         </TR></TABLE>> URL="http://Biome_details.html"]
+	Planet [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">Planet</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">planet_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">planet_name</TD>
+                         <TD BGCOLOR="#BBDEFB">VARCHAR ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">planet_biome</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">planet_star_system</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">planet_size</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">planet_pops</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR></TABLE>> URL="http://Planet_details.html"]
+	Crew [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">Crew</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">crew_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">crew_name</TD>
+                         <TD BGCOLOR="#BBDEFB">VARCHAR ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">spaceship_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">command_points</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">reports_to</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">birth_date</TD>
+                         <TD BGCOLOR="#BBDEFB">DATETIME ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">hire_date</TD>
+                         <TD BGCOLOR="#BBDEFB">DATETIME ()</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">planet_of_birth_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER ()</TD>
+                         </TR></TABLE>> URL="http://Crew_details.html"]
+	CrewFriend [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD COLSPAN="2" BGCOLOR="#3F51B5"><FONT COLOR="white">CrewFriend</FONT></TD></TR>
+        <TR>
+                         <TD BGCOLOR="#BBDEFB">crew_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR><TR>
+                         <TD BGCOLOR="#BBDEFB">friend_id</TD>
+                         <TD BGCOLOR="#BBDEFB">INTEGER (PK)</TD>
+                         </TR></TABLE>> URL="http://CrewFriend_details.html"]
+}
