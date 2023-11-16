@@ -5,6 +5,7 @@ from src import models
 from src import factories
 import colorful as cf
 import factory.random
+from faker import Faker
 
 
 from sqlalchemy import create_engine
@@ -31,6 +32,11 @@ def get_dsn(database: TargetDatabase):
 def reset_random_seed():
     factory.random.reseed_random(settings.random_seed)
 
+    fake = Faker()
+    Faker.seed(settings.random_seed)
+
+    return fake
+
 
 def main():
     cf.use_true_colors()
@@ -48,13 +54,13 @@ def main():
         Base.metadata.create_all(engine)
 
         with get_session(engine, sess_type="mock") as session:
-            reset_random_seed()
+            fake = reset_random_seed()
 
             inserts = [
                 *factories.create_empire_authorities(),
                 *factories.create_empire_ethics(),
                 *factories.create_empires(),
-                *factories.create_empire_to_ethic(settings.random_seed),
+                *factories.create_empire_to_ethic(fake),
             ]
 
             session.add_all(inserts)

@@ -125,10 +125,7 @@ MIN_NUM_ETHICS = 2
 MAX_NUM_ETHICS = 3
 
 
-def create_empire_to_ethic(seed: int = 0):
-    fake = Faker()
-    Faker.seed(seed)
-
+def create_empire_to_ethic(fake: Faker):
     empire_ethics = []
     for i in range(1, settings.number_of_empires + 1):
         num_ethics = fake.random_int(MIN_NUM_ETHICS, MAX_NUM_ETHICS)
