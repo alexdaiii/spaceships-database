@@ -4,8 +4,6 @@ from sqlalchemy.orm import Session, sessionmaker
 from contextlib import contextmanager
 from sqlalchemy import Engine, text
 
-from src.settings import TargetDatabase
-
 
 def _issue_callback(
     session: Session,
@@ -74,31 +72,27 @@ def _get_maker_fn(sess_type: Literal["mock", "real"]):
     elif sess_type == "real":
         return _make_session
     else:
-        raise ValueError("Unknown session type")
+        raise NotImplementedError("Database not supported")
 
 
 @contextmanager
 def get_session(
     engine: Engine,
     sess_type: Literal["mock", "real"] = "real",
-    *,
-    database_type: TargetDatabase,
 ):
     maker_fn = _get_maker_fn(sess_type)
 
-    if database_type == TargetDatabase.SQLITE:
+    if engine.dialect.name == "sqlite":
         with maker_fn(
             engine, setup_callback=_sqlite_setup_callback
         ) as session:
             yield session
     elif (
-        database_type == TargetDatabase.MYSQL
-        or database_type == TargetDatabase.MARIADB
+        engine.dialect.name == "mysql"
+        or engine.dialect.name == "mariadb"
+        or engine.dialect.name == "postgresql"
     ):
         with maker_fn(engine) as session:
             yield session
-    elif database_type == TargetDatabase.POSTGRESQL:
-        with maker_fn(engine) as session:
-            yield session
     else:
-        raise ValueError("Unknown database type")
+        raise NotImplementedError("Database not supported")

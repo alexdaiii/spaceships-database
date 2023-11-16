@@ -1,7 +1,7 @@
 from enum import Enum
 
 from pydantic_settings import BaseSettings
-from pydantic import MySQLDsn, computed_field, PostgresDsn, MariaDBDsn
+from pydantic import MySQLDsn, computed_field, PostgresDsn, MariaDBDsn, Field
 
 
 class TargetDatabase(Enum):
@@ -26,14 +26,14 @@ class Settings(BaseSettings):
     mysql_host: str = "localhost"
     mysql_root_user: str = "root"
     mysql_root_password: str = "root"
-    mysql_database: str = "mysql"
+    mysql_database: str = "spaceships"
     mysql_port: int = 3306
 
     @computed_field
     @property
     def mysql_dsn(self) -> MySQLDsn:
         return MySQLDsn.build(
-            scheme="mysql",
+            scheme="mysql+pymysql",
             username=self.mysql_root_user,
             password=self.mysql_root_password,
             host=self.mysql_host,
@@ -45,7 +45,7 @@ class Settings(BaseSettings):
     postgresql_host: str = "localhost"
     postgresql_username: str = "postgres"
     postgresql_password: str = "postgres"
-    postgresql_database: str = "postgres"
+    postgresql_database: str = "spaceships"
     postgresql_port: int = 5432
 
     @computed_field
@@ -64,14 +64,14 @@ class Settings(BaseSettings):
     mariadb_host: str = "localhost"
     mariadb_root_user: str = "root"
     mariadb_root_password: str = "root"
-    mariadb_database: str = "mariadb"
+    mariadb_database: str = "spaceships"
     mariadb_port: int = 3306
 
     @computed_field
     @property
     def mariadb_dsn(self) -> MariaDBDsn:
         return MariaDBDsn.build(
-            scheme="mariadb",
+            scheme="mariadb+pymysql",
             username=self.mariadb_root_user,
             password=self.mariadb_root_password,
             host=self.mariadb_host,
@@ -83,6 +83,10 @@ class Settings(BaseSettings):
     sqlite_database: str = "../data/sqlite.db"
 
     target_databases: list[TargetDatabase] = []
+
+    # config
+    random_seed: int = 1234
+    number_of_empires: int = Field(100, min=1, max=100)
 
     class Config:
         env_file = "../.env"

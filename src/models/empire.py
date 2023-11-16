@@ -1,45 +1,35 @@
 from src.database.base import Base
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-
-from typing import TYPE_CHECKING
-
-# TODO: make it so it can have autocomplete for creating these objects
-# if TYPE_CHECKING:
-#     from dataclasses import dataclass
-# else:
-#
-#     def dataclass(cls):
-#         return cls
 
 
 class EmpireAuthority(Base):
     __tablename__ = "empire_authority"
 
     empire_authority_id: Mapped[int] = mapped_column(primary_key=True)
-    empire_authority_name: Mapped[str]
+    empire_authority_name: Mapped[str] = mapped_column(
+        String(255), unique=True
+    )
 
-    empires: Mapped[list["Empire"]] = relationship(back_populates="authority")
+    empire: Mapped[list["Empire"]] = relationship("Empire")
 
 
 class EmpireEthic(Base):
     __tablename__ = "empire_ethic"
 
     empire_ethic_id: Mapped[int] = mapped_column(primary_key=True)
-    empire_ethic_name: Mapped[str] = mapped_column()
+    empire_ethic_name: Mapped[str] = mapped_column(String(255), unique=True)
 
 
 class Empire(Base):
     __tablename__ = "empire"
 
     empire_id: Mapped[int] = mapped_column(primary_key=True)
-    empire_name: Mapped[str]
+    empire_name: Mapped[str] = mapped_column(String(255), unique=True)
     empire_authority_id: Mapped[int] = mapped_column(
         ForeignKey("empire_authority.empire_authority_id")
     )
     empire_score: Mapped[int | None]
-
-    authority: Mapped[EmpireAuthority] = relationship(back_populates="empires")
 
 
 class EmpireToEthic(Base):
@@ -52,6 +42,9 @@ class EmpireToEthic(Base):
         ForeignKey("empire_ethic.empire_ethic_id"), primary_key=True
     )
     empire_ethic_attraction: Mapped[int] = mapped_column(default=0)
+
+    empire: Mapped["Empire"] = relationship("Empire")
+    empire_ethic: Mapped["EmpireEthic"] = relationship("EmpireEthic")
 
 
 __all__ = [

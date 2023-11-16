@@ -1,7 +1,7 @@
 import datetime
 
 from src.database.base import Base
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 
@@ -9,7 +9,7 @@ class Crew(Base):
     __tablename__ = "crew"
 
     crew_id: Mapped[int] = mapped_column(primary_key=True)
-    crew_name: Mapped[str]
+    crew_name: Mapped[str] = mapped_column(String(255))
     spaceship_id: Mapped[int | None] = mapped_column(
         ForeignKey("spaceship.spaceship_id"),
         nullable=True,
