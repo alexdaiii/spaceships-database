@@ -1,15 +1,12 @@
-import json
 import math
-import os
 
 import numpy as np
 from faker import Faker
 
 from src.database.base import Base
+from src.factories.ship_mods import create_ship_module
 from src.factories.utils import STARTING_ID, load_file, get_location
-from src.models import ShipClass, Spaceship, SpaceshipModule
-
-from pydantic import BaseModel, Field
+from src.models import ShipClass, Spaceship
 
 _combat_ship_class = [
     "Corvette",
@@ -71,91 +68,6 @@ def _create_ship_class():
         ship_class.ship_class_name: ship_class.ship_class_id
         for ship_class in classes
     }
-
-
-NUM_TECH_LEVELS = 6
-
-
-class GeneralMods(BaseModel):
-    power: list[str] = Field(
-        max_items=NUM_TECH_LEVELS, min_items=NUM_TECH_LEVELS
-    )
-    ftl: list[str] = Field(
-        max_items=NUM_TECH_LEVELS, min_items=NUM_TECH_LEVELS
-    )
-    thrusters: list[str] = Field(
-        max_items=NUM_TECH_LEVELS, min_items=NUM_TECH_LEVELS
-    )
-    computer: list[str] = Field(
-        max_items=NUM_TECH_LEVELS, min_items=NUM_TECH_LEVELS
-    )
-
-
-class WeaponMods(BaseModel):
-    small: list[str]
-    medium: list[str]
-    large: list[str]
-    xlarge: list[str]
-    giga: list[str]
-    titan: list[str]
-    juggernaut: list[str]
-    colossus: list[str]
-    star_eater: list[str]
-
-
-class DefenseMods(BaseModel):
-    armor: list[str] = Field(
-        max_items=NUM_TECH_LEVELS, min_items=NUM_TECH_LEVELS
-    )
-    shield: list[str] = Field(
-        max_items=NUM_TECH_LEVELS, min_items=NUM_TECH_LEVELS
-    )
-    auxiliary: list[str]
-
-
-class CombatMods(BaseModel):
-    sensors: list[str] = Field(
-        max_items=NUM_TECH_LEVELS, min_items=NUM_TECH_LEVELS
-    )
-    weapons: WeaponMods
-    defense: DefenseMods
-
-
-class ModType(BaseModel):
-    general: GeneralMods
-    combat: CombatMods
-
-
-def _create_ship_module():
-    ship_mod_file = "ship_mods.json"
-
-    with open(os.path.join(get_location(), ship_mod_file)) as f:
-        ship_mods = ModType(**json.load(f))
-
-    mods = []
-    mod_name_to_id = {}
-
-    def unpack_mods(mod_dict: dict | list, start_key: str, is_combat: bool):
-        """
-        Recursively unpack the mods from the mod dictionary.
-        """
-
-        # base case
-        if not isinstance(mod_dict, dict):
-            if not isinstance(mod_dict, list):
-                raise TypeError("mod_dict must be a dict or list")
-
-            for i, mod_name in enumerate(mod_dict, start=len(mods) + 1):
-                mods.append(
-                    SpaceshipModule(
-                        spaceship_module_id=i,
-                        spaceship_module_name=mod_name,
-                    )
-                )
-                mod_name_to_id[mod_name] = i
-
-    # pretty print
-    print(ship_mods.model_dump_json(indent=2))
 
 
 def _get_ship_class_id(
@@ -252,7 +164,7 @@ def create_ships(
     val: tuple[list[Base], dict] = _create_ship_class()
     inserts, ship_class_map = val
 
-    _create_ship_module()
+    create_ship_module()
 
     for fleet_id in range(STARTING_ID, num_fleets + 1):
         inserts.extend(
@@ -272,12 +184,12 @@ def create_ships(
 __all__ = ["create_ships"]
 
 if __name__ == "__main__":
-    fake = Faker()
-    rng = np.random.default_rng(0)
+    fake2 = Faker()
+    rng2 = np.random.default_rng(0)
     print(
         create_ships(
-            fake=fake,
-            rng=rng,
+            fake=fake2,
+            rng=rng2,
             num_fleets=1,
             max_ships=1,
         )

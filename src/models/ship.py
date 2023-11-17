@@ -39,7 +39,7 @@ class SpaceshipModule(Base):
         String(255), unique=True
     )
     spaceship_module_weight: Mapped[int]
-    spaceship_module_power: Mapped[int | None]
+    spaceship_module_power: Mapped[int]
     spaceship_module_trade_protection: Mapped[int | None]
 
     spaceships: Mapped[list["Spaceship"]] = relationship(
