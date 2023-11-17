@@ -1,7 +1,8 @@
+import numpy as np
+
 from src.database.base import Base
 from src.database.db import get_session
 from src.settings import Settings, TargetDatabase
-from src import models
 from src import factories
 import colorful as cf
 import factory.random
@@ -10,10 +11,8 @@ from faker import Faker
 
 from sqlalchemy import create_engine
 
-settings = Settings()
 
-
-def get_dsn(database: TargetDatabase):
+def get_dsn(settings: Settings, database: TargetDatabase):
     def _get_dsn():
         if database == TargetDatabase.SQLITE:
             return f"sqlite:///{settings.sqlite_database}"
@@ -29,20 +28,24 @@ def get_dsn(database: TargetDatabase):
     return _get_dsn().__str__()
 
 
-def reset_random_seed():
-    factory.random.reseed_random(settings.random_seed)
+def reset_random_seed(seed: int):
+    factory.random.reseed_random(seed)
 
     fake = Faker()
-    Faker.seed(settings.random_seed)
+    Faker.seed(seed)
 
-    return fake
+    rng = np.random.default_rng(seed)
+
+    return fake, rng
 
 
-def main():
+def main(settings: Settings):
     cf.use_true_colors()
 
     for database in settings.target_databases:
-        engine = create_engine(get_dsn(database), echo=False)
+        engine = create_engine(
+            get_dsn(settings, database), echo=settings.sqlalchemy_echo
+        )
 
         db_name = cf.bold_cyan(database.value.upper())
 
@@ -54,13 +57,32 @@ def main():
         Base.metadata.create_all(engine)
 
         with get_session(engine, sess_type="mock") as session:
-            fake = reset_random_seed()
+            fake, rng = reset_random_seed(settings.random_seed)
+
+            fleets = factories.create_fleets(
+                fake,
+                max_num_fleets=settings.empire_max_fleets,
+                num_empires=settings.number_of_empires,
+            )
 
             inserts = [
                 *factories.create_empire_authorities(),
                 *factories.create_empire_ethics(),
-                *factories.create_empires(),
-                *factories.create_empire_to_ethic(fake),
+                *factories.create_empires(
+                    fake,
+                    num_empires=settings.number_of_empires,
+                    null_chance=0.1,
+                ),
+                *factories.create_empire_to_ethic(
+                    fake, num_empires=settings.number_of_empires
+                ),
+                *fleets,
+                *factories.create_ships(
+                    fake,
+                    rng=rng,
+                    num_fleets=len(fleets),
+                    max_ships=settings.max_ships_per_fleet,
+                ),
             ]
 
             session.add_all(inserts)
@@ -68,4 +90,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    s = Settings()
+    main(settings=s)

@@ -1,6 +1,25 @@
+import os
+from functools import lru_cache
+
 from faker.providers import BaseProvider
 
 STARTING_ID = 1
+
+
+def get_location():
+    return os.path.realpath(
+        os.path.join(os.getcwd(), os.path.dirname(__file__))
+    )
+
+
+@lru_cache()
+def load_file(location: str, filename: str):
+    filepath = os.path.join(location, filename)
+    print(f"Loading {filename} from {filepath}")
+    with open(filepath, "r") as f:
+        data = f.read().splitlines()
+
+    return data
 
 
 class IntegerOrNone(BaseProvider):

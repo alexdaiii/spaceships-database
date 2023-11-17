@@ -2,6 +2,11 @@ from src.database.base import Base
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.models import Fleet
+
 
 class EmpireAuthority(Base):
     __tablename__ = "empire_authority"
@@ -30,6 +35,8 @@ class Empire(Base):
         ForeignKey("empire_authority.empire_authority_id")
     )
     empire_score: Mapped[int | None]
+
+    fleets: Mapped[list["Fleet"]] = relationship("Fleet")
 
 
 class EmpireToEthic(Base):

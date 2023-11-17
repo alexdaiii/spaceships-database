@@ -1,14 +1,16 @@
 from src.database.base import Base
 from sqlalchemy import ForeignKey, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 
 class ShipClass(Base):
     __tablename__ = "ship_class"
 
     ship_class_id: Mapped[int] = mapped_column(primary_key=True)
-    ship_class_name: Mapped[str] = mapped_column(String(255))
+    ship_class_name: Mapped[str] = mapped_column(String(255), unique=True)
     ship_class_bonus: Mapped[float | None]
+
+    ships: Mapped[list["Spaceship"]] = relationship("Spaceship")
 
 
 class Spaceship(Base):
@@ -24,6 +26,10 @@ class Spaceship(Base):
     )
     spaceship_experience: Mapped[int | None]
 
+    spaceship_modules: Mapped[list["SpaceshipModule"]] = relationship(
+        secondary="spaceship_to_module", back_populates="spaceships"
+    )
+
 
 class SpaceshipModule(Base):
     __tablename__ = "spaceship_module"
@@ -35,6 +41,10 @@ class SpaceshipModule(Base):
     spaceship_module_weight: Mapped[int]
     spaceship_module_power: Mapped[int | None]
     spaceship_module_trade_protection: Mapped[int | None]
+
+    spaceships: Mapped[list["Spaceship"]] = relationship(
+        secondary="spaceship_to_module", back_populates="spaceship_modules"
+    )
 
 
 class SpaceshipToModule(Base):

@@ -82,11 +82,15 @@ class Settings(BaseSettings):
     # Sqlite
     sqlite_database: str = "../data/sqlite.db"
 
+    # sqlalchemy
     target_databases: list[TargetDatabase] = []
+    sqlalchemy_echo: bool = False
 
     # config
     random_seed: int = 1234
     number_of_empires: int = Field(100, min=1, max=100)
+    empire_max_fleets: int = Field(10, min=0, max=20)
+    max_ships_per_fleet: int = Field(100, min=1, max=1000)
 
     class Config:
         env_file = "../.env"
