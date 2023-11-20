@@ -1,0 +1,163 @@
+{
+  "general": {
+    "power": [
+      "Fission Reactor",
+      "Fusion Reactor",
+      "Cold Fusion Reactor",
+      "Antimatter Reactor",
+      "Zero Point Reactor",
+      "Dark Matter Reactor"
+    ],
+    "ftl": [
+      "Hyper Drive",
+      "Warp Drive",
+      "Quantum Drive",
+      "Tachyon Drive",
+      "Jump Drive",
+      "Psi Jump Drive"
+    ],
+    "thrusters": [
+      "Chemical Thrusters",
+      "Ion Thrusters",
+      "Plasma Thrusters",
+      "Positron Thrusters",
+      "Impulse Thrusters",
+      "Dark Matter Thrusters"
+    ],
+    "computer": [
+      "Basic Computer",
+      "Advanced Computer",
+      "Specialized Computer",
+      "Autonomous Computer",
+      "Sentient Computer",
+      "Precognative Computer"
+    ]
+  },
+  "combat": {
+    "sensors": [
+      "Radar Sensor",
+      "Gravity Sensor",
+      "Subspace Sensor",
+      "Quantum Field Sensor",
+      "Tachyon Sensor",
+      "Dark Energy Sensor"
+    ],
+    "weapons": {
+      "small": {
+        "base_power": 100,
+        "value": [
+          "laser",
+          "plasma cannon",
+          "disruptor",
+          "mass driver",
+          "railgun",
+          "autocannon",
+          "missiles"
+        ]
+      },
+      "medium": {
+        "base_power": 500,
+        "value": [
+          "swarm missiles",
+          "strike craft",
+          "flak",
+          "point defense"
+        ]
+      },
+      "large": {
+        "base_power": 1000,
+        "value": [
+          "matter disintegrator",
+          "energy siphon",
+          "cavitator",
+          "kinetic artillery"
+        ]
+      },
+      "xlarge": {
+        "base_power": 5000,
+        "value": [
+          "particle lance",
+          "cloud lightning",
+          "giga cannon",
+          "macro battery"
+        ]
+      },
+      "giga": {
+        "base_power": 10000,
+        "value": [
+          "arc emitter",
+          "null void beam",
+          "neutron launchers",
+          "devastator torpedoes"
+        ]
+      },
+      "titan": {
+        "base_power": 20000,
+        "value": [
+          "partition beam",
+          "nanobot cloud",
+          "quantum destabilizer",
+          "subsace snare"
+        ]
+      },
+      "juggernaut": {
+        "base_power": 40000,
+        "value": [
+          "strategic coordination center",
+          "mega shipyard",
+          "hyperlane relay",
+          "targeting uplink"
+        ]
+      },
+      "colossus": {
+        "base_power": 100000,
+        "value": [
+          "global pacifier",
+          "neutron sweep",
+          "world cracker",
+          "matter decompressor"
+        ]
+      },
+      "star_eater": {
+        "base_power": 500000,
+        "value": [
+          "black hole generator",
+          "stellar converter",
+          "doomsday cannon",
+          "hyperlane disruptor"
+        ]
+      }
+    },
+    "defense": {
+      "armor": [
+        "Titanium Armor",
+        "Plasteel Armor",
+        "Durasteel Armor",
+        "Ceramo-Metal Armor",
+        "Ceramic Composite Armor",
+        "Neutronium Armor"
+      ],
+      "shield": [
+        "Deflector Shields",
+        "Advanced Deflectors",
+        "Hyper Shields",
+        "Suspension Fields",
+        "Dark Matter Deflectors",
+        "Phase Shields"
+      ],
+      "auxiliary": [
+        "afterburners",
+        "shield capacitors",
+        "hull harmonics",
+        "auxiliary fire control",
+        "target uplink computer",
+        "reactive armor",
+        "regenerative hull tissue",
+        "nano-composite materials",
+        "crystal infused plating",
+        "dark matter cloaking field generator",
+        "dark energy converter"
+      ]
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "star_type_weights": [
+    {
+      "name": "Class B",
+      "weight": 10,
+      "habitability": 0.6
+    },
+    {
+      "name": "Class A",
+      "weight": 20,
+      "habitability": 0.6
+    },
+    {
+      "name": "Class F",
+      "weight": 50,
+      "habitability": 1
+    },
+    {
+      "name": "Class G",
+      "weight": 50,
+      "habitability": 1
+    },
+    {
+      "name": "Class K",
+      "weight": 100,
+      "habitability": 1
+    },
+    {
+      "name": "Class M",
+      "weight": 250,
+      "habitability": 0.4
+    },
+    {
+      "name": "Class M Red Giant",
+      "weight": 10,
+      "habitability": 0.1
+    },
+    {
+      "name": "Class T Brown Dwarf",
+      "weight": 50,
+      "habitability": 0.4
+    },
+    {
+      "name": "Pulsar",
+      "weight": 5
+    },
+    {
+      "name": "Neutron Star",
+      "weight": 5
+    },
+    {
+      "name": "Black Hole",
+      "weight": 1
+    }
+  ],
+  "hyperlane_density": 0.5
+}

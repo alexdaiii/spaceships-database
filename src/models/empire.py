@@ -1,8 +1,9 @@
-from src.database.base import Base
+from typing import TYPE_CHECKING
+
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from typing import TYPE_CHECKING
+from src.database.base import Base
 
 if TYPE_CHECKING:
     from src.models import Fleet
@@ -36,7 +37,10 @@ class Empire(Base):
     )
     empire_score: Mapped[int | None]
 
-    fleets: Mapped[list["Fleet"]] = relationship("Fleet")
+    fleets: Mapped[list["Fleet"]] = relationship(
+        "Fleet",
+        back_populates="empire"
+        )
 
 
 class EmpireToEthic(Base):

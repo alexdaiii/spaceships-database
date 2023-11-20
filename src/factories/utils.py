@@ -6,12 +6,6 @@ from faker.providers import BaseProvider
 STARTING_ID = 1
 
 
-def get_location():
-    return os.path.realpath(
-        os.path.join(os.getcwd(), os.path.dirname(__file__))
-    )
-
-
 @lru_cache()
 def load_file(location: str, filename: str):
     filepath = os.path.join(location, filename)

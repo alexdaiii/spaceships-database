@@ -13,13 +13,11 @@ meta = MetaData(
     }
 )
 
-if TYPE_CHECKING:  # pragma: no cover
-    from dataclasses import dataclass as t_dataclass
-else:
-    t_dataclass = lambda x: x  # noqa: E731
-
 
 class Base(DeclarativeBase):
     metadata = meta
+
+    def __repr__(self):
+        return f"<{self.__class__.__name__}({self.__dict__})>"
 
     pass

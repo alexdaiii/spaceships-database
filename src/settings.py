@@ -1,7 +1,11 @@
+import math
+import os
 from enum import Enum
 
+from pydantic import Field, MariaDBDsn, MySQLDsn, PostgresDsn, computed_field
 from pydantic_settings import BaseSettings
-from pydantic import MySQLDsn, computed_field, PostgresDsn, MariaDBDsn, Field
+
+from src.util import get_location
 
 
 class TargetDatabase(Enum):
@@ -80,7 +84,19 @@ class Settings(BaseSettings):
         )
 
     # Sqlite
-    sqlite_database: str = "../data/sqlite.db"
+    sqlite_database: str = "sqlite.db"
+
+    @computed_field
+    @property
+    def sqlite_dsn(self) -> str:
+        location = get_location()
+
+        data_dir = os.path.join(location, "../data")
+
+        if not os.path.exists(data_dir):
+            os.mkdir(data_dir)
+
+        return f"sqlite:///{os.path.join(data_dir, self.sqlite_database)}"
 
     # sqlalchemy
     target_databases: list[TargetDatabase] = []
@@ -88,9 +104,15 @@ class Settings(BaseSettings):
 
     # config
     random_seed: int = 1234
-    number_of_empires: int = Field(100, min=1, max=100)
-    empire_max_fleets: int = Field(10, min=0, max=20)
-    max_ships_per_fleet: int = Field(100, min=1, max=1000)
+    empire_max_fleets: int = Field(10, min=1, max=25)
+    max_ships_per_fleet: int = Field(100, min=20, max=10000)
+    num_stars: int = Field(1000, min=1000, max=100000)
+
+    @computed_field
+    @property
+    def number_of_empires(self) -> int:
+        stars_to_empire = 33 + 1 / 3
+        return math.ceil(self.num_stars / stars_to_empire)
 
     class Config:
         env_file = "../.env"

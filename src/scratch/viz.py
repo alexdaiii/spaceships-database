@@ -1,8 +1,8 @@
 import inspect
 
-from src import models as mods
 from sqlalchemy_data_model_visualizer import generate_data_model_diagram
 
+from src import models as mods
 from src.database.base import Base
 
 

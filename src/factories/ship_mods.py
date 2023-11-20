@@ -4,8 +4,8 @@ import os
 import numpy as np
 from pydantic import BaseModel, Field
 
-from src.factories.utils import get_location
 from src.models import SpaceshipModule
+from src.util import get_location
 
 NUM_TECH_LEVELS = 6
 
@@ -26,9 +26,8 @@ class GeneralMods(BaseModel):
 
 
 class WeaponClass(BaseModel):
-    values: list[str]
+    value: list[str]
     base_power: int
-    base_weight: int
 
 
 class WeaponMods(BaseModel):
@@ -67,13 +66,13 @@ class ModType(BaseModel):
 
 
 def unpack_mods_base(
-    mod_list: list[str],
-    *,
-    rng: np.random.Generator,
-    mods: list[SpaceshipModule],
-    mod_name_to_id: dict[str, int],
-    is_combat: bool,
-    is_tech: bool,
+        mod_list: list[str],
+        *,
+        rng: np.random.Generator,
+        mods: list[SpaceshipModule],
+        mod_name_to_id: dict[str, int],
+        is_combat: bool,
+        is_tech: bool,
 ):
     """
     Base case for unpacking the list and creating the SpaceshipModules.
@@ -113,13 +112,13 @@ tech_level_keys = {
 
 
 def unpack_mods(
-    mod_dict: dict | list,
-    *,
-    rng: np.random.Generator,
-    dict_key: str,
-    is_combat: bool,
-    mods: list[SpaceshipModule],
-    mod_name_to_id: dict[str, int],
+        mod_dict: dict | list,
+        *,
+        rng: np.random.Generator,
+        dict_key: str,
+        is_combat: bool,
+        mods: list[SpaceshipModule],
+        mod_name_to_id: dict[str, int],
 ):
     """
     Recursively unpack the mods from the mod dictionary.
@@ -142,7 +141,7 @@ def unpack_mods(
 
 
 def create_ship_module():
-    ship_mod_file = "ship_mods.json"
+    ship_mod_file = "assets/ship_mods.json"
 
     with open(os.path.join(get_location(), ship_mod_file)) as f:
         ship_mods = ModType(**json.load(f))

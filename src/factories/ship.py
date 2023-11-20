@@ -5,8 +5,9 @@ from faker import Faker
 
 from src.database.base import Base
 from src.factories.ship_mods import create_ship_module
-from src.factories.utils import STARTING_ID, load_file, get_location
+from src.factories.utils import STARTING_ID, load_file
 from src.models import ShipClass, Spaceship
+from src.util import get_location
 
 _combat_ship_class = [
     "Corvette",
@@ -71,7 +72,10 @@ def _create_ship_class():
 
 
 def _get_ship_class_id(
-    fake: Faker, *, rng: np.random.Generator, ship_class_map: dict[str, int]
+        fake: Faker,
+        *,
+        rng: np.random.Generator,
+        ship_class_map: dict[str, int]
 ):
     """
     Gets the ship class ID for a ship and the experience level of the ship.
@@ -93,7 +97,7 @@ def _get_ship_class_id(
     tot_fleet_weight: int = sum(val.weight for val in fleet_weights.values())
     combat_weight_base = 2.75
     combat_weights = {
-        ship_class: combat_weight_base**i
+        ship_class: combat_weight_base ** i
         for i, ship_class in enumerate(reversed(_combat_ship_class))
     }
     tot_combat_weight = sum(combat_weights.values())
@@ -112,7 +116,7 @@ def _get_ship_class_id(
                 for ship in _combat_ship_class
             ],
         )
-        xp = max(rng.normal(mean_xp, mean_xp**1.5), 0)
+        xp = max(rng.normal(mean_xp, mean_xp ** 1.5), 0)
     else:
         ship_class_name = fake.random_element(fleet_weights[ship_class].value)
         xp = None
@@ -121,28 +125,28 @@ def _get_ship_class_id(
 
 
 def _ships_for_fleet(
-    fake: Faker,
-    *,
-    rng: np.random.Generator,
-    start_id: int,
-    fleet_id: int,
-    ship_class_map: dict[str, int],
-    max_ships: int,
+        fake: Faker,
+        *,
+        rng: np.random.Generator,
+        start_id: int,
+        fleet_id: int,
+        ship_class_map: dict[str, int],
+        max_ships: int,
 ):
     num_ships = math.ceil(rng.normal(loc=max_ships / 2, scale=max_ships / 10))
-    ship_suffix = "ship_suffix.txt"
+    ship_suffix = "assets/ship_suffix.txt"
     prefix_num_letters = 3
 
     for ship_id, suffix in enumerate(
-        fake.random_elements(
-            elements=load_file(
-                location=get_location(),
-                filename=ship_suffix,
+            fake.random_elements(
+                elements=load_file(
+                    location=get_location(),
+                    filename=ship_suffix,
+                ),
+                length=num_ships,
+                unique=True,
             ),
-            length=num_ships,
-            unique=True,
-        ),
-        start=start_id,
+            start=start_id,
     ):
         ship_class_id, xp = _get_ship_class_id(
             fake=fake,
@@ -159,7 +163,11 @@ def _ships_for_fleet(
 
 
 def create_ships(
-    fake: Faker, *, rng: np.random.Generator, num_fleets: int, max_ships: int
+        fake: Faker,
+        *,
+        rng: np.random.Generator,
+        num_fleets: int,
+        max_ships: int
 ):
     val: tuple[list[Base], dict] = _create_ship_class()
     inserts, ship_class_map = val

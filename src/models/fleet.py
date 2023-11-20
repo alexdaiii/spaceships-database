@@ -1,11 +1,12 @@
-from src.database.base import Base
+from typing import TYPE_CHECKING
+
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from typing import TYPE_CHECKING
+from src.database.base import Base
 
 if TYPE_CHECKING:
-    from src.models import Spaceship
+    from src.models import Empire, Spaceship
 
 
 class Fleet(Base):
@@ -19,6 +20,7 @@ class Fleet(Base):
     fleet_cloak_strength: Mapped[int]
     fleet_is_docked: Mapped[bool]
 
+    empire: Mapped["Empire"] = relationship("Empire", back_populates="fleets")
     ships: Mapped[list["Spaceship"]] = relationship("Spaceship")
 
 

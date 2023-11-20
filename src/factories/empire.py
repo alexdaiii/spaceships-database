@@ -1,17 +1,8 @@
-import os
-from functools import lru_cache
-
 from faker import Faker
 
-
-from src.factories.utils import (
-    STARTING_ID,
-    IntegerOrNone,
-    get_location,
-    load_file,
-)
-from src.models import EmpireAuthority, EmpireEthic, Empire, EmpireToEthic
-
+from src.factories.utils import STARTING_ID, IntegerOrNone, load_file
+from src.models import Empire, EmpireAuthority, EmpireEthic, EmpireToEthic
+from src.util import get_location
 
 _stellaris_authorities = [
     "oligarchic",
@@ -29,7 +20,7 @@ def create_empire_authorities():
             empire_authority_id=i,
             empire_authority_name=_stellaris_authorities[
                 i % len(_stellaris_authorities)
-            ],
+                ],
         )
         for i in range(STARTING_ID, len(_stellaris_authorities) + 1)
     ]
@@ -60,8 +51,8 @@ def create_empire_ethics():
 def create_empires(fake: Faker, *, num_empires: int, null_chance: float):
     fake.add_provider(IntegerOrNone)
 
-    empire_species_file = "empire_species.txt"
-    empire_suffix_file = "empire_suffix.txt"
+    empire_species_file = "assets/empire_species.txt"
+    empire_suffix_file = "assets/empire_suffix.txt"
 
     location = get_location()
 
@@ -73,7 +64,7 @@ def create_empires(fake: Faker, *, num_empires: int, null_chance: float):
             ),
             empire_name=(
                 f"{species} "
-                f"{fake.random_element(load_file(location=location,filename=empire_suffix_file,))}"
+                f"{fake.random_element(load_file(location=location, filename=empire_suffix_file, ))}"
             ),
             empire_score=fake.integer_or_none(null_chance=null_chance),
         )
@@ -113,8 +104,8 @@ def create_empire_to_ethic(fake: Faker, *, num_empires: int):
                     empire_ethic_attraction=attraction_id,
                 )
                 for j, (ethic_id, attraction_id) in enumerate(
-                    zip(empire_ethic_list, attraction_list)
-                )
+                zip(empire_ethic_list, attraction_list)
+            )
             ]
         )
 
