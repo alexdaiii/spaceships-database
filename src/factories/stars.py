@@ -19,6 +19,7 @@ class StarClass(BaseModel):
     name: str
     weight: float
     habitability: float = Field(0, min=0, max=1)
+    mean_celestial_bodies: float = Field(min=0, max=15)
 
 
 class StarsConfig(BaseModel):
@@ -28,17 +29,24 @@ class StarsConfig(BaseModel):
     @computed_field
     @property
     def star_types_df(self) -> pd.DataFrame:
+        print("Creating star types dataframe...")
+
         total_weights = sum([star.weight for star in self.star_type_weights])
 
         return pd.DataFrame(
-            [{
-                "star_type_id": i,
-                "star_type_name": star.name,
-                "star_type_weight": star.weight,
-                "star_type_habitability": star.habitability,
-                "star_type_weight_pct": star.weight / total_weights,
-            } for i, star in
-                enumerate(self.star_type_weights, start=STARTING_ID)]
+            [
+                {
+                    "star_type_id": i,
+                    "star_type_name": star.name,
+                    "star_type_weight": star.weight,
+                    "star_type_habitability": star.habitability,
+                    "star_type_weight_pct": star.weight / total_weights,
+                    "mean_celestial_bodies": star.mean_celestial_bodies,
+                }
+                for i, star in enumerate(
+                    self.star_type_weights, start=STARTING_ID
+                )
+            ]
         ).set_index("star_type_id")
 
     class Config:
@@ -68,28 +76,29 @@ def load_star_prefix():
 
 
 def create_star_types(
-        engine: Engine,
+    engine: Engine,
 ):
     print(cf.yellow("Adding star types..."))
 
     with get_session(engine) as session:
         session.execute(
-            insert(StarType),
-            stars_type_df().reset_index().to_dict("records")
+            insert(StarType), stars_type_df().reset_index().to_dict("records")
         )
 
 
 def create_stars(
-        *,
-        fake: Faker,
-        rng: np.random.Generator,
-        engine: Engine,
-        num_stars: int,
+    *,
+    fake: Faker,
+    rng: np.random.Generator,
+    engine: Engine,
+    num_stars: int,
 ):
     print(cf.yellow("Generating stars..."))
 
     create_star_types(engine)
 
+    # TODO: MAKE IT INCREMENT BASED ON PAGE SIZE!!!
+    page_size = 1000
     max_star_base = len(load_star_prefix())
     star_base_names = fake.words(
         nb=min(num_stars // 10, max_star_base),
@@ -106,19 +115,25 @@ def create_stars(
             num_stars=num_stars,
         )
 
+    if engine.name == "mysql" or engine.name == "mariadb":
+        raise NotImplementedError
+
 
 def add_stars(
-        *,
-        engine: Engine,
-        rng: np.random.Generator,
-        i: int,
-        star_base_names: list[str],
-        num_stars: int,
+    *,
+    engine: Engine,
+    rng: np.random.Generator,
+    i: int,
+    star_base_names: list[str],
+    num_stars: int,
 ):
     star_ids = stars_type_df().index
     star_id_weights = stars_type_df()["star_type_weight_pct"]
 
-    suffix = i // len(star_base_names) + 1
+    j = i // len(star_base_names)
+
+    sep = 50
+
     max_star_id = min(i + len(star_base_names) - 1, num_stars)
     num_stars_add = max_star_id - i + 1
 
@@ -128,16 +143,24 @@ def add_stars(
             [
                 {
                     "star_system_name": f"{star_base_name}-{suffix}",
-                    "star_type": star_type_id,
+                    "star_type_id": star_type_id,
                 }
-                for star_base_name, star_type_id in zip(
-                star_base_names,
-                rng.choice(
-                    star_ids,
-                    size=num_stars_add,
-                    p=star_id_weights,
-                    replace=True
-                ).tolist()
-            )
-            ]
+                for star_base_name, star_type_id, suffix in zip(
+                    star_base_names,
+                    rng.choice(
+                        star_ids,
+                        size=num_stars_add,
+                        p=star_id_weights,
+                        replace=True,
+                    ).tolist(),
+                    rng.integers(
+                        size=num_stars_add, low=j * sep + 1, high=j * sep + sep
+                    ),
+                )
+            ],
         )
+
+
+__all__ = [
+    "create_stars",
+]

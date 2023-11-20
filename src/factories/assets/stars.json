@@ -3,54 +3,65 @@
     {
       "name": "Class B",
       "weight": 10,
-      "habitability": 0.6
+      "habitability": 0.6,
+      "mean_celestial_bodies": 7
     },
     {
       "name": "Class A",
       "weight": 20,
-      "habitability": 0.6
+      "habitability": 0.6,
+      "mean_celestial_bodies": 6
     },
     {
       "name": "Class F",
       "weight": 50,
-      "habitability": 1
+      "habitability": 1,
+      "mean_celestial_bodies": 5
     },
     {
       "name": "Class G",
       "weight": 50,
-      "habitability": 1
+      "habitability": 1,
+      "mean_celestial_bodies": 9
     },
     {
       "name": "Class K",
       "weight": 100,
-      "habitability": 1
+      "habitability": 1,
+      "mean_celestial_bodies": 8
     },
     {
       "name": "Class M",
       "weight": 250,
-      "habitability": 0.4
+      "habitability": 0.4,
+      "mean_celestial_bodies": 7
     },
     {
       "name": "Class M Red Giant",
       "weight": 10,
-      "habitability": 0.1
+      "habitability": 0.1,
+      "mean_celestial_bodies": 7
     },
     {
       "name": "Class T Brown Dwarf",
       "weight": 50,
-      "habitability": 0.4
+      "habitability": 0.4,
+      "mean_celestial_bodies": 5
     },
     {
       "name": "Pulsar",
-      "weight": 5
+      "weight": 5,
+      "mean_celestial_bodies": 1
     },
     {
       "name": "Neutron Star",
-      "weight": 5
+      "weight": 5,
+      "mean_celestial_bodies": 2
     },
     {
       "name": "Black Hole",
-      "weight": 1
+      "weight": 1,
+      "mean_celestial_bodies": 0
     }
   ],
   "hyperlane_density": 0.5

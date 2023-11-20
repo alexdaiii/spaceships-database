@@ -3,6 +3,11 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.database.base import Base
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .empire import Empire
+
 
 class StarType(Base):
     __tablename__ = "star_type"
@@ -29,8 +34,21 @@ class StarSystem(Base):
     empire_owner: Mapped[int | None] = mapped_column(
         ForeignKey("empire.empire_id"), nullable=True
     )
-    star_type: Mapped[int] = mapped_column(
+    star_type_id: Mapped[int] = mapped_column(
         ForeignKey("star_type.star_type_id")
+    )
+
+    planets: Mapped[list["Planet"]] = relationship(
+        "Planet",
+        back_populates="star_system",
+    )
+    star_type: Mapped[StarType] = relationship(
+        "StarType",
+        back_populates="stars",
+    )
+    empire: Mapped["Empire"] = relationship(
+        "Empire",
+        back_populates="star_systems",
     )
 
 
@@ -43,6 +61,11 @@ class Biome(Base):
     average_humidity: Mapped[int]
     biome_is_habitable: Mapped[bool]
 
+    planets: Mapped[list["Planet"]] = relationship(
+        "Planet",
+        back_populates="biome",
+    )
+
 
 class Planet(Base):
     __tablename__ = "planet"
@@ -54,7 +77,16 @@ class Planet(Base):
         ForeignKey("star_system.star_system_id")
     )
     planet_size: Mapped[int]
-    planet_pops: Mapped[int]
+    planet_pops: Mapped[int | None]
+
+    biome: Mapped[Biome] = relationship(
+        "Biome",
+        back_populates="planets",
+    )
+    star_system: Mapped[StarSystem] = relationship(
+        "StarSystem",
+        back_populates="planets",
+    )
 
 
 __all__ = [

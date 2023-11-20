@@ -1,0 +1,203 @@
+{
+  "biomes": [
+    {
+      "name": "Asteroid",
+      "average_temperature": 200,
+      "average_humidity": 0,
+      "biome_is_habitable": false,
+      "min_size": 2,
+      "max_size": 2,
+      "materials": [
+        "minerals",
+        "trade_value"
+      ]
+    },
+    {
+      "name": "Ice Asteroid",
+      "average_temperature": 150,
+      "average_humidity": 0,
+      "biome_is_habitable": false,
+      "min_size": 2,
+      "max_size": 2,
+      "materials": [
+        "energy",
+        "trade_value"
+      ]
+    },
+    {
+      "name": "Crystalline Asteroid",
+      "average_temperature": 165,
+      "average_humidity": 0,
+      "biome_is_habitable": false,
+      "min_size": 2,
+      "max_size": 2,
+      "materials": [
+        "minerals",
+        "energy"
+      ]
+    },
+    {
+      "name": "Barren World",
+      "average_temperature": 440,
+      "average_humidity": 0,
+      "biome_is_habitable": false,
+      "min_size": 3,
+      "max_size": 12,
+      "materials": [
+        "minerals"
+      ]
+    },
+    {
+      "name": "Icy Barren World",
+      "average_temperature": 50,
+      "average_humidity": 0,
+      "biome_is_habitable": false,
+      "min_size": 3,
+      "max_size": 12,
+      "materials": [
+        "minerals"
+      ]
+    },
+    {
+      "name": "Broken World",
+      "average_temperature": 200,
+      "average_humidity": 0,
+      "biome_is_habitable": false,
+      "min_size": 5,
+      "max_size": 7,
+      "materials": [
+        "minerals"
+      ]
+    },
+    {
+      "name": "Ice Giant",
+      "average_temperature": 75,
+      "average_humidity": 0,
+      "biome_is_habitable": false,
+      "min_size": 13,
+      "max_size": 20,
+      "materials": [
+        "energy"
+      ]
+    },
+    {
+      "name": "Gas Giant",
+      "average_temperature": 175,
+      "average_humidity": 0,
+      "biome_is_habitable": false,
+      "min_size": 21,
+      "max_size": 25,
+      "materials": [
+        "energy"
+      ]
+    },
+    {
+      "name": "Molten World",
+      "average_temperature": 800,
+      "average_humidity": 0,
+      "biome_is_habitable": false,
+      "min_size": 3,
+      "max_size": 12,
+      "materials": [
+        "minerals",
+        "energy",
+        "trade_value"
+      ]
+    },
+    {
+      "name": "Toxic World",
+      "average_temperature": 150,
+      "average_humidity": 0,
+      "biome_is_habitable": false,
+      "min_size": 3,
+      "max_size": 12,
+      "materials": [
+        "energy",
+        "trade_value"
+      ]
+    },
+    {
+      "name": "Dry World",
+      "average_temperature": 300,
+      "average_humidity": 20,
+      "biome_is_habitable": true,
+      "min_size": 5,
+      "max_size": 7,
+      "materials": [
+        "energy"
+      ]
+    },
+    {
+      "name": "Frozen World",
+      "average_temperature": 280,
+      "average_humidity": 40,
+      "biome_is_habitable": true,
+      "min_size": 5,
+      "max_size": 7,
+      "materials": [
+        "minerals"
+      ]
+    },
+    {
+      "name": "Wet World",
+      "average_temperature": 290,
+      "average_humidity": 60,
+      "biome_is_habitable": true,
+      "min_size": 5,
+      "max_size": 7,
+      "materials": [
+        "trade_value"
+      ]
+    },
+    {
+      "name": "Gaia World",
+      "average_temperature": 295,
+      "average_humidity": 100,
+      "biome_is_habitable": true,
+      "min_size": 10,
+      "max_size": 12,
+      "materials": [
+        "energy",
+        "minerals"
+      ],
+      "gen_type": "special"
+    },
+    {
+      "name": "Ecumenopolis",
+      "average_temperature": 300,
+      "average_humidity": 40,
+      "biome_is_habitable": true,
+      "min_size": 10,
+      "max_size": 12,
+      "materials": [
+        "trade_value"
+      ],
+      "gen_type": "special"
+    },
+    {
+      "name": "Tomb World",
+      "average_temperature": 280,
+      "average_humidity": 10,
+      "biome_is_habitable": true,
+      "min_size": 5,
+      "max_size": 7,
+      "materials": [
+        "energy"
+      ],
+      "gen_type": "special"
+    },
+    {
+      "name": "Ring World",
+      "average_temperature": 295,
+      "average_humidity": 40,
+      "biome_is_habitable": true,
+      "min_size": 25,
+      "max_size": 25,
+      "materials": [
+        "energy",
+        "trade_value"
+      ],
+      "gen_type": "special"
+    }
+  ]
+}

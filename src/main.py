@@ -28,8 +28,6 @@ def get_dsn(settings: Settings, database: TargetDatabase):
 
 
 def reset_random_seed(seed: int):
-    factory.random.reseed_random(seed)
-
     fake = Faker()
     Faker.seed(seed)
 
@@ -47,7 +45,6 @@ def main(settings: Settings):
         engine = create_engine(
             get_dsn(settings, database), echo=settings.sqlalchemy_echo
         )
-        sm = sessionmaker(bind=engine)
 
         db_name = cf.bold_cyan(database.value.upper())
 
@@ -65,6 +62,11 @@ def main(settings: Settings):
             rng=rng,
             engine=engine,
             num_stars=settings.num_stars,
+        )
+        factories.create_planets(
+            fake=fake,
+            rng=rng,
+            engine=engine,
         )
 
         # with get_session(engine) as session:

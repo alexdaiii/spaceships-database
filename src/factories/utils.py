@@ -4,6 +4,8 @@ from functools import lru_cache
 from faker.providers import BaseProvider
 
 STARTING_ID = 1
+MIN_PLANET_SIZE = 2
+MAX_PLANET_SIZE = 25
 
 
 @lru_cache()

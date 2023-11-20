@@ -7,6 +7,7 @@ from src.database.base import Base
 
 if TYPE_CHECKING:
     from src.models import Fleet
+    from src.models.star_system import StarSystem
 
 
 class EmpireAuthority(Base):
@@ -38,9 +39,12 @@ class Empire(Base):
     empire_score: Mapped[int | None]
 
     fleets: Mapped[list["Fleet"]] = relationship(
-        "Fleet",
-        back_populates="empire"
-        )
+        "Fleet", back_populates="empire"
+    )
+    star_systems: Mapped[list["StarSystem"]] = relationship(
+        "StarSystem",
+        back_populates="empire",
+    )
 
 
 class EmpireToEthic(Base):
