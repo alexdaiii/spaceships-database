@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 from src import factories
 from src.database.base import Base
 from src.database.db import get_session
-from src.settings import Settings, TargetDatabase
+from src.settings import Settings, TargetDatabase, get_settings
 
 
 def get_dsn(settings: Settings, database: TargetDatabase):
@@ -64,11 +64,9 @@ def main(settings: Settings):
             num_stars=settings.num_stars,
         )
         factories.create_planets(
-            fake=fake,
             rng=rng,
             engine=engine,
         )
-
         # with get_session(engine) as session:
         #     fake, rng = reset_random_seed(settings.random_seed)
         #
@@ -103,5 +101,5 @@ def main(settings: Settings):
 
 
 if __name__ == "__main__":
-    s = Settings()
+    s = get_settings()
     main(settings=s)

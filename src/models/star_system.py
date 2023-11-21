@@ -1,9 +1,9 @@
+from typing import TYPE_CHECKING
+
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.database.base import Base
-
-from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from .empire import Empire
@@ -57,8 +57,8 @@ class Biome(Base):
 
     biome_id: Mapped[int] = mapped_column(primary_key=True)
     biome_name: Mapped[str] = mapped_column(String(255), unique=True)
-    average_temperature: Mapped[int]
-    average_humidity: Mapped[int]
+    # average_temperature: Mapped[int]
+    # average_humidity: Mapped[int]
     biome_is_habitable: Mapped[bool]
 
     planets: Mapped[list["Planet"]] = relationship(

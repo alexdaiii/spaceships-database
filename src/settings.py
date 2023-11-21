@@ -1,11 +1,14 @@
 import math
 import os
 from enum import Enum
+from functools import lru_cache
 
 from pydantic import Field, MariaDBDsn, MySQLDsn, PostgresDsn, computed_field
 from pydantic_settings import BaseSettings
 
-from src.util import get_location
+from src.util import get_location, MIN_NUM_STARS, MAX_NUM_STARS
+
+import colorful as cf
 
 
 class TargetDatabase(Enum):
@@ -104,9 +107,9 @@ class Settings(BaseSettings):
 
     # config
     random_seed: int = 1234
-    empire_max_fleets: int = Field(10, min=1, max=25)
-    max_ships_per_fleet: int = Field(100, min=20, max=10000)
-    num_stars: int = Field(1000, min=1000, max=100000)
+    empire_max_fleets: int = Field(10, ge=1, le=25)
+    max_ships_per_fleet: int = Field(100, ge=20, le=10000)
+    num_stars: int = Field(MIN_NUM_STARS, ge=MIN_NUM_STARS, le=MAX_NUM_STARS)
 
     @computed_field
     @property
@@ -117,3 +120,10 @@ class Settings(BaseSettings):
     class Config:
         env_file = "../.env"
         env_file_encoding = "utf-8"
+        extra = "ignore"
+
+
+@lru_cache()
+def get_settings() -> Settings:
+    print(cf.yellow("Loading settings..."))
+    return Settings()

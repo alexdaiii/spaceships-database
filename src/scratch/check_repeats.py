@@ -1,4 +1,5 @@
 import os
+import re
 
 from src.util import get_location
 
@@ -16,9 +17,7 @@ def main():
         "stars_prefix.txt",
     ]
 
-    del_files = {
-        "stars_prefix.txt"
-    }
+    del_files = {"stars_prefix.txt"}
 
     for file in files:
         fn = os.path.join(assets_dir, file)
@@ -33,7 +32,12 @@ def main():
         sort_file_abc(fn)
 
 
-def check_file(file_name: str, delete_repeats: bool = False):
+def check_file(
+    file_name: str,
+    *,
+    delete_repeats: bool = False,
+    strip_whitespace: bool = True,
+):
     location = get_location()
     file = os.path.join(location, file_name)
 
@@ -44,9 +48,16 @@ def check_file(file_name: str, delete_repeats: bool = False):
 
     print(f"Checking {file_name} for repeats")
 
+    whitespace_reg = re.compile(r"\s+")
+
     with open(file, "r") as f:
         for i, line in enumerate(f):
             line = line.strip()
+
+            if strip_whitespace:
+                # remove all whitespace with no space
+                line = whitespace_reg.sub("", line)
+
             if line in names:
                 print(f"Line {i + 1} is a repeat of line {names[line] + 1}")
 

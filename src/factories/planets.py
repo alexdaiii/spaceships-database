@@ -1,75 +1,19 @@
-import json
 import math
-import os
-from functools import lru_cache
-from typing import Literal
 
 import colorful as cf
 import numpy as np
 import pandas as pd
 from faker import Faker
-from pydantic import BaseModel, computed_field, Field
 from sklearn.preprocessing import MinMaxScaler
-from sqlalchemy import Engine, insert
+from sqlalchemy import Engine, insert, select
 
-from ..database.db import get_session
-from ..models import StarSystem, Biome, Planet
-from ..util import get_location
-from .stars import stars_type_df
-from .utils import STARTING_ID, MIN_PLANET_SIZE, MAX_PLANET_SIZE
+from src.database.db import get_session
+from src.models import Biome, Planet, StarSystem
 
-
-class BiomeConfig(BaseModel):
-    name: str
-    average_temperature: int
-    average_humidity: int
-    biome_is_habitable: bool
-    materials: list[Literal["minerals", "energy", "research", "trade_value"]]
-    min_size: int = Field(ge=MIN_PLANET_SIZE, le=MAX_PLANET_SIZE)
-    max_size: int = Field(ge=MIN_PLANET_SIZE, le=MAX_PLANET_SIZE)
-    gen_type: Literal["normal", "special"] = Field("normal")
-
-
-class PlanetsConfig(BaseModel):
-    biomes: list[BiomeConfig]
-
-    @computed_field
-    @property
-    def biomes_df(self) -> pd.DataFrame:
-        print(cf.yellow("Creating biomes dataframe..."))
-
-        return pd.DataFrame(
-            [
-                {
-                    "biome_id": i,
-                    "biome_name": biome.name,
-                    "average_temperature": biome.average_temperature,
-                    "average_humidity": biome.average_humidity,
-                    "biome_is_habitable": biome.biome_is_habitable,
-                    "biome_materials": biome.materials,
-                    "min_size": biome.min_size,
-                    "max_size": biome.max_size,
-                    "gen_type": biome.gen_type,
-                }
-                for i, biome in enumerate(self.biomes, start=STARTING_ID)
-            ]
-        ).set_index("biome_id")
-
-    class Config:
-        arbitrary_types_allowed = True
-
-
-@lru_cache()
-def load_planet_config():
-    planet_conf_file = "assets/planets.json"
-
-    with open(os.path.join(get_location(), planet_conf_file)) as f:
-        return PlanetsConfig(**json.load(f))
-
-
-@lru_cache()
-def biomes_df():
-    return load_planet_config().biomes_df
+from .celestial_bodies_util import biomes_df, stars_type_df, load_star_config
+from .utils import MAX_PLANET_SIZE, MIN_PLANET_SIZE
+from ..settings import get_settings
+from ..util import MIN_NUM_STARS, MAX_NUM_STARS
 
 
 def add_biomes(engine: Engine):
@@ -82,7 +26,6 @@ def add_biomes(engine: Engine):
 
 def create_planets(
     *,
-    fake: Faker,
     rng: np.random.Generator,
     engine: Engine,
 ):
@@ -95,6 +38,9 @@ def create_planets(
     stars_type_df().apply(
         add_planets, axis=1, engine=engine, rng=rng, scaler=scaler
     )
+
+    add_structures(engine, rng, target="special")
+    add_structures(engine, rng, target="megastructure")
 
 
 def get_num_stars_by_type(type_id: int, engine: Engine):
@@ -137,9 +83,9 @@ def get_planet_sizes(
     # from NASA number of planets discovered (heavily biased towards gas giants)
     gas = 3658
     large_rock = 1675
-    rock = 199 * (1 + habitability_score)
+    rock = 199 * (1 + habitability_score) * load_star_config().habitable_worlds
 
-    gas_mult = int((gas + large_rock) / rock + rng.uniform(-5, 5))
+    gas_mult = max(int((gas + large_rock) / rock + rng.uniform(-5, 5)), 0)
 
     n_sample_per_dist = math.ceil(num_planets / (1 + gas_mult))
 
@@ -211,23 +157,64 @@ def fix_planet_size(df: pd.DataFrame):
     return df
 
 
+def get_biomes_by_size(df: pd.DataFrame, size: int):
+    return df[(df["min_size"] <= size) & (df["max_size"] >= size)]
+
+
 def apply_planet_biomes(
     df: pd.DataFrame, rng: np.random.Generator, star_habitability: float
 ):
     non_special_biomes = biomes_df()[biomes_df()["gen_type"] == "normal"]
 
     for size in range(MIN_PLANET_SIZE, MAX_PLANET_SIZE + 1):
-        choice = non_special_biomes[
-            (non_special_biomes["min_size"] <= size)
-            & (non_special_biomes["max_size"] >= size)
-        ]
+        choice = get_biomes_by_size(non_special_biomes, size)
+
+        if len(choice) == 0:
+            raise ValueError(f"No biomes found for size {size}")
 
         df.loc[df["planet_size"] == size, "planet_biome"] = rng.choice(
             choice.index, size=sum(df["planet_size"] == size), replace=True
         )
+
     df["planet_biome"] = df["planet_biome"].astype(int)
 
     return df
+
+
+# def apply_special_biomes(
+#     df: pd.DataFrame,
+#     *,
+#     rng: np.random.Generator,
+#     special_biomes: pd.DataFrame,
+#     size: int,
+# ):
+#     # perform bernoulli trial for each planet
+#     # if true, set biome to special biome - if more than one special biome - the last biome while iterating
+#     # will be the biome set
+#     n_trials = df.shape[0]
+#     # number of planets with size == size
+#     n_planet_size = sum(df["planet_size"] == size)
+#
+#     min_exp = 1
+#     max_exp = 1.25
+#     slope = (max_exp - min_exp) / (MAX_NUM_STARS - MIN_NUM_STARS)
+#     exponent = min_exp + slope * (get_settings().num_stars - MIN_NUM_STARS)
+#
+#     divisor = n_trials**exponent / n_planet_size
+#
+#     success = rng.binomial(
+#         n=1,
+#         p=special_biomes["special_gen_mean"].div(divisor).clip(0, 1),
+#         size=(n_trials, len(special_biomes)),
+#     )
+#     # pad success with 0 where planet_size != size
+#
+#     for i, biome in enumerate(special_biomes.index):
+#         df.loc[
+#             (df["planet_size"] == size) & (success[:, i]), "planet_biome"
+#         ] = biome
+#
+#     return df
 
 
 def add_planets(
@@ -268,3 +255,51 @@ def add_planets(
                 insert(Planet),
                 planets_df.to_dict("records"),
             )
+
+
+def add_structures(engine: Engine, rng: np.random.Generator, *, target: str):
+    """
+    Post planet generation, add special planet types
+    """
+
+    mega = []
+
+    for i, row in biomes_df()[biomes_df()["gen_type"] == target].iterrows():
+        for size in range(row["min_size"], row["max_size"] + 1):
+            mega.extend(
+                [
+                    {
+                        "biome": row.name,
+                        "size": size,
+                    }
+                    for _ in range(int(row["special_gen_mean"]))
+                ]
+            )
+
+    if len(mega) == 0:
+        return
+
+    print(cf.yellow(f"Generating {target} celestial bodies..."))
+
+    with get_session(engine) as session:
+        num_planets = session.query(Planet).count()
+
+        selected_ids = (
+            rng.choice(
+                num_planets,
+                size=len(mega),
+                replace=False,
+            )
+            + 1
+        ).tolist()
+
+        planets = session.scalars(
+            select(Planet).where(Planet.planet_id.in_(selected_ids))
+        ).all()
+
+        for planet, mega_info in zip(planets, mega):
+            planet.planet_biome = mega_info["biome"]
+            planet.planet_size = mega_info["size"]
+
+
+__all__ = ["create_planets"]

@@ -160,7 +160,8 @@
         "energy",
         "minerals"
       ],
-      "gen_type": "special"
+      "gen_type": "special",
+      "special_gen_mean": 3
     },
     {
       "name": "Ecumenopolis",
@@ -172,7 +173,8 @@
       "materials": [
         "trade_value"
       ],
-      "gen_type": "special"
+      "gen_type": "special",
+      "special_gen_mean": 1
     },
     {
       "name": "Tomb World",
@@ -184,7 +186,8 @@
       "materials": [
         "energy"
       ],
-      "gen_type": "special"
+      "gen_type": "special",
+      "special_gen_mean": 5
     },
     {
       "name": "Ring World",
@@ -197,7 +200,21 @@
         "energy",
         "trade_value"
       ],
-      "gen_type": "special"
+      "gen_type": "megastructure",
+      "special_gen_mean": 1
+    },
+    {
+      "name": "Habitat",
+      "biome_is_habitable": true,
+      "min_size": 2,
+      "max_size": 2,
+      "materials": [
+        "energy",
+        "minerals",
+        "trade_value"
+      ],
+      "gen_type": "megastructure",
+      "special_gen_mean": 10
     }
   ]
 }
