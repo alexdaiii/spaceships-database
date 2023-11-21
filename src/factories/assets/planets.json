@@ -9,7 +9,7 @@
       "max_size": 2,
       "materials": [
         "minerals",
-        "trade_value"
+        "trade"
       ]
     },
     {
@@ -21,7 +21,7 @@
       "max_size": 2,
       "materials": [
         "energy",
-        "trade_value"
+        "trade"
       ]
     },
     {
@@ -55,7 +55,8 @@
       "min_size": 3,
       "max_size": 12,
       "materials": [
-        "minerals"
+        "minerals",
+        "research"
       ]
     },
     {
@@ -77,7 +78,9 @@
       "min_size": 13,
       "max_size": 20,
       "materials": [
-        "energy"
+        "minerals",
+        "trade",
+        "research"
       ]
     },
     {
@@ -88,7 +91,9 @@
       "min_size": 21,
       "max_size": 25,
       "materials": [
-        "energy"
+        "trade",
+        "energy",
+        "research"
       ]
     },
     {
@@ -101,7 +106,7 @@
       "materials": [
         "minerals",
         "energy",
-        "trade_value"
+        "trade"
       ]
     },
     {
@@ -113,7 +118,8 @@
       "max_size": 12,
       "materials": [
         "energy",
-        "trade_value"
+        "trade",
+        "research"
       ]
     },
     {
@@ -146,7 +152,7 @@
       "min_size": 5,
       "max_size": 7,
       "materials": [
-        "trade_value"
+        "trade"
       ]
     },
     {
@@ -157,7 +163,6 @@
       "min_size": 10,
       "max_size": 12,
       "materials": [
-        "energy",
         "minerals"
       ],
       "gen_type": "special",
@@ -171,7 +176,7 @@
       "min_size": 10,
       "max_size": 12,
       "materials": [
-        "trade_value"
+        "trade"
       ],
       "gen_type": "special",
       "special_gen_mean": 1
@@ -190,6 +195,17 @@
       "special_gen_mean": 5
     },
     {
+      "name": "Relic World",
+      "biome_is_habitable": true,
+      "min_size": 11,
+      "max_size": 11,
+      "materials": [
+        "research"
+      ],
+      "gen_type": "special",
+      "special_gen_mean": 1
+    },
+    {
       "name": "Ring World",
       "average_temperature": 295,
       "average_humidity": 40,
@@ -198,7 +214,8 @@
       "max_size": 25,
       "materials": [
         "energy",
-        "trade_value"
+        "trade",
+        "research"
       ],
       "gen_type": "megastructure",
       "special_gen_mean": 1
@@ -211,7 +228,8 @@
       "materials": [
         "energy",
         "minerals",
-        "trade_value"
+        "trade",
+        "research"
       ],
       "gen_type": "megastructure",
       "special_gen_mean": 10

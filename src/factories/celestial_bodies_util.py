@@ -70,7 +70,7 @@ def load_star_config():
 class BiomeConfig(BaseModel):
     name: str
     biome_is_habitable: bool
-    materials: list[Literal["minerals", "energy", "research", "trade_value"]]
+    materials: list[Literal["minerals", "energy", "research", "trade"]]
     min_size: int = Field(ge=MIN_PLANET_SIZE, le=MAX_PLANET_SIZE)
     max_size: int = Field(ge=MIN_PLANET_SIZE, le=MAX_PLANET_SIZE)
     gen_type: Literal["normal", "special", "megastructure"] = Field("normal")
@@ -83,7 +83,7 @@ class PlanetsConfig(BaseModel):
     @computed_field
     @property
     def biomes_df(self) -> pd.DataFrame:
-        print(cf.yellow("Creating biomes dataframe..."))
+        print("Creating biomes dataframe...")
 
         return pd.DataFrame(
             [
@@ -91,7 +91,9 @@ class PlanetsConfig(BaseModel):
                     "biome_id": i,
                     "biome_name": biome.name,
                     "biome_is_habitable": biome.biome_is_habitable,
-                    "biome_materials": biome.materials,
+                    "biome_materials": [
+                        f"planet_{mat}_value" for mat in biome.materials
+                    ],
                     "min_size": biome.min_size,
                     "max_size": biome.max_size,
                     "gen_type": biome.gen_type,

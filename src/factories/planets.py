@@ -1,9 +1,9 @@
 import math
+from functools import lru_cache
 
 import colorful as cf
 import numpy as np
 import pandas as pd
-from faker import Faker
 from sklearn.preprocessing import MinMaxScaler
 from sqlalchemy import Engine, insert, select
 
@@ -76,6 +76,9 @@ def get_planet_sizes(
     num_planets: int,
     habitability_score: float,
 ):
+    """
+    Generates planets sizes
+    """
     rock_mu = 1 + rng.uniform(-0.5, 0.5)
     sigma = 0.5 + rng.uniform(0, 0.25, size=2)
     sep = 3.5 + rng.uniform(0, 0.75)
@@ -108,9 +111,7 @@ def get_planet_sizes(
     ).astype(int)[:num_planets]
 
 
-def apply_planet_name(
-    df: pd.DataFrame, star_habitability: float, rng: np.random.Generator
-):
+def apply_planet_name(df: pd.DataFrame):
     df["planet_name"] = [
         f"{df.name}-{chr(ord('a') + i)}" for i in range(len(df))
     ]
@@ -142,7 +143,7 @@ def make_planet_df(
     planets_df = apply_planet_biomes(planets_df, rng, star_habitability)
 
     planets_df = planets_df.groupby("star_name").apply(
-        apply_planet_name, rng=rng, star_habitability=star_habitability
+        apply_planet_name,
     )
 
     return planets_df
@@ -178,43 +179,53 @@ def apply_planet_biomes(
 
     df["planet_biome"] = df["planet_biome"].astype(int)
 
+    df = df.groupby("planet_biome").apply(add_biome_resources, rng)
+
     return df
 
 
-# def apply_special_biomes(
-#     df: pd.DataFrame,
-#     *,
-#     rng: np.random.Generator,
-#     special_biomes: pd.DataFrame,
-#     size: int,
-# ):
-#     # perform bernoulli trial for each planet
-#     # if true, set biome to special biome - if more than one special biome - the last biome while iterating
-#     # will be the biome set
-#     n_trials = df.shape[0]
-#     # number of planets with size == size
-#     n_planet_size = sum(df["planet_size"] == size)
-#
-#     min_exp = 1
-#     max_exp = 1.25
-#     slope = (max_exp - min_exp) / (MAX_NUM_STARS - MIN_NUM_STARS)
-#     exponent = min_exp + slope * (get_settings().num_stars - MIN_NUM_STARS)
-#
-#     divisor = n_trials**exponent / n_planet_size
-#
-#     success = rng.binomial(
-#         n=1,
-#         p=special_biomes["special_gen_mean"].div(divisor).clip(0, 1),
-#         size=(n_trials, len(special_biomes)),
-#     )
-#     # pad success with 0 where planet_size != size
-#
-#     for i, biome in enumerate(special_biomes.index):
-#         df.loc[
-#             (df["planet_size"] == size) & (success[:, i]), "planet_biome"
-#         ] = biome
-#
-#     return df
+def add_biome_resources(df: pd.DataFrame, rng: np.random.Generator):
+    biome = biomes_df().loc[df.name]
+
+    print("Adding resources ...")
+
+    # minerals, energy, research, trade_value
+    mus = [2, 1.5, 0, 5]
+    sigmas = [3, 2, 2, 5]
+
+    materials = (
+        rng.normal(
+            loc=mus,
+            scale=sigmas,
+            size=(len(df), len(mus)),
+        )
+        .clip(0)
+        .astype(int)
+    )
+    material_to_col = {
+        0: "planet_minerals_value",
+        1: "planet_energy_value",
+        2: "planet_research_value",
+        3: "planet_trade_value",
+    }
+    col_to_material = {v: k for k, v in material_to_col.items()}
+    choices = (
+        materials
+        * np.eye(len(material_to_col))[
+            np.vectorize(col_to_material.get)(
+                rng.choice(
+                    [mat for mat in biome["biome_materials"]],
+                    size=len(df),
+                    replace=True,
+                )
+            )
+        ]
+    )
+
+    for i, col in enumerate(material_to_col.values()):
+        df[col] = choices[:, i]
+
+    return df
 
 
 def add_planets(
@@ -229,9 +240,7 @@ def add_planets(
     page_size = 1000
 
     for page in range((num_stars_with_id // page_size) + 1):
-        print(
-            f"Generating planets for star type {star_id} page {page} / {num_stars_with_id // page_size}"
-        )
+        print(f"Generating planets for star type {star_id} ...")
 
         stars_ids = get_stars_by_page(
             engine, type_id=star_id, page=page, page_size=page_size
@@ -257,11 +266,8 @@ def add_planets(
             )
 
 
-def add_structures(engine: Engine, rng: np.random.Generator, *, target: str):
-    """
-    Post planet generation, add special planet types
-    """
-
+@lru_cache()
+def get_structures_to_add(target: str):
     mega = []
 
     for i, row in biomes_df()[biomes_df()["gen_type"] == target].iterrows():
@@ -275,6 +281,20 @@ def add_structures(engine: Engine, rng: np.random.Generator, *, target: str):
                     for _ in range(int(row["special_gen_mean"]))
                 ]
             )
+
+    return mega
+
+
+def add_structures(engine: Engine, rng: np.random.Generator, *, target: str):
+    """
+    Post planet generation, add special planet types
+    """
+
+    slope = (10 - 1) / (MAX_NUM_STARS - MIN_NUM_STARS)
+    intercept = 1 - slope * MIN_NUM_STARS
+    multiplier = math.ceil(slope * get_settings().num_stars + intercept)
+
+    mega = get_structures_to_add(target=target) * multiplier
 
     if len(mega) == 0:
         return

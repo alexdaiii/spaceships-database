@@ -26,10 +26,6 @@ class StarSystem(Base):
 
     star_system_id: Mapped[int] = mapped_column(primary_key=True)
     star_system_name: Mapped[str] = mapped_column(String(255), unique=True)
-    system_trade_value: Mapped[int | None]
-    system_energy_value: Mapped[int | None]
-    system_research_value: Mapped[int | None]
-    system_minerals_value: Mapped[int | None]
     system_is_choke_point: Mapped[bool | None]
     empire_owner: Mapped[int | None] = mapped_column(
         ForeignKey("empire.empire_id"), nullable=True
@@ -57,8 +53,6 @@ class Biome(Base):
 
     biome_id: Mapped[int] = mapped_column(primary_key=True)
     biome_name: Mapped[str] = mapped_column(String(255), unique=True)
-    # average_temperature: Mapped[int]
-    # average_humidity: Mapped[int]
     biome_is_habitable: Mapped[bool]
 
     planets: Mapped[list["Planet"]] = relationship(
@@ -78,6 +72,10 @@ class Planet(Base):
     )
     planet_size: Mapped[int]
     planet_pops: Mapped[int | None]
+    planet_trade_value: Mapped[int | None]
+    planet_energy_value: Mapped[int | None]
+    planet_research_value: Mapped[int | None]
+    planet_minerals_value: Mapped[int | None]
 
     biome: Mapped[Biome] = relationship(
         "Biome",
