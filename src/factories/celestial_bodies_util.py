@@ -21,7 +21,6 @@ class StarClass(BaseModel):
 
 class StarsConfig(BaseModel):
     star_type_weights: list[StarClass]
-    hyperlane_density: float = Field(ge=0.25, le=5)
     habitable_worlds: float = Field(1, ge=0.25, le=5)
 
     @computed_field

@@ -10,10 +10,10 @@ from sqlalchemy import Engine, insert, select
 from src.database.db import get_session
 from src.models import Biome, Planet, StarSystem
 
-from .celestial_bodies_util import biomes_df, stars_type_df, load_star_config
-from .utils import MAX_PLANET_SIZE, MIN_PLANET_SIZE
 from ..settings import get_settings
-from ..util import MIN_NUM_STARS, MAX_NUM_STARS
+from ..util import MAX_NUM_STARS, MIN_NUM_STARS
+from .celestial_bodies_util import biomes_df, load_star_config, stars_type_df
+from .utils import MAX_PLANET_SIZE, MIN_PLANET_SIZE
 
 
 def add_biomes(engine: Engine):
@@ -184,9 +184,46 @@ def apply_planet_biomes(
     return df
 
 
-def add_biome_resources(df: pd.DataFrame, rng: np.random.Generator):
+def get_one_hot_biome_materials(
+    df: pd.DataFrame,
+    rng: np.random.Generator,
+    *,
+    one_hot: bool,
+    material_to_col: dict,
+):
     biome = biomes_df().loc[df.name]
 
+    col_to_material = {v: k for k, v in material_to_col.items()}
+
+    if one_hot:
+        one_hot_materials = np.eye(len(material_to_col))[
+            np.vectorize(col_to_material.get)(
+                rng.choice(
+                    [mat for mat in biome["biome_materials"]],
+                    size=len(df),
+                    replace=True,
+                )
+            )
+        ]
+    else:
+        # if not one hot, use all materials in the biome
+        one_hot_materials = np.zeros((len(material_to_col),))
+        one_hot_materials[
+            np.vectorize(col_to_material.get)(
+                biome["biome_materials"].tolist()
+            )
+        ] = 1
+        # repeat for all planets
+        one_hot_materials = np.repeat(
+            one_hot_materials.reshape(1, -1), len(df), axis=0
+        )
+
+    return one_hot_materials
+
+
+def add_biome_resources(
+    df: pd.DataFrame, rng: np.random.Generator, *, one_hot=True, min_value=0
+):
     print("Adding resources ...")
 
     # minerals, energy, research, trade_value
@@ -199,7 +236,7 @@ def add_biome_resources(df: pd.DataFrame, rng: np.random.Generator):
             scale=sigmas,
             size=(len(df), len(mus)),
         )
-        .clip(0)
+        .clip(min_value)
         .astype(int)
     )
     material_to_col = {
@@ -208,18 +245,16 @@ def add_biome_resources(df: pd.DataFrame, rng: np.random.Generator):
         2: "planet_research_value",
         3: "planet_trade_value",
     }
-    col_to_material = {v: k for k, v in material_to_col.items()}
+
     choices = (
         materials
-        * np.eye(len(material_to_col))[
-            np.vectorize(col_to_material.get)(
-                rng.choice(
-                    [mat for mat in biome["biome_materials"]],
-                    size=len(df),
-                    replace=True,
-                )
-            )
-        ]
+        # one hot the types of materials
+        * get_one_hot_biome_materials(
+            df=df,
+            rng=rng,
+            one_hot=one_hot,
+            material_to_col=material_to_col,
+        )
     )
 
     for i, col in enumerate(material_to_col.values()):
@@ -282,19 +317,18 @@ def get_structures_to_add(target: str):
                 ]
             )
 
-    return mega
+    slope = (10 - 1) / (MAX_NUM_STARS - MIN_NUM_STARS)
+    intercept = 1 - slope * MIN_NUM_STARS
+    multiplier = math.ceil(slope * get_settings().num_stars + intercept)
+
+    return mega * multiplier
 
 
 def add_structures(engine: Engine, rng: np.random.Generator, *, target: str):
     """
     Post planet generation, add special planet types
     """
-
-    slope = (10 - 1) / (MAX_NUM_STARS - MIN_NUM_STARS)
-    intercept = 1 - slope * MIN_NUM_STARS
-    multiplier = math.ceil(slope * get_settings().num_stars + intercept)
-
-    mega = get_structures_to_add(target=target) * multiplier
+    mega = get_structures_to_add(target=target)
 
     if len(mega) == 0:
         return
@@ -318,8 +352,46 @@ def add_structures(engine: Engine, rng: np.random.Generator, *, target: str):
         ).all()
 
         for planet, mega_info in zip(planets, mega):
+            resources = add_biome_resources(
+                pd.DataFrame(
+                    {
+                        "name": [mega_info["biome"]],
+                    }
+                ),
+                rng,
+                one_hot=False,
+                min_value=1,
+            ).set_index("name")
+
+            resources = scale_resources(resources, mega_info["size"], rng)
+
             planet.planet_biome = mega_info["biome"]
             planet.planet_size = mega_info["size"]
+            assign_resource(
+                planet,
+                resources,
+                "planet_minerals_value",
+            )
+            assign_resource(
+                planet,
+                resources,
+                "planet_energy_value",
+            )
+            assign_resource(planet, resources, "planet_research_value")
+            assign_resource(planet, resources, "planet_trade_value")
+
+
+def scale_resources(
+    resources: pd.DataFrame, planet_size: int, rng: np.random.Generator
+):
+    slope = (5 - 1.5) / (MAX_PLANET_SIZE - MIN_PLANET_SIZE)
+    intercept = 1 - slope * MIN_PLANET_SIZE
+    multiplier = max(rng.normal(slope * planet_size + intercept, 0.5), 1)
+    return resources.multiply(multiplier).astype(int)
+
+
+def assign_resource(planet: Planet, resources: pd.DataFrame, resource: str):
+    setattr(planet, resource, int(resources[resource].values[0]))
 
 
 __all__ = ["create_planets"]

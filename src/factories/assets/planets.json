@@ -198,7 +198,7 @@
       "name": "Relic World",
       "biome_is_habitable": true,
       "min_size": 11,
-      "max_size": 11,
+      "max_size": 12,
       "materials": [
         "research"
       ],
@@ -227,7 +227,6 @@
       "max_size": 2,
       "materials": [
         "energy",
-        "minerals",
         "trade",
         "research"
       ],

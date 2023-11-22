@@ -3,12 +3,11 @@ import os
 from enum import Enum
 from functools import lru_cache
 
+import colorful as cf
 from pydantic import Field, MariaDBDsn, MySQLDsn, PostgresDsn, computed_field
 from pydantic_settings import BaseSettings
 
-from src.util import get_location, MIN_NUM_STARS, MAX_NUM_STARS
-
-import colorful as cf
+from src.util import MAX_NUM_STARS, MIN_NUM_STARS, get_location
 
 
 class TargetDatabase(Enum):
@@ -110,6 +109,7 @@ class Settings(BaseSettings):
     empire_max_fleets: int = Field(10, ge=1, le=25)
     max_ships_per_fleet: int = Field(100, ge=20, le=10000)
     num_stars: int = Field(MIN_NUM_STARS, ge=MIN_NUM_STARS, le=MAX_NUM_STARS)
+    hyperlane_density: float = Field(0.5, ge=0.5, le=2.5)
 
     @computed_field
     @property
