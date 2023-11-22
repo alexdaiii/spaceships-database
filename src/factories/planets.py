@@ -13,7 +13,7 @@ from src.models import Biome, Planet, StarSystem
 from ..settings import get_settings
 from ..util import MAX_NUM_STARS, MIN_NUM_STARS
 from .celestial_bodies_util import biomes_df, load_star_config, stars_type_df
-from .utils import MAX_PLANET_SIZE, MIN_PLANET_SIZE
+from .utils import MAX_PLANET_SIZE, MIN_PLANET_SIZE, get_m_and_b, get_yhat
 
 
 def add_biomes(engine: Engine):
@@ -317,9 +317,12 @@ def get_structures_to_add(target: str):
                 ]
             )
 
-    slope = (10 - 1) / (MAX_NUM_STARS - MIN_NUM_STARS)
-    intercept = 1 - slope * MIN_NUM_STARS
-    multiplier = math.ceil(slope * get_settings().num_stars + intercept)
+    multiplier = math.ceil(
+        get_yhat(
+            get_settings().num_stars,
+            *get_m_and_b(MIN_NUM_STARS, 1, MAX_NUM_STARS, 10),
+        )
+    )
 
     return mega * multiplier
 
@@ -384,9 +387,10 @@ def add_structures(engine: Engine, rng: np.random.Generator, *, target: str):
 def scale_resources(
     resources: pd.DataFrame, planet_size: int, rng: np.random.Generator
 ):
-    slope = (5 - 1.5) / (MAX_PLANET_SIZE - MIN_PLANET_SIZE)
-    intercept = 1 - slope * MIN_PLANET_SIZE
-    multiplier = max(rng.normal(slope * planet_size + intercept, 0.5), 1)
+    mu = get_yhat(
+        planet_size, *get_m_and_b(MIN_PLANET_SIZE, 1.5, MAX_PLANET_SIZE, 5)
+    )
+    multiplier = max(rng.normal(mu, 0.5), 1)
     return resources.multiply(multiplier).astype(int)
 
 

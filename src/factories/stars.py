@@ -8,11 +8,11 @@ from sqlalchemy import Engine, insert
 
 from src.database.db import get_session
 from src.models.star_system import StarSystem, StarType
-from src.util import get_location
+from src.util import get_location, MAX_NUM_STARS, MIN_NUM_STARS
 
 from ..settings import get_settings
 from .celestial_bodies_util import load_star_config, stars_type_df
-from .utils import load_file
+from .utils import load_file, get_m_and_b, get_yhat
 
 
 def load_star_prefix():
@@ -124,13 +124,13 @@ def connect_graph(g: nx.Graph):
         g.add_edge(nodes[0], nodes2[0])
 
 
-def generate_clusters(rng: np.random.Generator, n_stars: int):
+def generate_clusters(rng: np.random.Generator, n_clusters: int):
     print("Generating clusters...")
 
     nodes_per_cluster = 12
     clusters = [
         nx.fast_gnp_random_graph(nodes_per_cluster, p, seed=rng)
-        for p in rng.normal(0.25, 0.005, n_stars)
+        for p in rng.normal(0.25, 0.005, n_clusters)
     ]
     # relabel the nodes
     clusters = [
@@ -145,10 +145,10 @@ def generate_clusters(rng: np.random.Generator, n_stars: int):
 
 
 def connect_clusters(
-    combined: nx.Graph, rng: np.random.Generator, n_stars: int
+    combined: nx.Graph, rng: np.random.Generator, n_clusters: int
 ):
     hyperlanes_between_cluster = rng.poisson(
-        get_settings().hyperlane_density + 1, n_stars
+        get_settings().hyperlane_density + 1, n_clusters
     )
     connected_components = list(nx.connected_components(combined))
     for i, (cc, n_hyper) in enumerate(
@@ -171,18 +171,26 @@ def connect_clusters(
     connect_graph(combined)
 
 
-def generate_hyperlane_map(rng: np.random.Generator, n_stars: int = 1000):
+def generate_hyperlane_map(rng: np.random.Generator, n_clusters: int):
+    # n_stars is how many clusters to simulate
     print("Generating galaxy map...")
     # mean number of edges to draw between clusters
 
-    combined = nx.compose_all(generate_clusters(rng, n_stars))
-    connect_clusters(combined, rng, n_stars)
+    combined = nx.compose_all(generate_clusters(rng, n_clusters))
+    connect_clusters(combined, rng, n_clusters)
 
     return combined
 
 
 def get_is_chokepoint_p(rng: np.random.Generator):
-    g = generate_hyperlane_map(rng)
+    n_clusters = int(
+        get_yhat(
+            get_settings().num_stars,
+            *get_m_and_b(MIN_NUM_STARS, 1000, MAX_NUM_STARS, 2000),
+        )
+    )
+
+    g = generate_hyperlane_map(rng, n_clusters)
 
     # get the pct of num verticies with degree 1
     return sum([1 for v in g.nodes if g.degree[v] == 1]) / len(g.nodes)

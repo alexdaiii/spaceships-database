@@ -24,3 +24,21 @@ class IntegerOrNone(BaseProvider):
             return None
         else:
             return self.random_int(min=min_value, max=max_value)
+
+
+def get_m_and_b(
+    x1: float, y1: float, x2: float, y2: float
+) -> tuple[float, float]:
+    """
+    Get the slope and y-intercept of a line given two points.
+    """
+    m = (y2 - y1) / (x2 - x1)
+    b = y1 - m * x1
+    return m, b
+
+
+def get_yhat(x: float, m: float, b: float) -> float:
+    """
+    Get the y-value of a line given an x-value, slope, and y-intercept.
+    """
+    return m * x + b
