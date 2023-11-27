@@ -3,7 +3,6 @@ import os
 from functools import lru_cache
 from typing import Literal
 
-import colorful as cf
 import pandas as pd
 from pydantic import BaseModel, Field, computed_field
 

@@ -7,7 +7,6 @@ from sqlalchemy.orm import Session, sessionmaker
 
 
 class HashableEngine:
-
     def __init__(self, engine: Engine):
         self.engine = engine
 
@@ -17,8 +16,8 @@ class HashableEngine:
 
 
 def _issue_callback(
-        session: Session,
-        fn: (lambda session: Session) = None,
+    session: Session,
+    fn: (lambda session: Session) = None,
 ):
     if fn is not None:
         fn(session)
@@ -26,10 +25,10 @@ def _issue_callback(
 
 @contextmanager
 def _make_session(
-        engine: Engine,
-        *,
-        setup_callback: (lambda session: Session) = None,
-        teardown_callback: (lambda session: Session) = None,
+    engine: Engine,
+    *,
+    setup_callback: (lambda session: Session) = None,
+    teardown_callback: (lambda session: Session) = None,
 ) -> Session:
     """
     This is a context manager that will automatically commit or rollback
@@ -41,7 +40,8 @@ def _make_session(
 
             yield session
         except Exception as e:
-            print(f"{cf.bold_red("An error occurred, rolling back")}")
+            # cannot use 3.12 f strings bc of black error with mypy
+            print(f"{cf.bold_red('An error occurred, rolling back')}")
             raise
         finally:
             _issue_callback(session, teardown_callback)
@@ -53,18 +53,16 @@ def _sqlite_setup_callback(session: Session):
 
 
 @contextmanager
-def get_session(
-        engine: Engine
-):
+def get_session(engine: Engine):
     if engine.dialect.name == "sqlite":
         with _make_session(
-                engine, setup_callback=_sqlite_setup_callback
+            engine, setup_callback=_sqlite_setup_callback
         ) as session:
             yield session
     elif (
-            engine.dialect.name == "mysql"
-            or engine.dialect.name == "mariadb"
-            or engine.dialect.name == "postgresql"
+        engine.dialect.name == "mysql"
+        or engine.dialect.name == "mariadb"
+        or engine.dialect.name == "postgresql"
     ):
         with _make_session(engine) as session:
             yield session

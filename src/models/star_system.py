@@ -71,11 +71,11 @@ class Planet(Base):
         ForeignKey("star_system.star_system_id")
     )
     planet_size: Mapped[int]
-    planet_pops: Mapped[int | None]
-    planet_trade_value: Mapped[int | None]
-    planet_energy_value: Mapped[int | None]
-    planet_research_value: Mapped[int | None]
-    planet_minerals_value: Mapped[int | None]
+    planet_pops: Mapped[int] = mapped_column(default=0)
+    planet_trade_value: Mapped[int] = mapped_column(default=0)
+    planet_energy_value: Mapped[int] = mapped_column(default=0)
+    planet_research_value: Mapped[int] = mapped_column(default=0)
+    planet_minerals_value: Mapped[int] = mapped_column(default=0)
 
     biome: Mapped[Biome] = relationship(
         "Biome",

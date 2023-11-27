@@ -7,7 +7,41 @@ import colorful as cf
 from pydantic import Field, MariaDBDsn, MySQLDsn, PostgresDsn, computed_field
 from pydantic_settings import BaseSettings
 
-from src.util import MAX_NUM_STARS, MIN_NUM_STARS, get_location
+from src.util import (
+    MAX_NUM_STARS,
+    MIN_NUM_STARS,
+    get_location,
+    get_m_and_b,
+    get_yhat,
+)
+
+
+@lru_cache()
+def get_num_empires(num_stars: int) -> int:
+    base_min_empires = {
+        "stars": 200,
+        "empires": 6,
+    }
+    base_max_empires = {
+        "stars": 1000,
+        "empires": 30,
+    }
+    max_num_empires = 300
+
+    return min(
+        math.ceil(
+            get_yhat(
+                num_stars,
+                *get_m_and_b(
+                    base_min_empires["stars"],
+                    base_min_empires["empires"],
+                    base_max_empires["stars"],
+                    base_max_empires["empires"],
+                ),
+            )
+        ),
+        max_num_empires,
+    )
 
 
 class TargetDatabase(Enum):
@@ -102,7 +136,7 @@ class Settings(BaseSettings):
 
     # sqlalchemy
     target_databases: list[TargetDatabase] = []
-    sqlalchemy_echo: bool = False
+    sqlalchemy_echo: bool = True
 
     # config
     random_seed: int = 1234
@@ -114,8 +148,7 @@ class Settings(BaseSettings):
     @computed_field
     @property
     def number_of_empires(self) -> int:
-        stars_to_empire = 33 + 1 / 3
-        return math.ceil(self.num_stars / stars_to_empire)
+        return get_num_empires(self.num_stars)
 
     class Config:
         env_file = "../.env"

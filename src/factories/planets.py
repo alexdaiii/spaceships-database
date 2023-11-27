@@ -10,10 +10,10 @@ from sqlalchemy import Engine, insert, select
 from src.database.db import get_session
 from src.models import Biome, Planet, StarSystem
 
-from ..settings import get_settings
-from ..util import MAX_NUM_STARS, MIN_NUM_STARS
+from src.settings import get_settings
+from src.util import MAX_NUM_STARS, MIN_NUM_STARS, get_m_and_b, get_yhat
 from .celestial_bodies_util import biomes_df, load_star_config, stars_type_df
-from .utils import MAX_PLANET_SIZE, MIN_PLANET_SIZE, get_m_and_b, get_yhat
+from .utils import MAX_PLANET_SIZE, MIN_PLANET_SIZE
 
 
 def add_biomes(engine: Engine):

@@ -8,11 +8,17 @@ from sqlalchemy import Engine, insert
 
 from src.database.db import get_session
 from src.models.star_system import StarSystem, StarType
-from src.util import get_location, MAX_NUM_STARS, MIN_NUM_STARS
+from src.util import (
+    MAX_NUM_STARS,
+    MIN_NUM_STARS,
+    get_location,
+    get_m_and_b,
+    get_yhat,
+)
 
-from ..settings import get_settings
-from .celestial_bodies_util import load_star_config, stars_type_df
-from .utils import load_file, get_m_and_b, get_yhat
+from src.settings import get_settings
+from .celestial_bodies_util import stars_type_df
+from .utils import load_file
 
 
 def load_star_prefix():

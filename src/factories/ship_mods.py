@@ -66,13 +66,13 @@ class ModType(BaseModel):
 
 
 def unpack_mods_base(
-        mod_list: list[str],
-        *,
-        rng: np.random.Generator,
-        mods: list[SpaceshipModule],
-        mod_name_to_id: dict[str, int],
-        is_combat: bool,
-        is_tech: bool,
+    mod_list: list[str],
+    *,
+    rng: np.random.Generator,
+    mods: list[SpaceshipModule],
+    mod_name_to_id: dict[str, int],
+    is_combat: bool,
+    is_tech: bool,
 ):
     """
     Base case for unpacking the list and creating the SpaceshipModules.
@@ -112,13 +112,13 @@ tech_level_keys = {
 
 
 def unpack_mods(
-        mod_dict: dict | list,
-        *,
-        rng: np.random.Generator,
-        dict_key: str,
-        is_combat: bool,
-        mods: list[SpaceshipModule],
-        mod_name_to_id: dict[str, int],
+    mod_dict: dict | list,
+    *,
+    rng: np.random.Generator,
+    dict_key: str,
+    is_combat: bool,
+    mods: list[SpaceshipModule],
+    mod_name_to_id: dict[str, int],
 ):
     """
     Recursively unpack the mods from the mod dictionary.
