@@ -1,7 +1,7 @@
-from sqlalchemy import text, Engine
+import colorful as cf
+from sqlalchemy import Engine, text
 
 from src.database.db import get_session
-import colorful as cf
 
 pg_check_component_slots_func = text(
     """
@@ -108,6 +108,53 @@ pg_trg_2 = text(
     FOR EACH ROW EXECUTE PROCEDURE check_component_slots_fnc();
     """
 )
+pg_spaceship_rank_range_check = text(
+    """
+    CREATE OR REPLACE FUNCTION spaceship_rank_range_check()
+        RETURNS TRIGGER AS
+    $$
+    DECLARE
+        new_xp_range int4range;
+        spaceship_rank RECORD;
+    BEGIN
+        -- makes sure that the NEW value does not overlap with any
+        -- existing spaceship rank
+
+        -- create a range from the new values
+        new_xp_range := int4range(NEW.spaceship_min_experience, NEW.spaceship_max_experience, '[]');
+
+        -- loop through entire rest of table making sure that the new range
+        -- does not overlap with any existing ranges
+        FOR spaceship_rank IN SELECT * FROM spaceship_rank WHERE spaceship_rank_id != NEW.spaceship_rank_id LOOP
+            IF int4range(spaceship_rank.spaceship_min_experience, spaceship_rank.spaceship_max_experience, '[]') && new_xp_range THEN
+                RAISE EXCEPTION 
+                'New spaceship rank with experience range % 
+                overlaps with existing spaceship rank % with experience range %', 
+                new_xp_range, 
+                spaceship_rank.spaceship_rank_name,
+                int4range(spaceship_rank.spaceship_min_experience, spaceship_rank.spaceship_max_experience, '[]');
+            END IF;
+        END LOOP;
+        
+        RETURN NEW;
+
+    END;
+    $$
+    LANGUAGE plpgsql;
+    """
+)
+pg_trg_3 = text(
+    """
+    DROP TRIGGER IF EXISTS spaceship_rank_range_check_trg ON spaceship_rank;
+    """
+)
+pg_trg_4 = text(
+    """
+    CREATE TRIGGER spaceship_rank_range_check_trg
+    BEFORE INSERT OR UPDATE ON spaceship_rank
+    FOR EACH ROW EXECUTE PROCEDURE spaceship_rank_range_check();
+    """
+)
 
 
 def add_trigger(engine: Engine):
@@ -124,6 +171,9 @@ def add_trigger(engine: Engine):
         session.execute(pg_check_component_slots_func)
         session.execute(pg_trg_1)
         session.execute(pg_trg_2)
+        session.execute(pg_spaceship_rank_range_check)
+        session.execute(pg_trg_3)
+        session.execute(pg_trg_4)
 
 
 __all__ = ["add_trigger"]
