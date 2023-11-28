@@ -3,10 +3,10 @@ import numpy as np
 from faker import Faker
 from sqlalchemy import Engine, insert
 
+from src.database.db import get_session
 from src.models import Empire, EmpireAuthority, EmpireEthic, EmpireToEthic
 from src.util import get_location
 
-from src.database.db import get_session
 from .empires_util import authority_df, empire_id_range, ethic_df
 from .utils import load_file
 

@@ -1,18 +1,19 @@
 import colorful as cf
 import numpy as np
 import pandas as pd
-from sqlalchemy import Engine, select
+from sqlalchemy import Engine, func, select
 
-from .empires_util import empires_info, authority_df
 from src.database.db import get_session
-from src.models import Planet, StarSystem, Empire, Biome
-from .utils import MIN_PLANET_SIZE, MAX_PLANET_SIZE
+from src.models import Biome, Empire, Planet, StarSystem
+
 from ..util import get_m_and_b
+from .empires_util import authority_df, empires_info
+from .utils import MAX_PLANET_SIZE, MIN_PLANET_SIZE
 
 
 def add_auth_rank(df: pd.DataFrame, *, rng: np.random.Generator):
     auth_rank = {
-        auth_id: i
+        auth_id: i + 1
         for i, auth_id in enumerate(
             rng.choice(
                 authority_df().index, size=len(authority_df()), replace=False
@@ -33,7 +34,7 @@ def get_habitable_planets_pops(
     *,
     m: float,
     b: float,
-    scale: float
+    scale: float,
 ):
     # get the habitable planets for this empire
     habitable_planets = pd.read_sql(
@@ -118,6 +119,41 @@ def add_planet_pops(rng: np.random.Generator, *, engine: Engine):
                 Planet,
                 habitable_planets.to_dict(orient="records"),
             )
+
+        print(
+            f"Added planet pops for empire {empire.empire_id} / {len(empires)}"
+        )
+
+    add_empire_resources(empires_info(engine), engine)
+
+
+def add_empire_resources(df: pd.DataFrame, engine: Engine):
+    """
+    Adds empire resources inplace to the dataframe
+    """
+    print("Calculating total empire resources")
+
+    # get the total resources for each empire
+    empire_resources = pd.read_sql(
+        select(
+            Empire.empire_id,
+            func.sum(Planet.planet_energy_value).label("total_energy"),
+            func.sum(Planet.planet_minerals_value).label("total_minerals"),
+            func.sum(Planet.planet_research_value).label("total_research"),
+            func.sum(Planet.planet_trade_value).label("total_trade"),
+        )
+        .select_from(Empire)
+        .join(StarSystem)
+        .join(Planet)
+        .group_by(Empire.empire_id),
+        engine,
+    )
+
+    # join the two dataframes
+    df["total_energy"] = empire_resources["total_energy"]
+    df["total_minerals"] = empire_resources["total_minerals"]
+    df["total_research"] = empire_resources["total_research"]
+    df["total_trade"] = empire_resources["total_trade"]
 
 
 __all__ = ["add_planet_pops"]

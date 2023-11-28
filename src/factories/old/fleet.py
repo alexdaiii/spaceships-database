@@ -1,9 +1,8 @@
 from faker import Faker
 
+from src.factories.utils import STARTING_ID, load_file
 from src.models import Fleet
 from src.util import get_location
-
-from .utils import STARTING_ID, load_file
 
 
 def create_fleets(

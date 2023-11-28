@@ -9,7 +9,7 @@ class ShipClass(Base):
 
     ship_class_id: Mapped[int] = mapped_column(primary_key=True)
     ship_class_name: Mapped[str] = mapped_column(String(255), unique=True)
-    ship_class_bonus: Mapped[float | None]
+    ship_command_points: Mapped[int]
 
     ships: Mapped[list["Spaceship"]] = relationship("Spaceship")
 
@@ -39,9 +39,7 @@ class SpaceshipModule(Base):
     spaceship_module_name: Mapped[str] = mapped_column(
         String(255), unique=True
     )
-    spaceship_module_weight: Mapped[int]
     spaceship_module_power: Mapped[int]
-    spaceship_module_trade_protection: Mapped[int | None]
 
     spaceships: Mapped[list["Spaceship"]] = relationship(
         secondary="spaceship_to_module", back_populates="spaceship_modules"

@@ -4,11 +4,11 @@ import numpy as np
 from faker import Faker
 
 from src.database.base import Base
+from src.factories.utils import STARTING_ID, load_file
 from src.models import ShipClass, Spaceship
 from src.util import get_location
 
 from .ship_mods import create_ship_module
-from .utils import STARTING_ID, load_file
 
 _combat_ship_class = [
     "Corvette",

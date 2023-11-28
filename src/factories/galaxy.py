@@ -6,8 +6,10 @@ from src.settings import Settings
 
 from .empire import create_empires
 from .empire_star_systems import assign_empire_star_systems
+from .fleets import add_fleets
 from .planet_resources import add_planet_pops
 from .planets import create_planets
+from .ships import add_fleet_ships
 from .stars import create_stars
 
 
@@ -40,6 +42,14 @@ def generate_galaxy(
         num_stars=settings.num_stars,
     )
     add_planet_pops(
+        rng=rng,
+        engine=engine,
+    )
+    add_fleets(
+        rng=rng,
+        engine=engine,
+    )
+    add_fleet_ships(
         rng=rng,
         engine=engine,
     )

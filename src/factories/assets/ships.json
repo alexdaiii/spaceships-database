@@ -1,0 +1,152 @@
+{
+  "ship_class": [
+    {
+      "name": "corvette",
+      "weapons": {
+        "small": 3
+      },
+      "command_points": 1
+    },
+    {
+      "name": "frigate",
+      "weapons": {
+        "small": 5,
+        "medium": 1
+      },
+      "command_points": 1
+    },
+    {
+      "name": "destroyer",
+      "weapons": {
+        "large": 1,
+        "medium": 1,
+        "small": 6
+      },
+      "command_points": 2
+    },
+    {
+      "name": "cruiser",
+      "weapons": {
+        "large": 2,
+        "medium": 10
+      },
+      "command_points": 4
+    },
+    {
+      "name": "battleship",
+      "weapons": {
+        "xlarge": 1,
+        "large": 10
+      },
+      "command_points": 8
+    },
+    {
+      "name": "titan",
+      "weapons": {
+        "titan": 1,
+        "large": 18
+      },
+      "command_points": 16
+    },
+    {
+      "name": "juggernaut",
+      "weapons": {
+        "juggernaut": 1,
+        "xlarge": 2,
+        "large": 21,
+        "medium": 5,
+        "small": 6
+      },
+      "command_points": 32
+    },
+    {
+      "name": "colossus",
+      "weapons": {
+        "colossus": 1,
+        "large": 6
+      },
+      "command_points": 64
+    },
+    {
+      "name": "star_eater",
+      "weapons": {
+        "star_eater": 1
+      },
+      "command_points": 128
+    }
+  ],
+  "ship_weapons": {
+    "small": {
+      "base_power": 100,
+      "value": [
+        "laser",
+        "plasma cannon",
+        "disruptor",
+        "mass driver",
+        "railgun",
+        "autocannon",
+        "missiles"
+      ]
+    },
+    "medium": {
+      "base_power": 400,
+      "value": [
+        "swarm missiles",
+        "strike craft",
+        "flak",
+        "point defense"
+      ]
+    },
+    "large": {
+      "base_power": 1600,
+      "value": [
+        "matter disintegrator",
+        "energy siphon",
+        "cavitator",
+        "kinetic artillery"
+      ]
+    },
+    "xlarge": {
+      "base_power": 6400,
+      "value": [
+        "particle lance",
+        "cloud lightning",
+        "giga cannon",
+        "macro battery"
+      ]
+    },
+    "titan": {
+      "base_power": 25600,
+      "value": [
+        "partition beam",
+        "nanobot cloud",
+        "quantum destabilizer",
+        "subsace snare"
+      ]
+    },
+    "juggernaut": {
+      "base_power": 102400,
+      "value": [
+        "subspace amplifier",
+        "munitions plant",
+        "ecm emitters",
+        "target acquisition array"
+      ]
+    },
+    "colossus": {
+      "base_power": 409600,
+      "value": [
+        "global pacifier",
+        "neutron sweep",
+        "world cracker",
+        "divine enforcer"
+      ]
+    },
+    "star_eater": {
+      "base_power": 1638400,
+      "value": [
+        "black hole generator"
+      ]
+    }
+  }
+}

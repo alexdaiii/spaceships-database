@@ -1,6 +1,8 @@
 import inspect
 import os
 
+import pandas as pd
+
 MIN_NUM_STARS = 1000
 MAX_NUM_STARS = 100000
 
@@ -30,3 +32,12 @@ def get_yhat(x: float, m: float, b: float) -> float:
     Get the y-value of a line given an x-value, slope, and y-intercept.
     """
     return m * x + b
+
+
+def df_info(df: pd.DataFrame):
+    """
+    Only works in development mode.
+    """
+    from tabulate import tabulate
+
+    print(tabulate(df, headers="keys", tablefmt="psql"))

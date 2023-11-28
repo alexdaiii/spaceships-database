@@ -36,6 +36,9 @@ def reset_random_seed(seed: int):
 def main(settings: Settings):
     cf.use_true_colors()
 
+    if len(settings.target_databases) == 0:
+        print("No databases selected to populate")
+
     for database in settings.target_databases:
         fake, rng = reset_random_seed(settings.random_seed)
 

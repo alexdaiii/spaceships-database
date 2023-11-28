@@ -141,7 +141,7 @@ def unpack_mods(
 
 
 def create_ship_module():
-    ship_mod_file = "assets/ship_mods.json"
+    ship_mod_file = "../assets/ship_mods.json"
 
     with open(os.path.join(get_location(), ship_mod_file)) as f:
         ship_mods = ModType(**json.load(f))
