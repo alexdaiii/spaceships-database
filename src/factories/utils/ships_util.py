@@ -7,6 +7,8 @@ from pydantic import BaseModel, Field, computed_field
 
 from src.util import get_location
 
+from .util import STARTING_ID
+
 weapon_field = Field(0, ge=0)
 mods_tech_levels = Field(min_items=6, max_items=6)
 
@@ -44,6 +46,13 @@ class ShipWeaponMod(BaseModel):
     star_eater: ShipWeaponModInfo
 
 
+def add_component_slots(row: pd.Series):
+    component_size = row["spaceship_module_size"]
+    row[f"{component_size}_component_slots"] = 1
+
+    return row
+
+
 class ShipsInfo(BaseModel):
     ship_class: list[ShipClassInfo]
     ship_weapons: ShipWeaponMod
@@ -57,10 +66,15 @@ class ShipsInfo(BaseModel):
                 {
                     "ship_class_id": i,
                     "ship_class_name": ship_class.name,
-                    **ship_class.weapons.model_dump(),
+                    **{
+                        f"{k}_component_slots": val
+                        for k, val in ship_class.weapons.model_dump().items()
+                    },
                     "ship_command_points": ship_class.command_points,
                 }
-                for i, ship_class in enumerate(self.ship_class)
+                for i, ship_class in enumerate(
+                    self.ship_class, start=STARTING_ID
+                )
             ]
         ).set_index("ship_class_id")
 
@@ -79,7 +93,10 @@ class ShipsInfo(BaseModel):
                 for ship_weapon in ship_weapon_class["value"]
             ]
         )
-        df["spaceship_module_id"] = df.index
+        df["spaceship_module_id"] = df.index + STARTING_ID
+
+        df = df.apply(add_component_slots, axis=1).fillna(0)
+
         return df.set_index("spaceship_module_id")
 
     class Config:
@@ -111,7 +128,7 @@ def ship_class_rank() -> dict[str, int]:
 
 @lru_cache()
 def ships_info():
-    ship_info_file = "./assets/ships.json"
+    ship_info_file = "../assets/ships.json"
 
     with open(os.path.join(get_location(), ship_info_file), "r") as f:
         print(f"Loading {ship_info_file}")

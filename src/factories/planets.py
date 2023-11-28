@@ -12,8 +12,12 @@ from src.models import Biome, Planet, StarSystem
 from src.settings import get_settings
 from src.util import MAX_NUM_STARS, MIN_NUM_STARS, get_m_and_b, get_yhat
 
-from .celestial_bodies_util import biomes_df, load_star_config, stars_type_df
-from .utils import MAX_PLANET_SIZE, MIN_PLANET_SIZE
+from .utils.celestial_bodies_util import (
+    biomes_df,
+    load_star_config,
+    stars_type_df,
+)
+from .utils.util import MAX_PLANET_SIZE, MIN_PLANET_SIZE
 
 
 def add_biomes(engine: Engine):

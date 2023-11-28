@@ -7,9 +7,10 @@ from pydantic import BaseModel, computed_field
 from sqlalchemy import Engine, select
 
 from src.database.db import get_session
-from src.factories.utils import STARTING_ID
 from src.models import Empire, EmpireToEthic
 from src.util import get_location
+
+from .util import STARTING_ID
 
 
 class EmpireInfo(BaseModel):
@@ -54,7 +55,7 @@ class EmpireInfo(BaseModel):
 
 @lru_cache()
 def get_empire_info():
-    empire_info_file = "./assets/empire.json"
+    empire_info_file = "../assets/empire.json"
 
     with open(os.path.join(get_location(), empire_info_file), "r") as f:
         print(f"Loading {empire_info_file}")

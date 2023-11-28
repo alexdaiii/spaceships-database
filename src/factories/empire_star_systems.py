@@ -7,8 +7,9 @@ import pandas as pd
 from sqlalchemy import Engine, delete, select, update
 
 from src.database.db import get_session
-from src.factories.empires_util import empire_id_range, empires_info, ethic_df
 from src.models import Biome, Empire, Planet, StarSystem
+
+from .utils.empires_util import empire_id_range, empires_info, ethic_df
 
 _h_planet_page_size = 1000
 

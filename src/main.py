@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 
 from src.database.base import Base
 from src.factories import generate_galaxy
+from src.models.pg_ship import add_trigger
 from src.settings import Settings, TargetDatabase, get_settings
 
 
@@ -39,6 +40,15 @@ def main(settings: Settings):
     if len(settings.target_databases) == 0:
         print("No databases selected to populate")
 
+    # check to make sure postgresql is in the list of target databases
+    if TargetDatabase.POSTGRESQL not in settings.target_databases:
+        print(
+            cf.orange(
+                f"WARNING: {TargetDatabase.POSTGRESQL.value} not in target databases. "
+                f"Database triggers are only available for {TargetDatabase.POSTGRESQL.value} database"
+            )
+        )
+
     for database in settings.target_databases:
         fake, rng = reset_random_seed(settings.random_seed)
 
@@ -54,6 +64,8 @@ def main(settings: Settings):
         print(f"Adding models to {db_name} database")
 
         Base.metadata.create_all(engine)
+
+        add_trigger(engine=engine)
 
         print(f"Adding data to {db_name} database")
 

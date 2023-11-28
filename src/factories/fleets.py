@@ -4,10 +4,11 @@ import pandas as pd
 from sqlalchemy import Engine, insert
 
 from src.database.db import get_session
-from src.factories.empires_util import empires_info
-from src.factories.utils import load_file
 from src.models import Fleet
 from src.util import get_location
+
+from .utils.empires_util import empires_info
+from .utils.util import load_file
 
 
 def calculate_num_fleets(df: pd.DataFrame):

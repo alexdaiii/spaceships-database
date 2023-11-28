@@ -9,7 +9,8 @@ from .empire_star_systems import assign_empire_star_systems
 from .fleets import add_fleets
 from .planet_resources import add_planet_pops
 from .planets import create_planets
-from .ships import add_fleet_ships
+from .ship_templates import add_ship_templates
+from .ships import add_empire_ships
 from .stars import create_stars
 
 
@@ -49,7 +50,12 @@ def generate_galaxy(
         rng=rng,
         engine=engine,
     )
-    add_fleet_ships(
+    add_ship_templates(
+        fake=fake,
+        rng=rng,
+        engine=engine,
+    )
+    add_empire_ships(
         rng=rng,
         engine=engine,
     )

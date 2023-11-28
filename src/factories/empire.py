@@ -7,8 +7,8 @@ from src.database.db import get_session
 from src.models import Empire, EmpireAuthority, EmpireEthic, EmpireToEthic
 from src.util import get_location
 
-from .empires_util import authority_df, empire_id_range, ethic_df
-from .utils import load_file
+from .utils.empires_util import authority_df, empire_id_range, ethic_df
+from .utils.util import load_file
 
 
 def create_empire_authorities(engine: Engine):

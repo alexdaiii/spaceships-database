@@ -8,7 +8,7 @@ from pydantic import BaseModel, Field, computed_field
 
 from src.util import get_location
 
-from .utils import MAX_PLANET_SIZE, MIN_PLANET_SIZE, STARTING_ID
+from .util import MAX_PLANET_SIZE, MIN_PLANET_SIZE, STARTING_ID
 
 
 class StarClass(BaseModel):
@@ -56,7 +56,7 @@ def stars_type_df():
 
 @lru_cache()
 def load_star_config():
-    stars_config_file = "assets/stars.json"
+    stars_config_file = "../assets/stars.json"
 
     with open(os.path.join(get_location(), stars_config_file), "r") as f:
         print(f"Loading {stars_config_file}")
@@ -107,7 +107,7 @@ class PlanetsConfig(BaseModel):
 
 @lru_cache()
 def load_planet_config():
-    planet_conf_file = "assets/planets.json"
+    planet_conf_file = "../assets/planets.json"
 
     with open(os.path.join(get_location(), planet_conf_file)) as f:
         return PlanetsConfig(**json.load(f))

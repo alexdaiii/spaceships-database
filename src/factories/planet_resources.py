@@ -5,10 +5,10 @@ from sqlalchemy import Engine, func, select
 
 from src.database.db import get_session
 from src.models import Biome, Empire, Planet, StarSystem
+from src.util import get_m_and_b
 
-from ..util import get_m_and_b
-from .empires_util import authority_df, empires_info
-from .utils import MAX_PLANET_SIZE, MIN_PLANET_SIZE
+from .utils.empires_util import authority_df, empires_info
+from .utils.util import MAX_PLANET_SIZE, MIN_PLANET_SIZE
 
 
 def add_auth_rank(df: pd.DataFrame, *, rng: np.random.Generator):
