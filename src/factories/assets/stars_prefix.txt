@@ -1,0 +1,1002 @@
+Andromeda
+Antlia
+Apus
+Aquarius
+Aquila
+Ara
+Aries
+Auriga
+Bootes
+Caelum
+Camelopardalis
+Cancer
+Canes Venatici
+Canis Major
+Canis Minor
+Capricornus
+Carina
+Cassiopeia
+Centaurus
+Cepheus
+Cetus
+Chamaeleon
+Circinus
+Columba
+Coma Berenices
+Corona Australis
+Corona Borealis
+Corvus
+Crater
+Crux
+Cygnus
+Delphinus
+Dorado
+Draco
+Equuleus
+Eridanus
+Fornax
+Gemini
+Grus
+Hercules
+Horologium
+Hydra
+Hydrus
+Indus
+Lacerta
+Leo
+Leo Minor
+Lepus
+Libra
+Lupus
+Lynx
+Lyra
+Mensa
+Microscopium
+Monoceros
+Musca
+Norma
+Octans
+Ophiuchus
+Orion
+Pavo
+Pegasus
+Perseus
+Phoenix
+Pictor
+Pisces
+Piscis Austrinus
+Puppis
+Pyxis
+Reticulum
+Sagitta
+Sagittarius
+Scorpius
+Sculptor
+Scutum
+Serpens
+Sextans
+Taurus
+Telescopium
+Triangulum
+Triangulum Australe
+Tucana
+Ursa Major
+Ursa Minor
+Vela
+Virgo
+Volans
+Vulpecula
+Anguilla
+Antinous
+Apes
+Apis
+Aranea
+Argo Navis
+Asselli and Praesepe
+Asterion and Chara
+Battery of Volta
+Bufo
+Cancer Minor
+Capra and Haedi
+Cerberus
+Cor
+Caroli
+Regis
+Martyris
+Corona Firmiana
+Custos Messium
+Deltoton
+Dentalium
+Felis
+Frederici Honores
+Gallus
+Gladii
+Electorales
+Saxonici
+Globus Aerostaticus
+Gryphites
+Hippocampus
+Hirudo
+Jordanus
+Leo Palatinus
+Lochium Funis
+Lilium
+Limax
+Linum Piscium
+Lumbricus
+Machina Electrica
+Malus
+Manis
+Marmor Sculptile
+Mons Maenalus
+Musca Borealis
+Noctua
+Nubecula Major
+Nubecula Minor
+Officina Typographica
+Patella
+Phoenicopterus
+Pinna Marina
+Piscis Notus
+Polophylax
+Pomum Imperiale
+Phaethon
+Pluteum
+Psalterium Georgii
+Quadrans Muralis
+Quadratum
+Ramus Pomifer
+Robur Carolinum
+Rosa
+Sagitta Australis
+Scarabaeus
+Sceptrum Brandenburgicum
+Sceptrum et Manus Iustitiae
+Sciurus Volans
+Sextans Uraniae
+Siren
+Ceneus and Lang
+Solarium
+Sudarium Veronicae
+Tarandus or Rangifer
+Taurus Poniatovii
+Tarabellum and Vexillum
+Telescopium Herschelii
+Tubus Herschelii Minor
+Testudo
+Tigris
+Triangulus Antarcticus
+Triangulum Majus
+Triangulum Minus
+Turdus Solitarius
+Uranoscopus
+Urna
+Vespa
+Triangula
+Catuli
+Corona
+Corolla
+Piscis
+Camelus
+Vulpes
+Equus
+Delphin
+Sheep
+Pig
+Chicken
+Duck
+Goose
+Turkey
+Deer
+Rabbit
+Squirrel
+Bear
+Wolf
+Fox
+Raccoon
+Skunk
+Opossum
+Bat
+Rat
+Mouse
+Hamster
+Guinea Pig
+Ferret
+Hedgehog
+Chinchilla
+Gerbil
+Camel
+Llama
+Alpaca
+Buffalo
+Bison
+Giraffe
+Elephant
+Rhino
+Hippopotamus
+Kangaroo
+Koala
+Wallaby
+Lemur
+Monkey
+Ape
+Gorilla
+Chimpanzee
+Orangutan
+Sloth
+Anteater
+Armadillo
+Porcupine
+Platypus
+Echidna
+Tasmanian Devil
+Wombat
+Bandicoot
+Ocelot
+Jaguar
+Leopard
+Lion
+Tiger
+Cheetah
+Puma
+Gazelle
+Antelope
+Elk
+Moose
+Caribou
+Reindeer
+Walrus
+Seal
+Sea Lion
+Dolphin
+Whale
+Shark
+Ray
+Barracuda
+Tuna
+Salmon
+Trout
+Perch
+Carp
+Catfish
+Pike
+Walleye
+Bass
+Cod
+Flounder
+Halibut
+Eel
+Jellyfish
+Starfish
+Seahorse
+Octopus
+Squid
+Lobster
+Crab
+Shrimp
+Snail
+Clam
+Oyster
+Mussel
+Scallop
+Urchin
+Coral
+Sea Anemone
+Sponge
+Albatross
+Eagle
+Hawk
+Falcon
+Owl
+Parrot
+Cockatoo
+Macaw
+Crow
+Raven
+Magpie
+Jay
+Sparrow
+Finch
+Robin
+Cardinal
+Bluebird
+Canary
+Hummingbird
+Woodpecker
+Pigeon
+Dove
+Swan
+Flamingo
+Peacock
+Pelican
+Heron
+Stork
+Ibis
+Crane
+Ostrich
+Emu
+Cassowary
+Kiwi
+Penguin
+Frog
+Toad
+Newt
+Salamander
+Lizard
+Chameleon
+Gecko
+Iguana
+Monitor Lizard
+Skink
+Snake
+Python
+Cobra
+Viper
+Rattlesnake
+Anaconda
+Boa Constrictor
+Crocodile
+Alligator
+Gharial
+Caiman
+Turtle
+Tortoise
+Terrapin
+Moray Eel
+Angelfish
+Clownfish
+Pufferfish
+Parrotfish
+Triggerfish
+Goby
+Blenny
+Wrasse
+Tang
+Surgeonfish
+Butterflyfish
+Seabream
+Tarpon
+Marlin
+Swordfish
+Sailfish
+Flying Fish
+Garfish
+Archerfish
+Anemonefish
+Damself
+Zeus
+Hera
+Poseidon
+Demeter
+Athena
+Apollo
+Artemis
+Ares
+Aphrodite
+Hephaestus
+Hermes
+Dionysus
+Hades
+Persephone
+Pandora
+Orpheus
+Eurydice
+Theseus
+Minotaur
+Daedalus
+Icarus
+Prometheus
+Atlas
+Sisyphus
+Helen
+Paris
+Hector
+Priam
+Cassandra
+Oedipus
+Antigone
+Electra
+Midas
+Narcissus
+Echo
+Eros
+Psyche
+Chronos
+Ananke
+Uranus
+Gaia
+Rhea
+Titan
+Oceanus
+Tethys
+Hyperion
+Theia
+Coeus
+Phoebe
+Crius
+Mnemosyne
+Themis
+Iapetus
+Clymene
+Leto
+Niobe
+Daphne
+Io
+Europa
+Leda
+Ganymede
+Tantalus
+Semele
+Danae
+Alcmene
+Laius
+Jocasta
+Tyndareus
+Eteocles
+Polynices
+Penthesilea
+Diomedes
+Patroclus
+Nestor
+Teucer
+Briseis
+Deidamia
+Meleager
+Atalanta
+Castor
+Pollux
+Boreas
+Zephyrus
+Notus
+Eurus
+Aeolus
+Asclepius
+Pan
+Silenus
+Satyr
+Nymph
+Dryad
+Naiad
+Oread
+Centaur
+Gorgon
+Cyclops
+Minos
+Rhadamanthus
+Aeacus
+Charon
+Hesperides
+Nereids
+Triton
+Scylla
+Charybdis
+Proteus
+Talos
+Argus
+Calypso
+Circe
+Polyphemus
+Laestrygonians
+Lotus-Eaters
+Sirens
+Thetis
+Peleus
+Eris
+Ganymedes
+Glaukos
+Phrixus
+Helle
+Bellerus
+Leander
+Hero
+Actaeon
+Adonis
+Ariadne
+Hippolyta
+Pentheus
+Lycaon
+Romulus
+Remus
+Lucretia
+Brutus
+Cincinnatus
+Camilla
+Numa Pompilius
+Tullus Hostilius
+Sun Wukong
+Guanyin
+Jade Emperor
+Zhu Bajie
+Sha Wujing
+Nezha
+Chang'e
+Houyi
+Pangu
+Nuwa
+Fuxi
+Shennong
+Yellow Emperor
+Chiyou
+Kui
+Lei Gong
+Bai Suzhen
+Xu Xian
+Fahai
+Erlang Shen
+Guan Yu
+Zao Jun
+Cai Shen
+Xi Wangmu
+Ao Guang
+Jiu Tian Xuan Nu
+Yan Wang
+He Bo
+Yu the Great
+Jiang Ziya
+Daji
+Jiutian Xuannu
+Xiahou Dun
+Zhong Kui
+Hua Mulan
+Li Jing
+Han Xiangzi
+Lan Caihe
+He Xiangu
+Cao Guojiu
+Li Tieguai
+Zhang Guolao
+Lu Dongbin
+Hanuman
+Ganesha
+Krishna
+Rama
+Sita
+Shiva
+Parvati
+Vishnu
+Lakshmi
+Brahma
+Saraswati
+Indra
+Agni
+Varuna
+Vayu
+Durga
+Kali
+Ravana
+Nakula
+Sahadeva
+Karna
+Drona
+Bhishma
+Ganapati
+Kartikeya
+Nandi
+Garuda
+Yama
+Surya
+Chandra
+Kamadeva
+Manu
+Vamana
+Narasimha
+Varaha
+Matsya
+Kurma
+Apsaras
+Gandharvas
+Maruts
+Ashwini Kumaras
+Daksha
+Sati
+Anasuya
+Atri
+Durvasa
+Vyasa
+Valmiki
+Sugriva
+Jambavan
+Vibhishana
+Kumbhakarna
+Lava
+Kusha
+Angada
+Jatayu
+Sampati
+Bali
+Sugreeva
+Tumburu
+Narada
+Patanjali
+Kapila
+Pashupati
+Rudra
+Kubera
+Rati
+Mohini
+Shesha
+Vasuki
+Takshaka
+Karkotaka
+Adisesha
+Manasa
+Savitri
+Satyavan
+Amaterasu
+Susanoo
+Tsukuyomi
+Izanagi
+Izanami
+Raijin
+Fujin
+Hachiman
+Inari
+Benten
+Ebisu
+Daikokuten
+Bishamonten
+Jizo
+Kannon
+Fudo Myo-o
+Acala
+Benzaiten
+Kisshoutennyo
+Kojin
+Ryujin
+Tengu
+Kitsune
+Tanuki
+Oni
+Yuki-onna
+Tsuchigumo
+Kappa
+Namazu
+Sarutahiko
+Ame-no-Uzume
+Okuninushi
+Sukunahikona
+Momotaro
+Urashima Taro
+Kintaro
+Kaguya-hime
+Otohime
+Yamato Takeru
+Prince Shotoku
+Nichiren
+Shinran
+Kobo Daishi
+En no Gyoja
+Abe no Seimei
+Minamoto no Yoshitsune
+Tomoe Gozen
+Taira no Kiyomori
+Minamoto no Yoritomo
+Ashikaga Takauji
+Oda Nobunaga
+Toyotomi Hideyoshi
+Tokugawa Ieyasu
+Empress Jingu
+Emperor Jimmu
+Fugen Bosatsu
+Monju Bosatsu
+Jikokuten
+Zochoten
+Komokuten
+Tamonten
+Bato Kannon
+Jibo Kannon
+Yakushi Nyorai
+Amida Nyorai
+Shaka Nyorai
+Miroku Bosatsu
+Fudo Myoo
+Aizen Myoo
+Kangiten
+Marishi-ten
+Watatsumi
+Konohanasakuya-hime
+Hoderi
+Ho-ori
+Ninigi
+Kagutsuchi
+O-Kuninushi
+Sumiyoshi Sanjin
+Kunitsukami
+Amatsukami
+Yato-no-kami
+Yama-no-kami
+Umi-no-kami
+Kawa-no-kami
+Tsuchi-no-kami
+Kaze-no-kami
+Hi-no-kami
+Tsuki-no-kami
+Hoshi-no-kami
+Suijin
+Hikoboshi
+Orihime
+Freya
+Frigg
+Tyr
+Heimdall
+Baldur
+Bragi
+Idun
+Fenrir
+Hel
+Jormungandr
+Skadi
+Njord
+Freyr
+Valkyries
+Ymir
+Aegir
+Ran
+Hod
+Sigyn
+Sif
+Mimir
+Gungnir
+Sleipnir
+Fafnir
+Grendel
+Surtr
+Ratatoskr
+Huginn and Muninn
+Bifrost
+Vili and Ve
+Eir
+Gefjon
+Hermod
+Modi and Magni
+Sindri
+Brokkr
+Ullr
+Váli
+Vidar
+Angrboda
+Grid
+Gullveig
+Hoenir
+Lofn
+Norns
+Skirnir
+Var
+Vör
+Cernunnos
+Danu
+Dagda
+Arawn
+Brigid
+Lugh
+Morrigu
+Manannan mac Lir
+Nuada
+Oghma
+Rhiannon
+Taranis
+Belenus
+Epona
+Govannon
+Lir
+Macha
+Niamh
+Pwyll
+Scathach
+Taliesin
+Bodb Derg
+Camulus
+Conall Cernach
+Cuchulainn
+Diarmuid
+Donn
+Fand
+Gwydion
+Math fab Mathonwy
+Mabon
+Angus Og
+Bran the Blessed
+Aengus
+Balor
+Banba
+Boann
+Caer
+Cailleach
+Carman
+Dian Cecht
+Elatha
+Ethniu
+Fionn mac Cumhaill
+Grainne
+Grian
+Leborcham
+Ler
+Li Ban
+Medb
+Midir
+Nemain
+Oisin
+Olwen
+Tethra
+The Dagda
+Ysbaddaden
+Blodeuwedd
+Branwen
+Creiddylad
+Gilfaethwy
+Gofannon
+Govannan
+Gwion Bach
+Gwythyr
+Hafgan
+Llŷr
+Maelgwn
+Matholwch
+Mellt
+Myrddin
+Nisien
+Pendaran Dyfed
+Pryderi
+Ailill
+Airmed
+Alastir
+Amaethon
+Anann
+Aranrhod
+Artio
+Beira
+Belatu-Cadros
+Borvo
+Camma
+Cian
+Cliodhna
+Cormac mac Airt
+Creidhne
+Cu Roí
+Daghda
+Deirdre
+Delbáeth
+Donn Cuailnge
+Eochaid Ollathair
+Eremon
+Esus
+Ethal Anbuail
+Ferdiad
+Fiachra
+Fintan mac Bóchra
+Flidais
+Goibniu
+Gwythyr ap Greidawl
+Iarbonel
+Ith
+Luchtaine
+Lugaid Riab nDerg
+Lleu Llaw Gyffes
+Lugh Lamhfada
+Lughnasadh
+Mac Cecht
+Macha Mong Ruad
+Manawydan
+Maponos
+Math ap Mathonwy
+Morrígan
+Nechtan
+Niamh of the Golden Hair
+Nuada Airgetlám
+Anansi
+Orunmila
+Ogun
+Yemoja
+Eshu
+Amma
+Nommo
+Mawu-Lisa
+Obatala
+Shango
+Oya
+Osun
+Aganju
+Olokun
+Nana Buluku
+Abuk
+Garang
+Deng
+Abassi
+Atai
+Nyame
+Asase Ya
+Kwaku Ananse
+Oduwa
+Ajok
+Coyote
+Iktomi
+Thunderbird
+Glooscap
+Nanabozho
+Sedna
+Spider Woman
+Changing Woman
+White Buffalo Woman
+Wakinyan
+Sky Woman
+Gitche Manitou
+Corn Mother
+Black Hawk
+Blue Jay
+Bear Woman
+Flint
+Horned Serpent
+Piasa
+Kanati
+Selu
+Tsul 'Kalu
+Windigo
+Yanauluha
+Mami Wata
+Sakpata
+Legba
+Ochosi
+Osoosi
+Babalu Aye
+Orisha Oko
+Oba
+Erinle
+Damballah
+Ayida-Weddo
+Gu
+Xevioso
+Agwe
+Papa Legba
+Ogoun
+Erzulie
+Baron Samedi
+Loko
+Ayizan
+Marassa Jumeaux
+Agassou
+Bossou Ashade
+Congo Savanne
+Algon
+Manabozho
+Nanabush
+Napi
+Old Man Coyote
+Quetzalcoatl
+Tawa
+Wakan Tanka
+Wisakedjak
+Xelas
+Yoskeha
+Azeban
+Michabo
+Matshishkapeu
+Gluskap
+Hayoka
+Amotken
+Chipiapoos
+Cagn
+Esaugetuh Emissee
+Maui
+Pele
+Tāne
+Tangaroa
+Rangi and Papa
+Hina
+Tiki
+Ku
+Lono
+Kanaloa
+Namaka
+Haikili
+Rongo
+Tu
+Whiro
+Aitupua
+Hotu Matua
+Tawhaki
+Rata
+Hinemoa
+Kahukura
+Tane-rore
+Tutanekai
+Hine-nui-te-pō

@@ -1,0 +1,1178 @@
+Vul-Tra
+Zik-Mit
+Sho-Dan
+Vid-Tak
+Kod-Mok
+Hum-Lat
+Rik-Hen
+Utr-Fas
+Pol-Tup
+Rom-Mor
+Irk-Sas
+Vik-Zul
+Zar-Pak
+Cor-Bad
+Tar-Zim
+Hur-Zam
+Vol-Tur
+Ima-Rug
+Ult-Amo
+Ara-Fal
+Fik-Yma
+Pok-Zor
+Rel-Tik
+Bak-Tas
+Rem-Suk
+Ula-Fon
+Fej-Bon
+Rak-Tar
+Mik-Zul
+Vad-Bak
+Hen-Tas
+Mok-Ilm
+Zuk-Tor
+San-Tar
+Imi-Ysk
+Vid-Hur
+Ham-Cor
+Cin-Nic
+Alk-Tar
+Zir-Zir
+Uni-Pok
+Las-Fik
+Tir-Fej
+Mon-Tor
+Kos-Lar
+Vim-Der
+Pot-Aka
+Taq-Ulu
+Ben-Bon
+Ack-Ack
+Rit-LarRit-Lesuk
+Rit-Kep
+Rit-Far
+Rit-Vul
+Rit-Lefr
+Rit-Truhk
+Rit-Fex
+Rit-Zud
+Rit-Flaxr
+Rit-Puwk
+Rit-Kwyr
+Rit-Wod
+Rit-Yuz
+Rit-Lox
+Rit-Wrol
+Rit-Acx
+Rit-Mun
+Rit-Fah
+Rit-Kex
+Wer-For
+Wer-Hyl
+Wer-Zlo
+Wer-Par
+Wer-Vol
+Hulkrab Muxi
+Inklac Muxi
+Opalc Muxi
+Xactiz Muxi
+Knak Muxi
+Hulkrab Spectrac
+Inklac Spectrac
+Opalc Spectrac
+Xactiz Spectrac
+Knak Spectrac
+Hulkrab Nixpac
+Inklac Nixpac
+Opalc Nixpac
+Xactiz Nixpac
+Knak Nixpac
+Hulkrab Trobbjax
+Inklac Trobbjax
+Opalc Trobbjax
+Soaring Hatchling
+Fighting Hatchling
+Nimble Hatchling
+Defiant Hatchling
+Resilient Hatchling
+Furious Hatchling
+Confident Hatchling
+Clever Hatchling
+Cunning Hatchling
+Prodigal Hatchling
+Jubilant Hatchling
+Impudent Hatchling
+Crazy Hatchling
+Observant Hatchling
+Vengeful Hatchling
+Spiteful Hatchling
+Vindictive Hatchling
+Restless Hatchling
+Ravenous Hatchling
+Ruthless Hatchling
+Brave Hatchling
+Fearless Hatchling
+Jovial Hatchling
+Indignant Hatchling
+Sly Hatchling
+Silly Hatchling
+Happy Hatchling
+Unstable Hatchling
+Prudent Hatchling
+Solitary Hatchling
+Perceptive Hatchling
+Unpredictable Hatchling
+Soaring Plumage
+Fighting Plumage
+Nimble Plumage
+Defiant Plumage
+Resilient Plumage
+Furious Plumage
+Confident Plumage
+Clever Plumage
+Cunning Plumage
+Prodigal Plumage
+Jubilant Plumage
+Impudent Plumage
+Crazy Plumage
+Observant Plumage
+Vengeful Plumage
+Spiteful Plumage
+Vindictive Plumage
+Restless Plumage
+Ravenous Plumage
+Ruthless Plumage
+Brave Plumage
+Fearless Plumage
+Jovial Plumage
+Indignant Plumage
+Sly Plumage
+Silly Plumage
+Happy Plumage
+Unstable Plumage
+Prudent Plumage
+Solitary Plumage
+Perceptive Plumage
+Unpredictable Plumage
+Impetuous Plumage
+Baneful Plumage
+Devious Plumage
+Graceful Plumage
+Unyielding Plumage
+Ythleem-Ju
+Vakeem-Ju
+Madeem-Ju
+Retheem-Ju
+Bolteem-Ju
+Valleem-Ju
+Buffeem-Ju
+Bammadeem-Ju
+Toscheem-Ju
+Vabreem-Ju
+Juleem-Ju
+Mikreem-Qa
+Kashmadeem-Qa
+Rashbadeem-Qa
+Condeem-Qa
+Indageem-Qa
+Keleem-Qa
+Viggadeem-Qa
+Othafeem-Qa
+Korbadeem-Qa
+Kanjareem-Qa
+Jockeem-Qa
+Sareem-Qa
+Vukreem-Qa
+Soltreem-Bu
+Gardeem-Bu
+Ythareem-Bu
+Nagreem-Bu
+Pethreem-Bu
+Vagreem-Bu
+Yehm-Guulyeg
+Yehm-Frahan
+Yehm-Qiigrud
+Yehm-Priidgynn
+Yehm-Taagrid
+Yehm-Neerolg
+Yehm-Tuurazh
+Yehm-Phuetl
+Yehm-Houtrend
+Yehm-Yglaagd
+Yehm-Ruuvgru
+Yehm-Tiiqup
+Yehm-Daaremt
+Yehm-Traguud
+Yehm-Wootunn
+Yehm-Raaslurg
+Yehm-Rehm
+Yehm-Nargudd
+Yehm-Fiilyub
+Yehm-Raasud
+Yehm-Plourh
+Yehm-Fleeyup
+Yehm-Putrieeg
+Yehm-Shaaluv
+Yehm-Khaarnob
+Yehm-Truukend
+Yehm-Gfaleehn
+Yehm-Yduumen
+Yehm-Muldaryyn
+Yehm-Trooghum
+Yehm-Beiiyud
+Yehm-Tiipagh
+Yehm-Sughraad
+Yehm-Filgfuul
+Yehm-Buydool
+Aardvark
+Accentor
+Adder
+Albatross
+Alligator
+Anaconda
+Antelope
+Armadillo
+Asp
+Badger
+Bass
+Beagle
+Bloodhound
+Buffalo
+Bulldog
+Buzzard
+Camel
+Cheetah
+Cobra
+Coyote
+Dingo
+Dolphin
+Dragonfly
+Dromedary
+Eagle
+Elephant
+Falcon
+Ferret
+Firefly
+Fox
+Gazelle
+Glowworm
+Grey Wolf
+Greyhound
+Haddock
+Hawk
+Jackal
+Jackdaw
+Jaguar
+Kangaroo
+Kestrel
+King Cobra
+King Fish
+Ladybird
+Leopard
+Lion
+Lizard
+Lynx
+Minx
+Mongoose
+Mosquito
+Narwhal
+Nighthawk
+Ocelot
+Orca
+Osprey
+Panther
+Peacock
+Pelican
+Penguin
+Petrel
+Platypus
+Polecat
+Porcupine
+Puma
+Python
+Rattlesnake
+Raven
+Salamander
+Sardine
+Scorpion
+Shark
+Shrike
+Skylark
+Sparrow
+Spider
+Starfish
+Stingray
+Stork
+Sturgeon
+Swordfish
+Tapir
+Tiger
+Tiger Shark
+Vulture
+Walrus
+Wolverine
+Apache
+Aztec
+Mayflower
+Abundance
+Bountiful
+Felicity
+Hope
+Opportunity
+Serenity
+Unity
+Destiny
+Britannia
+Byzantium
+Caledonia
+El Dorado
+Knossos
+Memphis
+Olympus
+Persepolis
+Sierra de la Plata
+Sparta
+Valhalla
+Crystal Palace
+Alaska
+Angola
+Australia
+Brazil
+Canada
+Congo
+Guinea
+India
+Indonesia
+Jamaica
+Macau
+Mozambique
+Philippines
+Somalia
+Sri Lanka
+Taiwan
+Aldrin
+Armstrong
+Columbus
+Copernicus
+Cortez
+Drake
+Hubble
+Goddard
+Galileo
+Einstein
+Gagarin
+Tereshkova
+Zheng He
+Leif Ericson
+Magellan
+James Cook
+Marco Polo
+Newton
+Tesla
+Von Braun
+Walter Raleigh
+Asimov
+Clark
+Sagan
+Ibn Battuta
+Kepler
+Ptolemy
+Pytheas
+Azophi
+Discovery
+Voyager
+Tradewind
+Scout
+Pioneer
+Explorer
+Sojourner
+Santa Maria
+Hawking
+Earhart
+Nobel
+Kelvin
+Fahrenheit
+Equinox
+Lagrange
+Tsiolkovsky
+Amsterdam
+Austin
+Athens
+Atlanta
+Baghdad
+Baltimore
+Bangkok
+Barcelona
+Beijing
+Belfast
+Berlin
+Bombay
+Boston
+Hyderabad
+Budapest
+Buenos Aires
+Cairo
+Calcutta
+Cape Town
+Chicago
+Copenhagen
+Damascus
+Dar es Salaam
+Detroit
+Dubai
+Dublin
+Edinburgh
+Gibraltar
+Glasgow
+Guangzhou
+Hanoi
+Havana
+Helsinki
+Hong Kong
+Houston
+Istanbul
+Jakarta
+Jerusalem
+Johannesburg
+Kiev
+London
+Los Angeles
+Madrid
+Manila
+Minsk
+Moscow
+Mumbai
+New York
+New Orleans
+Novgorod
+Osaka
+Oslo
+Paris
+Prague
+Rio de Janeiro
+Rome
+Rotterdam
+San Francisco
+Sao Paulo
+Sarajevo
+Seattle
+Seoul
+Sevastopol
+Shanghai
+Singapore
+St. Louis
+Stockholm
+Tokyo
+Toronto
+Vancouver
+Vienna
+Vladivostok
+Warsaw
+Sydney
+Brisbane
+Mexico City
+München
+Nairobi
+Smolensk
+Casablanca
+Venice
+Bolivar
+Brusilov
+Churchill
+Clausewitz
+Garibaldi
+Gustavus Adolphus
+Hammurabi
+Julius Caesar
+Justinian
+Lincoln
+Patton
+Rommel
+Sun Tzu
+Liberator
+Zhukov
+Alexander Nevsky
+Pyrrhus
+Yi Sun-sin
+Heihachiro
+Khalid ibn al-Walid
+Vasa
+Hindenburg
+De Gaulle
+Subutai
+Nagato
+Scharnhorst
+Clemenceau
+Richelieu
+Jean Bart
+Sparviero
+Affondatore
+Tromp
+De Ruyter
+Esperanza
+Pelayo
+Velasco
+Juneau
+Sherwood
+Alamo
+Bannockburn
+Borodino
+Breitenfeld
+Cannae
+El Alamein
+Gaugamela
+Kadesh
+Kursk
+Masada
+Normandy
+Salamis
+Sedan
+Tannenberg
+Ticonderoga
+Thermopylae
+Marengo
+Leipzig
+Shiloh
+Königgrätz
+Ypres
+Somme
+Suomussalmi
+Kharkov
+Guadalcanal
+Leyte Gulf
+Dien Bien Phu
+Thymbra
+Manassas
+Blenheim
+Unicorn
+Adelphi
+Angel
+Borealis
+Bounty
+Emancipator
+Morning Star
+Shi Lang
+Vikramaditya
+Viraat
+Vikrant
+Vishal
+Napoleon
+Kongo
+Oriskany
+Bunker Hill
+Farragut
+Kitty Hawk
+Royal Oak
+Thunderbolt
+Royal Sovereign
+Marathon
+Frederick II
+Nimitz
+Eisenhower
+Roland
+Tran Hung Dao
+Themistocles
+Benor
+Ulysses
+Xenophon
+Xerxes
+Nelson
+Hercules
+Icarus
+Atlas
+Apollo
+Ajax
+Bellerophon
+Excalibur
+Agrippa
+Alexander
+Belisarius
+Hannibal
+Washington
+Saladin
+Bismarck
+Yamato
+Actium
+Agincourt
+Austerlitz
+Gettysburg
+Jutland
+Trafalgar
+Tsushima
+Valley Forge
+Verdun
+Waterloo
+Granicus
+Pharsalus
+Akira
+Charlemagne
+Black Prince
+Hood
+Potemkin
+Musashi
+Warspite
+Victory
+Courage
+Dauntless
+Endeavor
+Excelsior
+Formidable
+Indefatigable
+Chivalrous
+Valiant
+Monitor
+Bulwark
+Defender
+Endurance
+Vigilant
+Resolute
+Fortitude
+Yamamoto
+Lexington
+Midway
+Saratoga
+Yorktown
+Coral Sea
+Hermes
+Wasp
+Hornet
+Ark Royal
+Essex
+Akagi
+Kaga
+Illustrious
+Intrepid
+Invincible
+Enterprise
+Constellation
+Constitution
+Ranger
+Andromeda
+Aquila
+Century
+Concord
+Defiant
+Galaxy
+Odyssey
+Orion
+Providence
+Reliant
+Pegasus
+Mercury
+Venus
+Terra
+Mars
+Jupiter
+Saturn
+Uranus
+Neptune
+Luna
+Phobos
+Deimos
+Ceres
+Ganymede
+Callisto
+Io
+Europa
+Titan
+Rhea
+Iapetus
+Dione
+Tethys
+Enceladus
+Mimas
+Titania
+Oberon
+Umbriel
+Ariel
+Miranda
+Triton
+Pluto
+Charon
+Urgion
+Datarrion
+Lurrion
+Nargion
+Astarion
+Peragion
+Selemarion
+Lysargion
+Lusmargion
+Hemberarion
+Eshnenarion
+Satharion
+Sulugarion
+Antargion
+Bessemargion
+Vilargion
+Ysmargion
+Ytharion
+Berekarion
+Comporgion
+Cennergion
+Callustion
+Hethenion
+Daforgion
+Nifargion
+Cibbanion
+Evanion
+Umselanion
+Usselargion
+Sukuragion
+Deterabion
+Dargion
+Shanarion
+Tirindion
+Kasmalarion
+Sedrinion
+Hodronumion
+Hasarion
+Pakharion
+Gatharion
+Pondoranion
+Vussagion
+Diramion
+Fidraggion
+Hallamion
+Bathradurion
+Janarion
+Pinatarion
+Jhunustarion
+Sacradarion
+Muntadarion
+Volmanarion
+Pedrinamion
+Oldaragion
+Kargion
+Winithion
+Lakarion
+Dukrumurion
+Nastarion
+Nisorgion
+Thagarion
+Kordurion
+Kadramurion
+Condarion
+Cifritharion
+Rebrinthion
+Cathradarion
+Cimbarion
+Duthrularion
+Entherabion
+Redevellion
+Pentarigion
+Bantarion
+Bijinarion
+Valdanarion
+Ithisarion
+Tolarion
+Chambadarion
+Faldevarion
+Nimbadarion
+Zadarion
+Beseldur
+Ganandur
+Vilkasordur
+Jamdur
+Porandur
+Bakandur
+Itraldur
+Varandur
+Jarmakdur
+Sandur
+Kirmandur
+Tondur
+Pasdur
+Livandur
+Ryndur
+Hiramdur
+Ynamdur
+Camdur
+Cabandur
+Jinndur
+Darasdur
+Divimdur
+Avamdur
+Athirimdur
+Ascarimdur
+Ijimdur
+Wimdur
+Trandur
+Evamdur
+Enildur
+Ecandur
+Timdur
+Packandur
+Joldur
+Rangdur
+Rominadur
+Pivamdur
+Maldur
+Makandur
+Nakondur
+Binamdur
+Kaldur
+Kondur
+Uramdur
+Ubrildur
+Rebbendur
+Kramdur
+Konagdur
+Etaradur
+Sschlurga
+Gloib
+Schlaglur
+Gollopogg
+Gaggam
+Sshloph
+Paggon
+Paddagur
+Saggurss
+Igorss
+Ssaamilgus
+Kaggasch
+Suggron
+Kaggassulh
+Ogassch
+Ograggass
+Gisch
+Saloip
+Peroig
+Kudoig
+Kasablass
+Iggis
+Angogga
+Aglurga
+Argagg
+Alpoig
+Uschlass
+Uriss
+Ukaschma
+Ygglasch
+Odolss
+Sismuath
+Poggora
+Schashqa
+Gamuasch
+Gorgil
+Illisch
+Asiggab
+Umasch
+Happosch
+Jaggon
+Jusch
+Jakusch
+Jurgla
+Laggasch
+Lurgluss
+Liggosch
+Alascha
+Agguldir
+Lollusch
+Loggajis
+Paggsch
+Obrogg
+Tegglosch
+Tugglusch
+Iggalasch
+Waggalusch
+Wirglurg
+Wossag
+Withlasch
+Gawagga
+Gijjigg
+Wergta
+Iragg
+Yssagg
+Boldrosch
+Bischglur
+Bossgar
+Sossagg
+Higgla
+Havaggasch
+Wagolasch
+Korgasch
+Schlumon
+Pathagga
+Oggal
+Paschgo
+Gaschalga
+Kaschaliss
+Jaschaglur
+Jogloib
+Uggoib
+Palschoib
+Urgusch
+Schalgor
+Haggusch
+Iogg
+Dorgjasch
+Mildrosch
+Maggasch
+Mirglorg
+Schlobbjor
+Schashka
+Gogglir
+Eglana
+Jaggogish
+Oggar
+Ugascha
+Iggam
+Yggschatt
+Addloug
+Ulourmgasch
+Kadgruums
+Schuutess
+Giggalws
+Wuegglar
+Glopposchib
+Plidbogg
+Powagglun
+Kopebuglun
+Bafghien
+Dugglensch
+Jarubsch
+Ssogbudk
+Uglarssob
+Jabbloud
+Ssunbesch
+Bakhuegg
+Muascholg
+Kuarregg
+Guklossh
+Halguggen
+Abuschegg
+Ygglum
+Mulgrysch
+Ymbdagss
+Jallgeb
+Juranssul
+Tillgunsch
+Badheigg
+Dhassigur
+Wimmgud
+Wajjugh
+Ghundagh
+Ijagssul
+Tillganssul
+Bafghuld
+Gan'Fuss
+Gan'Djom
+Gan'Livm
+Gan'Dov
+Gan'Alin
+Gan'Obb
+Gan'Ell
+Gan'Umul
+Gan'Ahb
+Gan'Blal
+Gan'Alv
+Gan'Orth
+Si'Fuss
+Si'Djom
+Si'Livm
+Si'Dov
+Si'Alin
+Si'Obb
+Si'Ell
+Si'Umul
+Si'Ahb
+Si'Blal
+Si'Alv
+Si'Orth
+Duj'Fuss
+Duj'Djom
+Duj'Livm
+Duj'Dov
+Duj'Alin
+Duj'Obb
+Duj'Ell
+Duj'Umul
+Duj'Ahb
+Duj'Blal
+Duj'Alv
+Duj'Orth
+Fin'Fuss
+Fin'Djom
+Fin'Livm
+Fin'Dov
+Fin'Alin
+Fin'Obb
+Fin'Ell
+Fin'Umul
+Fin'Ahb
+Fin'Blal
+Fin'Alv
+Fin'Orth
+Trum'Pakh
+Trum'Dolon
+Trum'Sarim
+Trum'Doloss
+Trum'Rokh
+Trum'Vakhna
+Trum'Kariss
+Trum'Poffon
+Trum'Hariss
+Trum'Soyob
+Trum'Dakhan
+Trum'Voim
+Trum'Dukh
+Trum'Vassk
+Trum'Esam
+Trum'Cassthar
+Trum'Barkan
+Trum'Lampan
+Trum'Rokba
+Trum'Histan
+Trum'Oloman
+Trum'Okran
+Trum'Fokin
+Trum'Farass
+Trum'Iomath
+Trum'Mothon
+Trum'Dialom
+Trum'Bodnok
+Trum'Bathnor
+Trum'Zoyom
+Trum'Abnar
+Trum'Reeken
+Alam'Bissna
+Alam'Turom
+Alam'Taratha
+Alam'Tisska
+Alam'Purim
+Alam'Shuss
+Alam'Parathnak
+Alam'Gioshum
+Alam'Korob
+Alam'Hinthab
+Alam'Kulom
+Alam'Avintok
+Alam'Tannek
+Alam'Sior
+Alam'Rossul
+Alam'Bebinna
+Alam'Fethon
+Alam'Polluner
+Alam'Rastram
+Alam'Treesk
+Alam'Enerpul
+Alam'Buskat
+Pob'Tirin
+Pob'Kassh
+Pob'Onor
+Pob'Greefad
+Pob'Minisk
+Pob'Sumath
+Pob'Ereesim
+Pob'Kreedak
+Pob'Duthur
+Pob'Hialash
+Pob'Vermeb
+Pob'Badram
+Pob'Buvdar
+Pob'Tharat
+Pob'Illith
+Pob'Vikham
+Pob'Thorok
+Pob'Rumber
+Pob'Ikath
+Xad-Nyak
+Xederex
+Zadhadex
+Xontex
+Xadamach
+Xedleetha
+Xiin
+Zadakhat
+Ximang
+Zaraxes
+Ziinaxad
+Xadara
+Xischmi
+Zongax
+Zaraxim
+Zidix
+Zadaxon
+Zixim
+Ciimixin
+Ceremax
+Casarax
+Codvox
+Xiad
+Xomba
+Cardaxes
+Cardix
+Xobbon
+Zidinix
+Zarakh
+Zidrimax
+Zymtarax
+Cidjax
+Ximpa
+Xarxa
+Xogor
+Xanar
+Zilgar
+Deltox
+Zinivar
+Zendjax
+Zorixon
+Derazix
+Dolzor
+Dargaxor
+Darbix
+Daraxa
+Diinorzo
+Debar-Zax
+Zor-Kalos
+Zur-Talax
+Xom-Buruk
+Xol-Remok
+Xar-Corox
+Zel-Dotor
+Zod-Garax
+Diigarzak
+Zebarax
+Cyntharzo
+Conobax
+Carox
+Dez-Hilam
+Dax-Endiv
+Zablinnox
+Zapozor
+Zakithor
+Zadamak
+Zikrax
+Zuuldorox
+Zaximock
+Zaatrix
+Xoldagoros
+Xurinzaga
+Xorbozhaga
+Caldorix
+Cathrox
+Dexirama
+Dezuzarix
+Dirixiz
+Descorax
+Difirixamon
+Canix
+Zakarax
+Zithrix
+Cablarex
+Xarkaz
+Xeplaz
+Xevarex
+Damonix
+Decorza
+Daxarim
+Zakardim
+Xodarciz
+Zimizar
+Zulxari
+Zib-Korox
+Xuv-Xanim
+Xol-Irix
+Xam-Zevon
+Zed-Kevlax

@@ -1,0 +1,500 @@
+United Earth
+Terra Nova
+Zephyria
+Aerialis
+Xylothorian
+Arborean
+Sylvan
+Dracovian
+Scalekin
+Luminaut
+Luminar
+Starlight
+Neptidorian
+Aquatic
+Arachnacite
+Silkstrider
+Aquaphyte
+Hydrofloral
+Kelpweaver
+Gravitar
+Pyroserpent
+Flamewind
+Glacifolk
+Cryogel
+Frostheim
+Mechandroid
+Automach
+Mechanar
+Myceloid
+Mycospore
+Fungineer
+Caeliphids
+Solarian
+Aetherial
+Selenari
+Selene
+Lunarian
+Chlorogreen
+Chlorosylvan
+Verdant
+Zirconite
+Corundum
+Crystalforge
+Vortexian
+Vortex
+Tempest
+Novacat
+Novaclaw
+Stellar Feline
+Aurumites
+Aurumite
+Gilded
+Geolith
+Geocrystal
+Terraplate
+Nebulon
+Celestial
+Astral
+Cosmic Cloud
+Polychroman
+Spectrum
+Plasma Orb
+Energysphere
+Cryosylphs
+Cryoaurora
+Frostwind
+Gemini
+Twinstar
+Velocipod
+Velocihive
+Speedspine
+Ender
+Elytrian
+Ethereal
+United Stellar
+Voidborn
+Orion
+Zentari
+Xyran
+Vortelian
+Draconex
+Iridian
+Seraphic
+Viridian
+Zenithian
+Exoplanar
+Nebulaic
+Uplifted
+Hyperion
+Stellarnova
+Oortian
+Quantum
+Apexian
+Radiant Star
+Lichenoid
+Hyphal
+Geodite
+Crystallith
+Stoneshield
+Granitecore
+United Solarius
+Terranova
+Celestium
+Astrum
+Nova Terra
+Solarion
+Galactic
+Ouranos
+Starborn
+Zenith
+Helion
+Proxima Centauri
+Alpha Centauri
+Betelgeusia
+Sirius
+Andromedian
+Draconis
+Lyran
+Vega Nexus
+Polaris
+Gunthorian
+Elfinar
+Mahjarrat
+Mythica
+Celestelar
+Eldoria
+Faerunian
+Luminaar
+Starhaven
+Eternia
+Mammalax
+Furion Sectors
+Animalia
+Canopis
+Ursar Major
+Leonid Empire
+Tauron Fields
+Cetacear Ocean
+Panterion
+Lupus Void
+Reptilux
+Dracorion
+Saurian Depths
+Viperion Expanse
+Crocodilian Front
+Gekkonid Grip
+Serpentia
+Chameleon Cloud
+Raptoria
+Tortugan Terminus
+Aviarium
+Feathered Skies
+Raptorion
+Phoenix
+Skylar
+Aquilarian
+Talonar
+Winged Horizon
+Harpy’s Reach
+Corvidae
+Arachnia Web
+Insectar
+Scarabia
+Mantodea
+Crustacea Cove
+Coleoptera
+Myriapoda
+Arthropoid Axis
+Lepidoptera
+Formicidae
+Cephalopodia
+Molluscar
+Nautilon
+Bivalviain
+Gastropod Glade
+Calamaria
+Shellshock
+Inkaria
+Squidia
+Clamorion
+Mycelium
+Fungarion
+Sporidia
+Moldara
+Lichenia
+Toadstool
+Gilled
+Yeastar
+Truffle Trench
+Penicillia
+Florania
+Botanica
+Chlorophyllium
+Thallus Thicket
+Arboria
+Verdant Vast
+Petal Peak
+Bloom Belt
+Orchidia
+Cactara
+Rockarion
+Crystal Cluster
+Gneiss Grotto
+Marble March
+Dorite
+Basalt Bastion
+Sedimentar
+Obsidian Orbit
+Quartz Quadrant
+Slate Sphere
+Necropolis
+Deathstar
+Ghoulish
+Cryptic
+Skeletal
+Phantom
+Wraith
+Banshee
+Draculon
+Spectral
+Aquarion
+Hydrogenia
+Coralium
+Abyssal
+Oceanus
+Tidal
+Nautical
+Seastar
+Pelagian
+Marine
+Toxarion
+Venomverse
+Rubicon
+Hazardia
+Radiarion
+Contaminate
+Pollutia
+Corrosia
+Toxic Tide
+Miasma
+MechMeld
+Robotic Realm
+Cyber Core
+Synthetic Sphere
+Android Axis
+Techno Terrains
+Automaton Abyss
+Circuit City
+Machine Matrix
+Gear Genesis
+Dimension Delta
+Transdimensional
+Realm Rift
+Vortex Vale
+Quantum Quasar
+Warp World
+Paradox Plane
+Interstice
+Distant Stars
+Zarosian
+Mammalix
+Panthera
+Ursaris
+Cervidae
+Lupinor
+Balaenoptera
+Equidar
+Vulpexus
+Caninix
+Leporidae
+Elephas
+Felidar
+Rhinoria
+Caprinar
+Delphinus
+Dracoria
+Crocodylia
+Serpenta
+Iguanor
+Chelonii
+Varanus
+Pythonix
+Anolis
+Tortugan
+Geckonia
+Natrix
+Basiliskar
+Colubridae
+Lacerta
+Agama
+Avianor
+Korvidae
+Falconix
+Psittacara
+Strigiformes
+Passerine
+Anatidae
+Columbidae
+Accipitridae
+Alaudidae
+Fringillidae
+Ciconiidae
+Tytonidae
+Gruidae
+Ardeidae
+Arachnix
+Formicar
+Panthoptera
+Coleoptix
+Diptera
+Odonata
+Mantida
+Blattodea
+Isoptera
+Hymenoptera
+Orthoptera
+Chilopoda
+Araneae
+Myriapodix
+Scolopendra
+Cephalopodex
+Gastropodix
+Bivalvian
+Kubernetion
+Veneroida
+Aplysia
+Limacina
+Patella
+Conus
+Sepiida
+Nudibranchia
+Planorbis
+Scaphopoda
+Polyplacophora
+Neritina
+Mycelion
+Fungoria
+Sporidix
+Agaricon
+Penicilliumix
+Basidiomycota
+Ascomycota
+Trichoderma
+Lichenix
+Amanita
+Coprinus
+Ganoderma
+Claviceps
+Puccinia
+Geastrum
+Flora
+Botanic
+Foliata
+Rosidae
+Sempervivum
+Bromelia
+Cactaceae
+Helianthus
+Orchidium
+Magnolia
+Sequoiax
+Aconitum
+Belladonna
+Nepenthes
+Tillandsia
+Dimensionar
+Transcendix
+Realmix
+Vortexar
+Quantumia
+Warpex
+Paradoxar
+Intersticix
+Anomalia
+Etherar
+Riftia
+Nebulonix
+Voidar
+Cosmosia
+Infinityar
+Mechar
+Roboton
+Cybor
+Synthetix
+Androidia
+Technon
+Automatar
+Circutron
+Gearion
+Dronix
+Matrixia
+Binarya
+Nanoar
+Byteon
+Digitalix
+Toxix
+Venomar
+Poisonix
+Mustardia
+Radiatix
+Contamix
+Pesticar
+Corrosion
+Plaguia
+Toxicar
+Smogon
+Acidar
+Fumex
+Vilex
+Noxian
+Aquarix
+Hydrox
+Coralix
+Abyssia
+Oceanix
+Tidalis
+Nauticar
+Seastarix
+Pelagianix
+Marinex
+Krakenar
+Mermaidian
+Nautilia
+Barnaclex
+Dolphinar
+Necronix
+Cryptar
+Ghoulox
+Phantomar
+Skeletar
+Wraithix
+Bansheon
+Specteria
+Undeadar
+Lichar
+Revenar
+Gravia
+Mortix
+Shadowar
+Hauntar
+Andesitex
+Crystalix
+Gneissar
+Marbleon
+Granitex
+Basaltor
+Gravelix
+Obsidianix
+Quartzar
+Slatia
+Amberium
+Berylia
+Feldsparix
+Garnetar
+Jasperix
+Floranix
+Botanar
+Chlorophyllar
+Thallusia
+Arboriax
+Verdantia
+Petalia
+Bloomix
+Orachaliumia
+Cactaron
+Fernia
+Willowind
+Ivoria
+Brocolia
+Lotaria
+Hyaphia
+Mooshrumia
+Chanterellia
+Filiformia
+Amanitaria
+Toadstoolia
+Gilledom
+Brevisporia
+Lactarius
+Elatia
+Morelia
+Bimbaumilia
+Shiitakear
+Porcinix
+Bisporelia
+Cephalodex
+Molluskar
+Aspersumix
+Helcionellia
+Siphunculata
+Caudofelidae
+Shellshockar
+Inkwellia
+Squidian
+Clamoria
+Oysterion
+Scallopex
+Musselia
+Abalonix
+Conchar

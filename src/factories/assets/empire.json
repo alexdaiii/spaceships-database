@@ -1,0 +1,20 @@
+{
+  "authorities": [
+    "oligarchic",
+    "democratic",
+    "dictatorial",
+    "imperial",
+    "hive_mind",
+    "machine_intelligence"
+  ],
+  "ethics": [
+    "egalitarian",
+    "authoritarian",
+    "xenophobe",
+    "xenophile",
+    "pacifist",
+    "militarist",
+    "materialist",
+    "spiritualist"
+  ]
+}
