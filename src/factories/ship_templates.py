@@ -9,13 +9,8 @@ from faker import Faker
 from sqlalchemy import Engine, insert
 
 from src.database.db import get_session
-from src.models import (
-    ShipClass,
-    SpaceshipModule,
-    ShipTemplate,
-    ShipTemplateModule,
-)
-from src.util import df_info
+from src.models import (ShipClass, ShipTemplate, ShipTemplateModule,
+                        SpaceshipModule)
 
 from .utils.ships_util import ship_class_df, ship_modules
 from .utils.util import STARTING_ID

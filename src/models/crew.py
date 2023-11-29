@@ -11,16 +11,15 @@ class Crew(Base):
 
     crew_id: Mapped[int] = mapped_column(primary_key=True)
     crew_name: Mapped[str] = mapped_column(String(255))
-    spaceship_id: Mapped[int | None] = mapped_column(
+    spaceship_id: Mapped[int] = mapped_column(
         ForeignKey("spaceship.spaceship_id"),
-        nullable=True,
     )
-    command_points: Mapped[int | None]
+    command_points: Mapped[int] = mapped_column(default=0)
     reports_to: Mapped[int | None] = mapped_column(
         ForeignKey("crew.crew_id"), nullable=True
     )
     birth_date: Mapped[datetime.datetime]
-    hire_date: Mapped[datetime.datetime | None]
+    hire_date: Mapped[datetime.datetime]
     planet_of_birth_id: Mapped[int] = mapped_column(
         ForeignKey("planet.planet_id")
     )

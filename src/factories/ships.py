@@ -1,15 +1,15 @@
 import colorful as cf
 import numpy as np
 import pandas as pd
-from sqlalchemy import Engine, select, insert
+from sqlalchemy import Engine, insert, select
 
-from src.models import Fleet, ShipTemplate, ShipClass, Spaceship
+from src.database.db import get_session
+from src.models import Fleet, ShipClass, ShipTemplate, Spaceship
+from src.util import get_location
 
 from .utils.ships_empire_util import empire_fleet_info
 from .utils.ships_util import ship_class_df
-from src.database.db import get_session
 from .utils.util import load_file
-from ..util import df_info, get_location
 
 
 def add_empire_ships(rng: np.random.Generator, *, engine: Engine):
@@ -20,8 +20,6 @@ def add_empire_ships(rng: np.random.Generator, *, engine: Engine):
             f"Adding {empire_fleets['total_ships'].sum()} ships to empires"
         )
     )
-
-    df_info(empire_fleets)
 
     for ship_class in ship_class_df()["ship_class_name"].unique():
         print(f"Adding {ship_class} ships to empires")
@@ -68,7 +66,9 @@ def add_ships(
     rng: np.random.Generator,
     engine: Engine,
 ):
-    if empire[f"num_{ship_class}"] <= 0:
+    num_ships = empire[f"num_{ship_class}"]
+
+    if num_ships <= 0:
         return
 
     ship_suffix_file = "./assets/ship_suffix.txt"
@@ -82,20 +82,23 @@ def add_ships(
                         f"{suffix}",
                         "spaceship_fleet_id": int(fleet),
                         "spaceship_template_id": int(template),
-                        "spaceship_experience": 0,
+                        "spaceship_experience": int(xp),
                     }
-                    for fleet, suffix in zip(
+                    for fleet, suffix, xp in zip(
                         rng.choice(
                             get_fleets_by_empire_id(
                                 engine, empire_id=int(empire["empire_id"])
                             )["fleet_id"],
-                            size=empire[f"num_{ship_class}"],
+                            size=num_ships,
                             replace=True,
                         ),
                         rng.choice(
                             load_file(get_location(), ship_suffix_file),
-                            size=empire[f"num_{ship_class}"],
+                            size=num_ships,
                             replace=True,
+                        ),
+                        rng.integers(
+                            0, empire["command_limit"] + 1, size=num_ships
                         ),
                     )
                 ]

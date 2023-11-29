@@ -9,13 +9,8 @@ from sqlalchemy import Engine, insert
 from src.database.db import get_session
 from src.models.star_system import StarSystem, StarType
 from src.settings import get_settings
-from src.util import (
-    MAX_NUM_STARS,
-    MIN_NUM_STARS,
-    get_location,
-    get_m_and_b,
-    get_yhat,
-)
+from src.util import (MAX_NUM_STARS, MIN_NUM_STARS, get_location, get_m_and_b,
+                      get_yhat)
 
 from .utils.celestial_bodies_util import stars_type_df
 from .utils.util import load_file

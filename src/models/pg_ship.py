@@ -155,6 +155,62 @@ pg_trg_4 = text(
     FOR EACH ROW EXECUTE PROCEDURE spaceship_rank_range_check();
     """
 )
+pg_ship_crew_check = text(
+    """    
+    CREATE OR REPLACE FUNCTION spaceship_crew_check()
+        RETURNS TRIGGER AS
+    $$
+    DECLARE
+        ship_name TEXT;
+        crew_count INTEGER;
+        crew_capacity INTEGER;
+    BEGIN
+        
+        -- get the crew count for the spaceship
+        SELECT INTO crew_count
+        COUNT(crew_id)
+        FROM crew
+        WHERE spaceship_id = NEW.spaceship_id;
+        
+        -- get the crew capacity for the spaceship
+        SELECT INTO crew_capacity ship_crew
+        FROM ship_class
+        JOIN ship_template ON ship_template.ship_class_id = ship_class.ship_class_id
+        JOIN spaceship ON spaceship.spaceship_template_id = ship_template.ship_template_id
+        WHERE spaceship_id = NEW.spaceship_id
+        LIMIT 1;
+        
+        -- >= bc this is a after trigger
+        IF crew_count > crew_capacity THEN
+            SELECT INTO ship_name spaceship_name
+            FROM spaceship
+            WHERE spaceship_id = NEW.spaceship_id;
+        
+            RAISE EXCEPTION 
+            'Spaceship [%] has reached its crew capacity of [%] crew members', 
+            ship_name, 
+            crew_capacity;
+        END IF;
+        
+        RETURN NEW;
+    
+    END;
+    $$
+    LANGUAGE plpgsql;
+    """
+)
+pg_trg_5 = text(
+    """
+    DROP TRIGGER IF EXISTS spaceship_crew_check_trg ON crew;
+    """
+)
+pg_trg_6 = text(
+    """
+    CREATE TRIGGER spaceship_crew_check_trg
+    AFTER INSERT OR UPDATE ON crew
+    FOR EACH ROW EXECUTE PROCEDURE spaceship_crew_check();
+    """
+)
 
 
 def add_trigger(engine: Engine):
@@ -174,6 +230,9 @@ def add_trigger(engine: Engine):
         session.execute(pg_spaceship_rank_range_check)
         session.execute(pg_trg_3)
         session.execute(pg_trg_4)
+        session.execute(pg_ship_crew_check)
+        session.execute(pg_trg_5)
+        session.execute(pg_trg_6)
 
 
 __all__ = ["add_trigger"]

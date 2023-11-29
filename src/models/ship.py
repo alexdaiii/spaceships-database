@@ -1,4 +1,4 @@
-from sqlalchemy import CheckConstraint, ForeignKey, String
+from sqlalchemy import CheckConstraint, ForeignKey, String, text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.database.base import Base
@@ -9,6 +9,7 @@ class ShipClass(Base):
 
     ship_class_id: Mapped[int] = mapped_column(primary_key=True)
     ship_class_name: Mapped[str] = mapped_column(String(255), unique=True)
+    ship_crew: Mapped[int]
 
     small_component_slots: Mapped[int] = mapped_column(default=0)
     medium_component_slots: Mapped[int] = mapped_column(default=0)
@@ -134,6 +135,21 @@ class SpaceshipRank(Base):
     spaceship_rank_name: Mapped[str] = mapped_column(String(255), unique=True)
     spaceship_min_experience: Mapped[int]
     spaceship_max_experience: Mapped[int]
+
+    __table_args__ = (
+        # check constraint - spaceship_max_experience must be greater
+        # than spaceship_min_experience
+        CheckConstraint(
+            "spaceship_max_experience > spaceship_min_experience",
+            "spaceship_max_experience_greater_than_min_check",
+        ),
+        # check constraint any of the experience values cannot be negative
+        CheckConstraint(
+            "spaceship_min_experience >= 0 "
+            "AND spaceship_max_experience >= 0",
+            "spaceship_experience_positive_check",
+        ),
+    )
 
 
 __all__ = [

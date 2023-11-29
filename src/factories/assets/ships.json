@@ -5,7 +5,8 @@
       "weapons": {
         "small": 3
       },
-      "command_points": 1
+      "command_points": 1,
+      "crew": 1
     },
     {
       "name": "frigate",
@@ -13,7 +14,8 @@
         "small": 5,
         "medium": 1
       },
-      "command_points": 1
+      "command_points": 1,
+      "crew": 2
     },
     {
       "name": "destroyer",
@@ -22,7 +24,8 @@
         "medium": 1,
         "small": 6
       },
-      "command_points": 2
+      "command_points": 2,
+      "crew": 5
     },
     {
       "name": "cruiser",
@@ -30,7 +33,8 @@
         "large": 2,
         "medium": 10
       },
-      "command_points": 4
+      "command_points": 4,
+      "crew": 7
     },
     {
       "name": "battleship",
@@ -38,7 +42,8 @@
         "xlarge": 1,
         "large": 10
       },
-      "command_points": 8
+      "command_points": 8,
+      "crew": 10
     },
     {
       "name": "titan",
@@ -46,7 +51,8 @@
         "titan": 1,
         "large": 18
       },
-      "command_points": 16
+      "command_points": 16,
+      "crew": 12
     },
     {
       "name": "juggernaut",
@@ -57,7 +63,8 @@
         "medium": 5,
         "small": 6
       },
-      "command_points": 32
+      "command_points": 32,
+      "crew": 15
     },
     {
       "name": "colossus",
@@ -65,14 +72,16 @@
         "colossus": 1,
         "large": 6
       },
-      "command_points": 64
+      "command_points": 64,
+      "crew": 20
     },
     {
       "name": "star_eater",
       "weapons": {
         "star_eater": 1
       },
-      "command_points": 128
+      "command_points": 128,
+      "crew": 25
     }
   ],
   "ship_weapons": {
@@ -148,5 +157,37 @@
         "black hole generator"
       ]
     }
-  }
+  },
+  "ranks": [
+    {
+      "name": "cadet",
+      "min_experience": 0,
+      "max_experience": 9
+    },
+    {
+      "name": "ensign",
+      "min_experience": 10,
+      "max_experience": 24
+    },
+    {
+      "name": "captain",
+      "min_experience": 25,
+      "max_experience": 50
+    },
+    {
+      "name": "commodore",
+      "min_experience": 51,
+      "max_experience": 99
+    },
+    {
+      "name": "admiral",
+      "min_experience": 100,
+      "max_experience": 199
+    },
+    {
+      "name": "grand admiral",
+      "min_experience": 200,
+      "max_experience": 999999
+    }
+  ]
 }

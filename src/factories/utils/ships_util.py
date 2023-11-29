@@ -28,6 +28,7 @@ class ShipClassInfo(BaseModel):
     name: str
     weapons: ShipWeaponInfo
     command_points: int
+    crew: int
 
 
 class ShipWeaponModInfo(BaseModel):
@@ -53,9 +54,16 @@ def add_component_slots(row: pd.Series):
     return row
 
 
+class ShipRanks(BaseModel):
+    spaceship_rank_name: str = Field(alias="name")
+    spaceship_min_experience: int = Field(alias="min_experience")
+    spaceship_max_experience: int = Field(alias="max_experience")
+
+
 class ShipsInfo(BaseModel):
     ship_class: list[ShipClassInfo]
     ship_weapons: ShipWeaponMod
+    ranks: list[ShipRanks]
 
     @computed_field
     @property
@@ -71,6 +79,7 @@ class ShipsInfo(BaseModel):
                         for k, val in ship_class.weapons.model_dump().items()
                     },
                     "ship_command_points": ship_class.command_points,
+                    "ship_crew": ship_class.crew,
                 }
                 for i, ship_class in enumerate(
                     self.ship_class, start=STARTING_ID

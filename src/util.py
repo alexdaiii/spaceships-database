@@ -1,3 +1,4 @@
+import datetime
 import inspect
 import os
 
@@ -5,6 +6,11 @@ import pandas as pd
 
 MIN_NUM_STARS = 1000
 MAX_NUM_STARS = 100000
+
+# utc time
+TIMEZONE = datetime.timezone.utc
+START_DATE = datetime.datetime(2200, 1, 1, tzinfo=TIMEZONE)
+CURR_DATE = datetime.datetime(2500, 1, 1, tzinfo=TIMEZONE)
 
 
 def get_location(file: str | None = None) -> str:
