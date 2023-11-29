@@ -2,17 +2,16 @@ import json
 import os
 from functools import lru_cache
 
+import colorful as cf
 import pandas as pd
 from pydantic import BaseModel, computed_field
-from sqlalchemy import Engine, select, func
+from sqlalchemy import Engine, func, select
 
 from src.database.db import get_session
 from src.models import Empire, EmpireToEthic, Planet, StarSystem
 from src.util import get_location
 
 from .util import STARTING_ID
-
-import colorful as cf
 
 
 class EmpireInfo(BaseModel):

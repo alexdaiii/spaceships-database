@@ -7,13 +7,8 @@ import colorful as cf
 from pydantic import Field, MariaDBDsn, MySQLDsn, PostgresDsn, computed_field
 from pydantic_settings import BaseSettings
 
-from src.util import (
-    MAX_NUM_STARS,
-    MIN_NUM_STARS,
-    get_location,
-    get_m_and_b,
-    get_yhat,
-)
+from src.util import (MAX_NUM_STARS, MIN_NUM_STARS, get_location, get_m_and_b,
+                      get_yhat)
 
 
 @lru_cache()

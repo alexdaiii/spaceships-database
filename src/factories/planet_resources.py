@@ -10,13 +10,10 @@ from src.database.db import get_session
 from src.models import Biome, Planet, StarSystem
 from src.util import get_m_and_b
 
-from .utils.empires_util import (
-    authority_df,
-    empires_info,
-    get_empire_resources,
-)
-from .utils.util import MAX_PLANET_SIZE, MIN_PLANET_SIZE
 from ..settings import get_settings
+from .utils.empires_util import (authority_df, empires_info,
+                                 get_empire_resources)
+from .utils.util import MAX_PLANET_SIZE, MIN_PLANET_SIZE
 
 
 def add_auth_rank(df: pd.DataFrame, *, rng: np.random.Generator):

@@ -1,24 +1,13 @@
+import colorful as cf
 import pandas as pd
-from sqlalchemy import Engine, select, func, update
+from sqlalchemy import Engine, func, select, update
 
 from src.database.db import get_session
 from src.factories.utils.empires_util import empires_info, get_empire_resources
-
-import colorful as cf
-
 from src.factories.utils.ships_util import ship_class_df
-from src.models import (
-    Empire,
-    Planet,
-    StarSystem,
-    Biome,
-    SpaceshipRank,
-    Fleet,
-    Spaceship,
-    ShipTemplate,
-    SpaceshipModule,
-    ShipTemplateModule,
-)
+from src.models import (Biome, Empire, Fleet, Planet, ShipTemplate,
+                        ShipTemplateModule, Spaceship, SpaceshipModule,
+                        SpaceshipRank, StarSystem)
 from src.util import df_info
 
 
