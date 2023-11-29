@@ -6,6 +6,7 @@ from src.settings import Settings
 
 from .crew import add_crew
 from .empire import create_empires
+from .empire_score import calculate_empire_score
 from .empire_star_systems import assign_empire_star_systems
 from .fleets import add_fleets
 from .planet_resources import add_planet_pops
@@ -69,6 +70,7 @@ def generate_galaxy(
         rng=rng,
         engine=engine,
     )
+    calculate_empire_score(engine=engine, rng=rng)
 
 
 __all__ = ["generate_galaxy"]

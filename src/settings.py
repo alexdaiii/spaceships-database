@@ -7,8 +7,13 @@ import colorful as cf
 from pydantic import Field, MariaDBDsn, MySQLDsn, PostgresDsn, computed_field
 from pydantic_settings import BaseSettings
 
-from src.util import (MAX_NUM_STARS, MIN_NUM_STARS, get_location, get_m_and_b,
-                      get_yhat)
+from src.util import (
+    MAX_NUM_STARS,
+    MIN_NUM_STARS,
+    get_location,
+    get_m_and_b,
+    get_yhat,
+)
 
 
 @lru_cache()
@@ -137,6 +142,7 @@ class Settings(BaseSettings):
     random_seed: int = 1234
     num_stars: int = Field(MIN_NUM_STARS, ge=MIN_NUM_STARS, le=MAX_NUM_STARS)
     hyperlane_density: float = Field(0.5, ge=0.5, le=2.5)
+    chokepoint_multiplier: float = Field(1.5, ge=1, le=5)
 
     @computed_field
     @property

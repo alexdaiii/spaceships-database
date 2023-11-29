@@ -12,8 +12,11 @@ from src.models import Biome, Planet, StarSystem
 from src.settings import get_settings
 from src.util import MAX_NUM_STARS, MIN_NUM_STARS, get_m_and_b, get_yhat
 
-from .utils.celestial_bodies_util import (biomes_df, load_star_config,
-                                          stars_type_df)
+from .utils.celestial_bodies_util import (
+    biomes_df,
+    load_star_config,
+    stars_type_df,
+)
 from .utils.util import MAX_PLANET_SIZE, MIN_PLANET_SIZE
 
 
@@ -225,8 +228,6 @@ def get_one_hot_biome_materials(
 def add_biome_resources(
     df: pd.DataFrame, rng: np.random.Generator, *, one_hot=True, min_value=0
 ):
-    print("Adding resources ...")
-
     # minerals, energy, research, trade_value
     mus = [2, 1.5, 0, 5]
     sigmas = [3, 2, 2, 5]

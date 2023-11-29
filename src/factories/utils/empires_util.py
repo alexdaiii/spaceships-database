@@ -4,13 +4,15 @@ from functools import lru_cache
 
 import pandas as pd
 from pydantic import BaseModel, computed_field
-from sqlalchemy import Engine, select
+from sqlalchemy import Engine, select, func
 
 from src.database.db import get_session
-from src.models import Empire, EmpireToEthic
+from src.models import Empire, EmpireToEthic, Planet, StarSystem
 from src.util import get_location
 
 from .util import STARTING_ID
+
+import colorful as cf
 
 
 class EmpireInfo(BaseModel):
@@ -97,7 +99,7 @@ def empires_info(engine: Engine):
     NOTE: any changes made to this dataframe will be reflected for ALL
     calls to this function until the engine changes.
     """
-    print("Loading empires info")
+    print(cf.blue("Loading empires info"))
 
     stmt = (
         select(
@@ -124,3 +126,21 @@ def empires_info(engine: Engine):
     )
 
     return df
+
+
+def get_empire_resources(engine):
+    return pd.read_sql(
+        select(
+            Empire.empire_id,
+            func.sum(Planet.planet_energy_value).label("total_energy"),
+            func.sum(Planet.planet_minerals_value).label("total_minerals"),
+            func.sum(Planet.planet_research_value).label("total_research"),
+            func.sum(Planet.planet_trade_value).label("total_trade"),
+        )
+        .select_from(Empire)
+        .join(StarSystem)
+        .join(Planet)
+        .group_by(Empire.empire_id)
+        .order_by(Empire.empire_id),
+        engine,
+    )

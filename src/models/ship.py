@@ -135,6 +135,7 @@ class SpaceshipRank(Base):
     spaceship_rank_name: Mapped[str] = mapped_column(String(255), unique=True)
     spaceship_min_experience: Mapped[int]
     spaceship_max_experience: Mapped[int]
+    spaceship_bonus_power: Mapped[float]
 
     __table_args__ = (
         # check constraint - spaceship_max_experience must be greater
@@ -148,6 +149,10 @@ class SpaceshipRank(Base):
             "spaceship_min_experience >= 0 "
             "AND spaceship_max_experience >= 0",
             "spaceship_experience_positive_check",
+        ),
+        CheckConstraint(
+            "spaceship_bonus_power >= 0",
+            "spaceship_bonus_power_positive_check",
         ),
     )
 
