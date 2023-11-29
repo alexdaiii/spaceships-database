@@ -225,8 +225,6 @@ def get_one_hot_biome_materials(
 def add_biome_resources(
     df: pd.DataFrame, rng: np.random.Generator, *, one_hot=True, min_value=0
 ):
-    print("Adding resources ...")
-
     # minerals, energy, research, trade_value
     mus = [2, 1.5, 0, 5]
     sigmas = [3, 2, 2, 5]

@@ -162,32 +162,38 @@
     {
       "name": "cadet",
       "min_experience": 0,
-      "max_experience": 9
+      "max_experience": 9,
+      "bonus": 0
     },
     {
       "name": "ensign",
       "min_experience": 10,
-      "max_experience": 24
+      "max_experience": 24,
+      "bonus": 0.05
     },
     {
       "name": "captain",
       "min_experience": 25,
-      "max_experience": 50
+      "max_experience": 50,
+      "bonus": 0.1
     },
     {
       "name": "commodore",
       "min_experience": 51,
-      "max_experience": 99
+      "max_experience": 99,
+      "bonus": 0.15
     },
     {
       "name": "admiral",
       "min_experience": 100,
-      "max_experience": 199
+      "max_experience": 199,
+      "bonus": 0.2
     },
     {
       "name": "grand admiral",
       "min_experience": 200,
-      "max_experience": 999999
+      "max_experience": 999999,
+      "bonus": 0.25
     }
   ]
 }

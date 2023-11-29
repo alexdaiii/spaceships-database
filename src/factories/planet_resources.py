@@ -1,13 +1,18 @@
+import math
+
 import colorful as cf
 import numpy as np
 import pandas as pd
 from sqlalchemy import Engine, func, select
+from sqlalchemy.orm import Session
 
 from src.database.db import get_session
-from src.models import Biome, Empire, Planet, StarSystem
+from src.models import Biome, Planet, StarSystem
 from src.util import get_m_and_b
 
-from .utils.empires_util import authority_df, empires_info
+from ..settings import get_settings
+from .utils.empires_util import (authority_df, empires_info,
+                                 get_empire_resources)
 from .utils.util import MAX_PLANET_SIZE, MIN_PLANET_SIZE
 
 
@@ -124,6 +129,7 @@ def add_planet_pops(rng: np.random.Generator, *, engine: Engine):
             f"Added planet pops for empire {empire.empire_id} / {len(empires)}"
         )
 
+    rescale_resources(engine)
     add_empire_resources(empires_info(engine), engine)
 
 
@@ -131,29 +137,64 @@ def add_empire_resources(df: pd.DataFrame, engine: Engine):
     """
     Adds empire resources inplace to the dataframe
     """
-    print("Calculating total empire resources")
+    print(cf.cyan("Calculating total empire resources"))
 
     # get the total resources for each empire
-    empire_resources = pd.read_sql(
-        select(
-            Empire.empire_id,
-            func.sum(Planet.planet_energy_value).label("total_energy"),
-            func.sum(Planet.planet_minerals_value).label("total_minerals"),
-            func.sum(Planet.planet_research_value).label("total_research"),
-            func.sum(Planet.planet_trade_value).label("total_trade"),
-        )
-        .select_from(Empire)
-        .join(StarSystem)
-        .join(Planet)
-        .group_by(Empire.empire_id),
-        engine,
-    )
+    empire_resources = get_empire_resources(engine)
 
     # join the two dataframes
     df["total_energy"] = empire_resources["total_energy"]
     df["total_minerals"] = empire_resources["total_minerals"]
     df["total_research"] = empire_resources["total_research"]
     df["total_trade"] = empire_resources["total_trade"]
+
+
+_page_size = 1000
+
+
+def chokepoint_planets(session: Session, page: int):
+    return session.scalars(
+        select(Planet)
+        .join(StarSystem)
+        .where(StarSystem.system_is_choke_point == True)
+        .order_by(Planet.planet_id.desc())
+        .offset(page * _page_size)
+        .limit(_page_size)
+    ).all()
+
+
+def num_chokepoint_planets(engine: Engine):
+    with get_session(engine) as session:
+        return session.scalar(
+            select(func.count(Planet.planet_id))
+            .join(StarSystem)
+            .where(StarSystem.system_is_choke_point == True)
+        )
+
+
+def rescale_resources(engine: Engine):
+    print(cf.yellow("Rescaling planet resources"))
+
+    # multiply 1.1 to people resources for chokepoint planets
+    num_pages = math.ceil(num_chokepoint_planets(engine) / _page_size)
+
+    for page in range(num_pages):
+        print(f"Rescaling page {page + 1}/{num_pages}")
+
+        with get_session(engine) as session:
+            planets = chokepoint_planets(session, page)
+
+            for planet in planets:
+                planet.planet_research_value = int(
+                    planet.planet_research_value
+                    * get_settings().chokepoint_multiplier
+                )
+                planet.planet_trade_value = int(
+                    planet.planet_trade_value
+                    * get_settings().chokepoint_multiplier
+                )
+
+            session.add_all(planets)
 
 
 __all__ = ["add_planet_pops"]

@@ -58,6 +58,7 @@ class ShipRanks(BaseModel):
     spaceship_rank_name: str = Field(alias="name")
     spaceship_min_experience: int = Field(alias="min_experience")
     spaceship_max_experience: int = Field(alias="max_experience")
+    spaceship_bonus_power: float = Field(alias="bonus")
 
 
 class ShipsInfo(BaseModel):
