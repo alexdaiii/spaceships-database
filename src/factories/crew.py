@@ -1,30 +1,21 @@
 import math
 from functools import lru_cache
 
+import colorful as cf
 import networkx as nx
 import numpy as np
 import pandas as pd
 from faker import Faker
-from sqlalchemy import Engine, select, func, insert, update
-
-import colorful as cf
+from sqlalchemy import Engine, func, insert, select, update
 
 from src.database.db import get_session
-from src.factories.utils.empires_util import empires_info
-from src.factories.utils.ships_empire_util import empire_fleet_info
-from src.factories.utils.ships_util import ship_class_df
-from src.models import (
-    StarSystem,
-    Planet,
-    Biome,
-    Crew,
-    Spaceship,
-    Fleet,
-    ShipTemplate,
-    ShipClass,
-    CrewFriend,
-)
+from src.models import (Biome, Crew, CrewFriend, Fleet, Planet, ShipClass,
+                        ShipTemplate, Spaceship, StarSystem)
 from src.util import CURR_DATE, START_DATE, TIMEZONE
+
+from .utils.empires_util import empires_info
+from .utils.ships_empire_util import empire_fleet_info
+from .utils.ships_util import ship_class_df
 
 
 def add_crew(

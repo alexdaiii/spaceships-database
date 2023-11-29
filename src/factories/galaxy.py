@@ -3,8 +3,8 @@ from faker import Faker
 from sqlalchemy import Engine
 
 from src.settings import Settings
-from .crew import add_crew
 
+from .crew import add_crew
 from .empire import create_empires
 from .empire_star_systems import assign_empire_star_systems
 from .fleets import add_fleets

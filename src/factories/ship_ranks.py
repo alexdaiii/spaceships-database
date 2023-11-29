@@ -1,9 +1,10 @@
+import colorful as cf
 from sqlalchemy import Engine, insert
 
 from src.database.db import get_session
-from src.factories.utils.ships_util import ships_info
 from src.models import SpaceshipRank
-import colorful as cf
+
+from .utils.ships_util import ships_info
 
 
 def add_ship_ranks(engine: Engine):
